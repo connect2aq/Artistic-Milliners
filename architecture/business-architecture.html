@@ -1202,7 +1202,7 @@
         <div class="summary-title">📊 Executive Summary</div>
         <div class="summary-stats">
           <div class="stat-card">
-            <div class="stat-number">9</div>
+            <div class="stat-number">11</div>
             <div class="stat-label">Core Objects</div>
           </div>
           <div class="stat-card">
@@ -2798,7 +2798,7 @@
 
                           <div class="tree-children">
                             <!-- R&D Request -->
-                            <div class="tree-node level-5">
+                            <div class="tree-node level-5 has-children">
                               <div class="node-content">
                                 <div class="node-title">
                                   <span class="node-icon">🔬</span>
@@ -2807,6 +2807,15 @@
                                     <span class="relationship-badge-icon">⬆️</span>
                                     Child of Sample Iteration
                                   </span>
+                                  <span class="relationship-badge parent">
+                                    <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                    Has Children
+                                  </span>
+                                  <span
+                                    class="toggle-btn"
+                                    onclick="toggleNode(event, this.closest('.tree-node'))"
+                                    >▼</span
+                                  >
                                 </div>
                                 <div class="node-description">
                                   Requested by PD Lead<br />
@@ -3231,6 +3240,102 @@
                                   </div>
                                 </div>
                               </div>
+
+                              <!-- Cluster Engagements (Children of R&D Request) -->
+                              <div class="tree-children">
+                                <div class="tree-node level-6">
+                                  <div class="node-content">
+                                    <div class="node-title">
+                                      <span class="node-icon">🤝</span>
+                                      Cluster Engagement(s)
+                                      <span class="relationship-badge child">
+                                        <span class="relationship-badge-icon">⬆️</span>
+                                        Child of R&D Request
+                                      </span>
+                                    </div>
+                                    <div class="node-description">
+                                      Purpose:<br />
+                                      • Identify involved clusters<br />
+                                      • Assign responsibility<br />
+                                      • Enable parallel collaboration
+                                    </div>
+
+                                    <!-- Core Fields Section for Cluster Engagement -->
+                                    <div
+                                      class="fields-section collapsed"
+                                      id="clusterEngagementFields"
+                                    >
+                                      <div
+                                        class="fields-header"
+                                        onclick="toggleFields('clusterEngagementFields')"
+                                      >
+                                        <span>🔧 Core Fields</span>
+                                        <span class="fields-toggle">▼</span>
+                                      </div>
+                                      <div class="fields-content">
+                                        <div class="field-group">
+                                          <div class="field-group-title">A. Identity & Relationships</div>
+                                          <div class="field-item">
+                                            <span class="field-name">Engagement Number</span>
+                                            <span class="field-type">Auto Number</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Related R&D Request</span>
+                                            <span class="field-type">Lookup</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Cluster Name</span>
+                                            <span class="field-type">Picklist</span>
+                                          </div>
+                                          <div class="field-note">External partner/cluster organization name</div>
+                                        </div>
+
+                                        <div class="field-group">
+                                          <div class="field-group-title">B. Engagement Details</div>
+                                          <div class="field-item">
+                                            <span class="field-name">Cluster Contact</span>
+                                            <span class="field-type">Text</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Cluster Contact Email</span>
+                                            <span class="field-type">Email</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Engagement Status</span>
+                                            <span class="field-type">Picklist</span>
+                                          </div>
+                                          <div class="field-note">Pending / In Progress / Completed / Cancelled</div>
+                                          <div class="field-item">
+                                            <span class="field-name">Responsibility Area</span>
+                                            <span class="field-type">Text</span>
+                                          </div>
+                                          <div class="field-note">What this cluster is responsible for</div>
+                                        </div>
+
+                                        <div class="field-group">
+                                          <div class="field-group-title">C. Tracking & Timeline</div>
+                                          <div class="field-item">
+                                            <span class="field-name">Engagement Date</span>
+                                            <span class="field-type">Date</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Expected Completion Date</span>
+                                            <span class="field-type">Date</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Actual Completion Date</span>
+                                            <span class="field-type">Date</span>
+                                          </div>
+                                          <div class="field-item">
+                                            <span class="field-name">Notes</span>
+                                            <span class="field-type">Long Text</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
 
                             <!-- Sample Development Order -->
@@ -3258,6 +3363,99 @@
                                       Executed in ERP
                                     </div>
                                     <div class="node-description">Full execution managed in ERP system</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Sample Iteration Cost(s) -->
+                            <div class="tree-node level-5">
+                              <div class="node-content">
+                                <div class="node-title">
+                                  <span class="node-icon">💰</span>
+                                  Sample Iteration Cost(s)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
+                                </div>
+                                <div class="node-description">
+                                  Line-item cost breakdown<br />
+                                  for this specific iteration<br />
+                                  (Multiple records per iteration)
+                                </div>
+
+                                <!-- Core Fields Section for Sample Iteration Cost -->
+                                <div
+                                  class="fields-section collapsed"
+                                  id="sampleIterationCostFields"
+                                >
+                                  <div
+                                    class="fields-header"
+                                    onclick="toggleFields('sampleIterationCostFields')"
+                                  >
+                                    <span>🔧 Core Fields</span>
+                                    <span class="fields-toggle">▼</span>
+                                  </div>
+                                  <div class="fields-content">
+                                    <div class="field-group">
+                                      <div class="field-group-title">A. Identity & Relationships</div>
+                                      <div class="field-item">
+                                        <span class="field-name">Cost Line Number</span>
+                                        <span class="field-type">Auto Number</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Related Sample Iteration</span>
+                                        <span class="field-type">Lookup</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Cost Category</span>
+                                        <span class="field-type">Picklist</span>
+                                      </div>
+                                      <div class="field-note">Material / Labor / R&D / Testing / Other</div>
+                                    </div>
+
+                                    <div class="field-group">
+                                      <div class="field-group-title">B. Cost Details</div>
+                                      <div class="field-item">
+                                        <span class="field-name">Description</span>
+                                        <span class="field-type">Text</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Quantity</span>
+                                        <span class="field-type">Number</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Unit of Measure</span>
+                                        <span class="field-type">Picklist</span>
+                                      </div>
+                                      <div class="field-note">Meters / Yards / KG / Hours / etc.</div>
+                                      <div class="field-item">
+                                        <span class="field-name">Unit Cost</span>
+                                        <span class="field-type">Currency</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Total Cost</span>
+                                        <span class="field-type">Currency (Formula)</span>
+                                      </div>
+                                      <div class="field-note">Calculated: Quantity × Unit Cost</div>
+                                    </div>
+
+                                    <div class="field-group">
+                                      <div class="field-group-title">C. Additional Information</div>
+                                      <div class="field-item">
+                                        <span class="field-name">Supplier/Vendor</span>
+                                        <span class="field-type">Text</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Cost Date</span>
+                                        <span class="field-type">Date</span>
+                                      </div>
+                                      <div class="field-item">
+                                        <span class="field-name">Notes</span>
+                                        <span class="field-type">Long Text</span>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -3303,13 +3501,48 @@
 
                           <div class="tree-children">
                             <!-- R&D Request -->
-                            <div class="tree-node level-5">
+                            <div class="tree-node level-5 has-children">
                               <div class="node-content">
                                 <div class="node-title">
                                   <span class="node-icon">🔬</span>
                                   R&D Request (Optional)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
+                                  <span class="relationship-badge parent">
+                                    <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                    Has Children
+                                  </span>
+                                  <span
+                                    class="toggle-btn"
+                                    onclick="toggleNode(event, this.closest('.tree-node'))"
+                                    >▼</span
+                                  >
                                 </div>
                                 <div class="node-description">R&D Execution for fabric trials</div>
+                              </div>
+
+                              <!-- Cluster Engagements -->
+                              <div class="tree-children">
+                                <div class="tree-node level-6">
+                                  <div class="node-content">
+                                    <div class="node-title">
+                                      <span class="node-icon">🤝</span>
+                                      Cluster Engagement(s)
+                                      <span class="relationship-badge child">
+                                        <span class="relationship-badge-icon">⬆️</span>
+                                        Child of R&D Request
+                                      </span>
+                                    </div>
+                                    <div class="node-description">
+                                      Purpose:<br />
+                                      • Identify involved clusters<br />
+                                      • Assign responsibility<br />
+                                      • Enable parallel collaboration
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
 
@@ -3325,6 +3558,25 @@
                                   </span>
                                 </div>
                                 <div class="node-description">Executed in ERP</div>
+                              </div>
+                            </div>
+
+                            <!-- Sample Iteration Cost(s) -->
+                            <div class="tree-node level-5">
+                              <div class="node-content">
+                                <div class="node-title">
+                                  <span class="node-icon">💰</span>
+                                  Sample Iteration Cost(s)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
+                                </div>
+                                <div class="node-description">
+                                  Line-item cost breakdown<br />
+                                  for this specific iteration<br />
+                                  (Multiple records per iteration)
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -3368,13 +3620,48 @@
 
                           <div class="tree-children">
                             <!-- R&D Request -->
-                            <div class="tree-node level-5">
+                            <div class="tree-node level-5 has-children">
                               <div class="node-content">
                                 <div class="node-title">
                                   <span class="node-icon">🔬</span>
                                   R&D Request (Optional)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
+                                  <span class="relationship-badge parent">
+                                    <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                    Has Children
+                                  </span>
+                                  <span
+                                    class="toggle-btn"
+                                    onclick="toggleNode(event, this.closest('.tree-node'))"
+                                    >▼</span
+                                  >
                                 </div>
                                 <div class="node-description">R&D Execution for yarn trials</div>
+                              </div>
+
+                              <!-- Cluster Engagements -->
+                              <div class="tree-children">
+                                <div class="tree-node level-6">
+                                  <div class="node-content">
+                                    <div class="node-title">
+                                      <span class="node-icon">🤝</span>
+                                      Cluster Engagement(s)
+                                      <span class="relationship-badge child">
+                                        <span class="relationship-badge-icon">⬆️</span>
+                                        Child of R&D Request
+                                      </span>
+                                    </div>
+                                    <div class="node-description">
+                                      Purpose:<br />
+                                      • Identify involved clusters<br />
+                                      • Assign responsibility<br />
+                                      • Enable parallel collaboration
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
 
@@ -3390,6 +3677,25 @@
                                   </span>
                                 </div>
                                 <div class="node-description">Executed in ERP</div>
+                              </div>
+                            </div>
+
+                            <!-- Sample Iteration Cost(s) -->
+                            <div class="tree-node level-5">
+                              <div class="node-content">
+                                <div class="node-title">
+                                  <span class="node-icon">💰</span>
+                                  Sample Iteration Cost(s)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
+                                </div>
+                                <div class="node-description">
+                                  Line-item cost breakdown<br />
+                                  for this specific iteration<br />
+                                  (Multiple records per iteration)
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -4084,92 +4390,6 @@
                       </div>
                     </div>
 
-                    <!-- Automation & Escalations Section -->
-                    <!-- <div class="stages-section collapsed" id="commercialProposalAutomation">
-                      <div class="stages-header" onclick="toggleStages('commercialProposalAutomation')">
-                        <span>🤖 Automation & Escalations</span>
-                        <span class="stages-toggle">▼</span>
-                      </div>
-                      <div class="stages-content" style="padding: 1.5rem;">
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #10b981;">
-                          <h4 style="color: #10b981; margin: 0 0 1rem 0; font-size: 1.1rem;">📧 Automated Actions by Stage</h4>
-
-                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal enters "Draft":</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              📧 Email to Sales Rep: "Commercial proposal created from Gold Seal samples"<br>
-                              ✅ Task created for Sales Rep: "Finalize pricing, margins, and terms" (Due: 1 day)
-                            </div>
-                          </div>
-
-                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal moves to "Internal Review":</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              📧 Email to Sales Manager: "Proposal ready for internal review - Amount: $[X]"<br>
-                              📧 Email to Finance (if high value): "High-value proposal requires margin review"<br>
-                              ✅ Task created for Sales Manager: "Review and approve proposal" (Due: 1 day)
-                            </div>
-                          </div>
-
-                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal moves to "Customer Review":</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              📧 Email to Customer: "Commercial proposal attached - valid for 30 days"<br>
-                              📧 Email to Sales Rep: "Proposal sent to customer - follow up in 3 days"<br>
-                              ✅ Task created for Sales Rep: "Follow up with customer on proposal" (Due: 3 days)
-                            </div>
-                          </div>
-
-                          <div style="padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal moves to "Closed":</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              <strong>IF Accepted:</strong><br>
-                              📧 Email to Sales Team: "🎉 Proposal accepted! PO received - $[Amount]"<br>
-                              📧 Email to ERP Team: "Customer order ready - PO attached"<br>
-                              📧 Email to Customer: "Thank you for your order - order confirmation attached"<br>
-                              🔗 Auto-create: Customer Order record<br>
-                              📊 Update Opportunity to "Closed Won"<br>
-                              🔗 ERP Integration: Send order data to ERP<br><br>
-                              <strong>IF Rejected:</strong><br>
-                              📧 Email to Sales Manager: "Proposal rejected - [Customer] - Reason: [X]"<br>
-                              ✅ Task created for Sales Rep: "Document rejection reason" (Due: 1 day)<br>
-                              📊 Update Opportunity to "Closed Lost"
-                            </div>
-                          </div>
-                        </div>
-
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #f59e0b;">
-                          <h4 style="color: #f59e0b; margin: 0 0 1rem 0; font-size: 1.1rem;">⏰ Time-Based Escalations</h4>
-
-                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Stage: Draft</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              • After 2 days: Reminder to Sales Rep<br>
-                              • After 4 days: Alert to Sales Manager
-                            </div>
-                          </div>
-
-                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Stage: Internal Review</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              • After 1 day: Reminder to Sales Manager<br>
-                              • After 3 days: Escalate to Sales Director
-                            </div>
-                          </div>
-
-                          <div style="padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
-                            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Stage: Customer Review</div>
-                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
-                              • After 7 days: Auto-email to customer: "Following up on proposal sent [date]"<br>
-                              • After 14 days: Alert to Sales Manager: "Proposal aging - [Customer]"<br>
-                              • After 21 days: Auto-email to customer: "Is this still a priority? How can we help?"<br>
-                              • After 25 days: Alert: "Proposal expiring soon (5 days remaining)"<br>
-                              • After 30 days: Auto-update status: "Expired" + task to Sales Rep: "Contact customer"
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
 
                     <!-- Core Fields Section -->
                     <div
@@ -4450,7 +4670,16 @@
       function toggleStages(sectionId) {
         const stagesSection = document.getElementById(sectionId);
         if (stagesSection) {
+          const isCurrentlyExpanded = !stagesSection.classList.contains('collapsed');
           stagesSection.classList.toggle('collapsed');
+
+          // If collapsing, scroll to the section header
+          if (isCurrentlyExpanded) {
+            const header = stagesSection.querySelector('.stages-header');
+            if (header) {
+              header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
         }
       }
 
@@ -4495,31 +4724,76 @@
       // Toggle stages section for CSR
       function toggleCSRStages() {
         const stagesSection = document.getElementById('csrStages');
+        const isCurrentlyExpanded = !stagesSection.classList.contains('collapsed');
         stagesSection.classList.toggle('collapsed');
+
+        // If collapsing, scroll to the section header
+        if (isCurrentlyExpanded) {
+          const header = stagesSection.querySelector('.stages-header');
+          if (header) {
+            header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
 
       // Toggle stages section for Sample Development
       function toggleSampleDevStages() {
         const stagesSection = document.getElementById('sampleDevStages');
+        const isCurrentlyExpanded = !stagesSection.classList.contains('collapsed');
         stagesSection.classList.toggle('collapsed');
+
+        // If collapsing, scroll to the section header
+        if (isCurrentlyExpanded) {
+          const header = stagesSection.querySelector('.stages-header');
+          if (header) {
+            header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
 
       // Toggle stages section for R&D Request
       function toggleRnDStages() {
         const stagesSection = document.getElementById('rndStages');
+        const isCurrentlyExpanded = !stagesSection.classList.contains('collapsed');
         stagesSection.classList.toggle('collapsed');
+
+        // If collapsing, scroll to the section header
+        if (isCurrentlyExpanded) {
+          const header = stagesSection.querySelector('.stages-header');
+          if (header) {
+            header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
 
       // Toggle stages section for Sample Issuance
       function toggleSampleIssuanceStages() {
         const stagesSection = document.getElementById('sampleIssuanceStages');
+        const isCurrentlyExpanded = !stagesSection.classList.contains('collapsed');
         stagesSection.classList.toggle('collapsed');
+
+        // If collapsing, scroll to the section header
+        if (isCurrentlyExpanded) {
+          const header = stagesSection.querySelector('.stages-header');
+          if (header) {
+            header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
 
       // Toggle stages section for Commercial Proposal
       function toggleCommercialProposalStages() {
         const stagesSection = document.getElementById('commercialProposalStages');
+        const isCurrentlyExpanded = !stagesSection.classList.contains('collapsed');
         stagesSection.classList.toggle('collapsed');
+
+        // If collapsing, scroll to the section header
+        if (isCurrentlyExpanded) {
+          const header = stagesSection.querySelector('.stages-header');
+          if (header) {
+            header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
 
       // Toggle fields section (generic function for all objects)
