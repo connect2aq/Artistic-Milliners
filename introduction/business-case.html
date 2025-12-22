@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case - Artistic Milliners FSD</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .case-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-left: 4px solid #0176d3;
+            border-radius: 0.5rem;
+        }
+
+        .case-section h3 {
+            color: #032d60;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .case-section p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .case-section ul {
+            margin-left: 1.5rem;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .case-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .comparison-card.current {
+            border-color: #ef4444;
+        }
+
+        .comparison-card.future {
+            border-color: #10b981;
+        }
+
+        .comparison-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-card.current .comparison-header {
+            color: #ef4444;
+        }
+
+        .comparison-card.future .comparison-header {
+            color: #10b981;
+        }
+
+        .comparison-item {
+            background: #f8fafc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid #64748b;
+        }
+
+        .comparison-card.current .comparison-item {
+            border-left-color: #ef4444;
+        }
+
+        .comparison-card.future .comparison-item {
+            border-left-color: #10b981;
+        }
+
+        .comparison-title {
+            font-weight: 600;
+            color: #032d60;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .roi-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .roi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .roi-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .roi-description {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        .risk-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .risk-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .risk-level {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .risk-level.low {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .risk-level.medium {
+            background: #fef3c7;
+            color: #78350f;
+        }
+
+        .risk-level.high {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .risk-content h4 {
+            color: #032d60;
+            margin-bottom: 0.5rem;
+        }
+
+        .risk-content p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .mitigation {
+            background: #ede9fe;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: #5b21b6;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h2 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Business Case</h1>
+            <p>Strategic Justification for Salesforce Implementation</p>
+        </div>
+
+        <div class="content">
+            <a href="../index.html" class="back-button">← Back to Home</a>
+
+            <div class="highlight-box">
+                <h2>Investment Overview</h2>
+                <p>This Salesforce implementation will transform Artistic Milliners' opportunity-to-order lifecycle, delivering measurable improvements in cycle time, customer satisfaction, and win rates while providing complete transparency across Sales, PD, and R&D teams.</p>
+            </div>
+
+            <h2 style="color: #032d60; margin: 2rem 0 1rem;">Current State vs. Future State</h2>
+
+            <div class="comparison-grid">
+                <div class="comparison-card current">
+                    <div class="comparison-header">
+                        ❌ Current State - Pain Points
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Manual Handoffs</div>
+                        <div class="comparison-description">
+                            Sales, PD, and R&D teams rely on emails, spreadsheets, and phone calls to communicate opportunity status, leading to delays and miscommunication.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">No Customer Visibility</div>
+                        <div class="comparison-description">
+                            Customers cannot track their sample development status in real-time, resulting in frequent inquiry calls and reduced satisfaction.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">R&D Cost Surprises</div>
+                        <div class="comparison-description">
+                            R&D costs and timelines are not transparent upfront, causing customer surprises and friction during deal closure.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Fragmented Sample Tracking</div>
+                        <div class="comparison-description">
+                            Sample iterations, revisions, and approvals tracked across multiple systems with no single source of truth.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Slow Quote Generation</div>
+                        <div class="comparison-description">
+                            Manual costing calculations and proposal creation delay commercial proposals by several days.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Lost Competitive Advantage</div>
+                        <div class="comparison-description">
+                            Slow response times and lack of transparency result in lost deals to faster, more transparent competitors.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-card future">
+                    <div class="comparison-header">
+                        ✅ Future State - Salesforce Solution
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Automated Workflows</div>
+                        <div class="comparison-description">
+                            32 automated stages seamlessly transition opportunities from discovery through R&D, sample development, and order placement.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Customer Portal</div>
+                        <div class="comparison-description">
+                            Self-service portal provides real-time visibility into opportunity status, sample development progress, and timelines.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Transparent R&D Costing</div>
+                        <div class="comparison-description">
+                            Upfront R&D cost estimates with customer approval workflow prevent surprises and build trust.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Unified Sample Management</div>
+                        <div class="comparison-description">
+                            Single platform tracks all sample iterations (SAR, SFR, SYR), R&D requests, and approvals with complete audit trail.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Automated Quote Generation</div>
+                        <div class="comparison-description">
+                            Commercial proposals generated automatically from approved samples and costing data, delivered in hours not days.
+                        </div>
+                    </div>
+
+                    <div class="comparison-item">
+                        <div class="comparison-title">Competitive Differentiation</div>
+                        <div class="comparison-description">
+                            Industry-leading transparency and speed create competitive advantage and increase win rates.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #032d60; margin: 2rem 0 1rem;">Expected Return on Investment (ROI)</h2>
+
+            <div class="roi-grid">
+                <div class="roi-card">
+                    <div class="roi-value">40%</div>
+                    <div class="roi-label">Cycle Time Reduction</div>
+                    <div class="roi-description">
+                        Reduce average opportunity-to-order cycle time from [X days] to [Y days] through automation and eliminating manual handoffs.
+                    </div>
+                </div>
+
+                <div class="roi-card">
+                    <div class="roi-value">25%</div>
+                    <div class="roi-label">Higher Win Rate</div>
+                    <div class="roi-description">
+                        Increase opportunity conversion rate through faster response times, transparency, and superior customer experience.
+                    </div>
+                </div>
+
+                <div class="roi-card">
+                    <div class="roi-value">60%</div>
+                    <div class="roi-label">Reduced Inquiry Calls</div>
+                    <div class="roi-description">
+                        Decrease customer status inquiry calls through self-service portal and proactive notifications.
+                    </div>
+                </div>
+
+                <div class="roi-card">
+                    <div class="roi-value">30%</div>
+                    <div class="roi-label">Team Productivity Gain</div>
+                    <div class="roi-description">
+                        Sales, PD, and R&D teams handle 30% more opportunities with same headcount through automation and efficiency.
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-section">
+                <h3>💰 Financial Impact</h3>
+                <p><strong>Estimated Annual Benefits:</strong></p>
+                <ul>
+                    <li><strong>Increased Revenue:</strong> Higher win rate + faster cycle time = [X%] revenue increase = $[Amount]</li>
+                    <li><strong>Operational Efficiency:</strong> Reduced manual work across Sales/PD/R&D = [X FTE] savings = $[Amount]</li>
+                    <li><strong>Customer Retention:</strong> Improved satisfaction reduces churn = $[Amount] retained revenue</li>
+                    <li><strong>R&D Cost Control:</strong> Better visibility and approval workflow = $[Amount] cost avoidance</li>
+                </ul>
+                <p><strong>Total Annual Benefit:</strong> $[Total Amount]</p>
+                <p><strong>Implementation Investment:</strong> $[Investment Amount]</p>
+                <p><strong>Payback Period:</strong> [X months]</p>
+                <p><strong>3-Year ROI:</strong> [X%]</p>
+            </div>
+
+            <h2 style="color: #032d60; margin: 2rem 0 1rem;">Risk Analysis & Mitigation</h2>
+
+            <div class="risk-grid">
+                <div class="risk-item">
+                    <div class="risk-level medium">MEDIUM</div>
+                    <div class="risk-content">
+                        <h4>User Adoption Resistance</h4>
+                        <p>Sales, PD, and R&D teams may resist transitioning from familiar manual processes to new Salesforce platform.</p>
+                    </div>
+                    <div class="mitigation">
+                        Comprehensive training program, phased rollout, super-user champions, executive sponsorship
+                    </div>
+                </div>
+
+                <div class="risk-item">
+                    <div class="risk-level medium">MEDIUM</div>
+                    <div class="risk-content">
+                        <h4>ERP Integration Complexity</h4>
+                        <p>Integration between Salesforce and existing ERP system may encounter technical challenges or data mapping issues.</p>
+                    </div>
+                    <div class="mitigation">
+                        Dedicated integration specialist, proof-of-concept testing, fallback manual handoff procedures
+                    </div>
+                </div>
+
+                <div class="risk-item">
+                    <div class="risk-level low">LOW</div>
+                    <div class="risk-content">
+                        <h4>Data Migration Quality</h4>
+                        <p>Historical opportunity and sample data may have quality issues during migration from legacy systems.</p>
+                    </div>
+                    <div class="mitigation">
+                        Data cleansing phase, validation rules, go-live with clean slate for new opportunities
+                    </div>
+                </div>
+
+                <div class="risk-item">
+                    <div class="risk-level low">LOW</div>
+                    <div class="risk-content">
+                        <h4>Scope Creep</h4>
+                        <p>Additional feature requests during implementation may delay timeline and increase budget.</p>
+                    </div>
+                    <div class="mitigation">
+                        Clear scope definition, change control process, phased feature releases, backlog prioritization
+                    </div>
+                </div>
+
+                <div class="risk-item">
+                    <div class="risk-level medium">MEDIUM</div>
+                    <div class="risk-content">
+                        <h4>Customer Portal Adoption</h4>
+                        <p>Customers may not actively use the self-service portal for tracking opportunities and samples.</p>
+                    </div>
+                    <div class="mitigation">
+                        Customer onboarding program, portal walkthrough videos, email notifications with portal links
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-section">
+                <h3>🎯 Success Criteria</h3>
+                <p>The implementation will be considered successful when:</p>
+                <ul>
+                    <li><strong>Cycle Time:</strong> Average opportunity-to-order cycle reduced by at least 40%</li>
+                    <li><strong>User Adoption:</strong> 90%+ of opportunities managed through Salesforce within 3 months of go-live</li>
+                    <li><strong>Customer Satisfaction:</strong> CSAT scores for opportunity process increase by 20+ points</li>
+                    <li><strong>Portal Usage:</strong> 60%+ of customers actively using portal to track their opportunities</li>
+                    <li><strong>Data Quality:</strong> 95%+ of opportunity data complete and accurate in Salesforce</li>
+                    <li><strong>Win Rate:</strong> Opportunity-to-order conversion rate increases by 15%+ within 6 months</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h2>Business Case Recommendation</h2>
+                <p>The strategic benefits of this Salesforce implementation—faster deal closure, complete transparency, improved customer satisfaction, and competitive differentiation—far outweigh the implementation investment. With a payback period of [X months] and 3-year ROI of [X%], this project represents a compelling opportunity to modernize Artistic Milliners' opportunity-to-order lifecycle and position the company for sustainable growth.</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

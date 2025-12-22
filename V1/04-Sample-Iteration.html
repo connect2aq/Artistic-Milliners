@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Iteration: Iteration 2 - FSD-2024-0089</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Salesforce Sans', Arial, sans-serif;
+        }
+        .sf-header {
+            background: linear-gradient(to right, #032d60, #1b5297);
+        }
+        .sf-tab {
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .sf-tab.active {
+            border-bottom-color: #0176d3;
+            background: white;
+        }
+        .sf-tab:hover {
+            background: #f3f3f3;
+        }
+        .sf-button {
+            transition: all 0.2s;
+        }
+        .sf-button:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Salesforce Header -->
+    <div class="sf-header text-white px-6 py-3 shadow-lg">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <div class="flex items-center gap-4">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                </svg>
+                <h1 class="text-xl font-semibold">Artistic Milliners</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <input type="search" placeholder="Search..." class="px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 border border-white/30 w-64">
+                <div class="w-8 h-8 bg-white/20 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="bg-white border-b shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="flex gap-6">
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Opportunities</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Accounts</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Customer Sample Requests</a>
+                <a href="#" class="sf-tab active px-4 py-3 font-semibold text-gray-700">Sample Development</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Sample Issuance</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-6">
+        <!-- Breadcrumb -->
+        <div class="mb-4 text-sm">
+            <a href="#" class="text-blue-600 hover:underline">Fabric Sample Development</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <a href="#" class="text-blue-600 hover:underline">FSD-2024-0089</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <span class="text-gray-700">Iteration 2</span>
+        </div>
+
+        <!-- Page Header -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-green-100 rounded flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">Fabric Sample Iteration</div>
+                        <h1 class="text-2xl font-bold text-gray-900">Iteration 2</h1>
+                        <h2 class="text-lg text-gray-700 mt-1">12oz Organic Denim - Light Vintage Wash</h2>
+                        <div class="flex items-center gap-4 mt-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">Approved</span>
+                            <span class="text-sm text-gray-600">Date: 04/02/2024</span>
+                            <span class="text-sm text-gray-600">R&D: Ahmed Hassan</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="sf-button px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-semibold">Edit</button>
+                    <button class="sf-button px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-semibold">Clone</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-6">
+                <nav class="flex gap-8">
+                    <a href="#" class="py-4 border-b-2 border-blue-600 text-blue-600 font-semibold">Details</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Activity</a>
+                </nav>
+            </div>
+
+            <div class="p-6">
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <!-- Iteration Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Iteration Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Iteration Number</div>
+                                    <div class="w-2/3 text-sm text-gray-900 font-semibold">2</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Sample Development</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">FSD-2024-0089</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Iteration Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/02/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Status</div>
+                                    <div class="w-2/3">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Approved</span>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">R&D Lead</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Ahmed Hassan</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Product Developer</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Maria Rodriguez</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Adjustments from Previous Iteration -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Adjustments from Iteration 1</h2>
+                            <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
+                                <div class="flex items-start gap-3 mb-3">
+                                    <svg class="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                    </svg>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-yellow-900 mb-2">Previous Iteration Feedback:</div>
+                                        <div class="text-sm text-yellow-800">"Color too dark, needs lighter shade to match vintage aesthetic"</div>
+                                    </div>
+                                </div>
+                                <div class="border-t border-yellow-300 pt-3 mt-3">
+                                    <div class="text-sm font-semibold text-yellow-900 mb-2">Changes Made:</div>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start gap-2">
+                                            <svg class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                            <span>Reduced indigo dye concentration by 15%</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <svg class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                            <span>Extended wash cycle by 8 minutes for lighter effect</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <svg class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                            <span>Adjusted enzyme treatment for vintage appearance</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <svg class="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                            <span>Added stone washing for enhanced softness</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Process Details -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Process Details</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Dye Process</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Rope dyeing - 85% indigo saturation</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Wash Type</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Enzyme + Stone wash</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Wash Duration</div>
+                                    <div class="w-2/3 text-sm text-gray-900">45 minutes</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Water Temperature</div>
+                                    <div class="w-2/3 text-sm text-gray-900">60°C</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Enzyme Type</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Cellulase - Neutral pH</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Finishing</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Softener + Anti-slip treatment</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lab Test Results -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Lab Test Results</h2>
+                            <div class="bg-green-50 border border-green-200 rounded p-4">
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-700">Shrinkage (L+W)</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-gray-900">2.3%</span>
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-700">Color Fastness (Wash)</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-gray-900">4.5</span>
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-700">Color Fastness (Light)</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-gray-900">4.0</span>
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-700">Tensile Strength (Warp)</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-gray-900">92 lbs</span>
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-700">Tensile Strength (Weft)</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-gray-900">71 lbs</span>
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-700">Pilling Resistance</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-gray-900">Grade 4</span>
+                                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-3 border-t border-green-300">
+                                    <div class="flex items-center gap-2 text-green-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold">All tests passed quality requirements</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <!-- R&D Request -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">R&D Request</h2>
+                            <div class="bg-blue-50 border border-blue-200 rounded p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                        </svg>
+                                        <a href="#" class="text-blue-600 hover:underline font-semibold">RD-2024-0241</a>
+                                    </div>
+                                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Completed</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Created By</div>
+                                        <div class="w-2/3 text-gray-900">Maria Rodriguez (PD Lead)</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Executed By</div>
+                                        <div class="w-2/3 text-gray-900">Ahmed Hassan (R&D Lead)</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Created Date</div>
+                                        <div class="w-2/3 text-gray-900">03/29/2024</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Completed Date</div>
+                                        <div class="w-2/3 text-gray-900">04/01/2024</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Hours Spent</div>
+                                        <div class="w-2/3 text-gray-900">12 hours</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-blue-300">
+                                    <div class="text-xs font-semibold text-blue-900 mb-1">R&D Activities:</div>
+                                    <ul class="text-xs text-gray-700 space-y-1">
+                                        <li>• Dye formulation adjustment trials (4 variations)</li>
+                                        <li>• Wash process optimization testing</li>
+                                        <li>• Lab testing and quality analysis</li>
+                                        <li>• Cost analysis and documentation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sample Development Order (SDO) -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Sample Development Order (SDO)</h2>
+                            <div class="bg-purple-50 border border-purple-200 rounded p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                        </svg>
+                                        <a href="#" class="text-purple-600 hover:underline font-semibold">SDO-2024-0478</a>
+                                    </div>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs font-semibold">Completed</span>
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Created By</div>
+                                        <div class="w-2/3 text-gray-900">Ahmed Hassan (R&D Lead)</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Order Date</div>
+                                        <div class="w-2/3 text-gray-900">04/02/2024</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Completed Date</div>
+                                        <div class="w-2/3 text-gray-900">04/04/2024</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Quantity</div>
+                                        <div class="w-2/3 text-gray-900">5 yards</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Production Cost</div>
+                                        <div class="w-2/3 text-gray-900">$285</div>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-purple-300">
+                                    <a href="#" class="text-purple-600 hover:underline text-sm flex items-center gap-1">
+                                        <span>View in ERP System</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="mt-2 bg-purple-100 rounded p-2 text-xs text-purple-800">
+                                    <strong>Note:</strong> Header captured in Salesforce, full order details in ERP
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Feedback -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Customer Feedback</h2>
+                            <div class="bg-green-50 border border-green-200 rounded p-4">
+                                <div class="flex items-start gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg">MC</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <div class="text-sm font-semibold text-gray-900">Michael Chen</div>
+                                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Approved</span>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mb-2">Sr. Product Developer - Levi Strauss & Co.</div>
+                                        <div class="text-xs text-gray-500 mb-2">04/05/2024 3:45 PM</div>
+                                    </div>
+                                </div>
+                                <div class="bg-white border border-green-200 rounded p-3">
+                                    <p class="text-sm text-gray-700 leading-relaxed">
+                                        "Excellent color match and hand feel. The vintage wash effect is exactly what we were looking for.
+                                        The fabric meets all our sustainability requirements and the quality tests look great.
+                                        We're ready to move forward with this for production. Great work on the quick turnaround!"
+                                    </p>
+                                </div>
+                                <div class="mt-3 flex items-center gap-4 text-xs text-gray-600">
+                                    <div class="flex items-center gap-1">
+                                        <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                        <span>Rating: 5/5</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <span>Color: Approved</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        <span>Hand Feel: Approved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cost Analysis -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Cost Analysis</h2>
+                            <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">R&D Labor Cost</span>
+                                    <span class="text-gray-900 font-semibold">$360</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Material Cost</span>
+                                    <span class="text-gray-900 font-semibold">$285</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Lab Testing</span>
+                                    <span class="text-gray-900 font-semibold">$125</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Overhead</span>
+                                    <span class="text-gray-900 font-semibold">$80</span>
+                                </div>
+                                <div class="border-t pt-3 flex justify-between">
+                                    <span class="text-sm font-semibold text-gray-900">Total Iteration Cost</span>
+                                    <span class="text-sm text-gray-900 font-bold">$850</span>
+                                </div>
+                                <div class="bg-blue-50 border border-blue-200 rounded p-2 text-xs text-blue-800">
+                                    <strong>Note:</strong> Cost per yard (bulk production): $8.50 estimated
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">System Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Created By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Ahmed Hassan, 04/02/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Last Modified By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Sarah Johnson, 04/06/2024</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Photos -->
+        <div class="bg-white rounded-lg shadow-sm border">
+            <div class="p-6 border-b">
+                <h2 class="text-lg font-bold text-gray-800">Sample Photos</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border rounded overflow-hidden">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 h-48 flex items-center justify-center">
+                            <div class="text-center text-gray-600">
+                                <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <div class="text-sm">Front View</div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50">
+                            <div class="text-xs text-gray-600">Uploaded: 04/04/2024</div>
+                        </div>
+                    </div>
+                    <div class="border rounded overflow-hidden">
+                        <div class="bg-gradient-to-br from-blue-200 to-blue-300 h-48 flex items-center justify-center">
+                            <div class="text-center text-gray-600">
+                                <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <div class="text-sm">Closeup - Texture</div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50">
+                            <div class="text-xs text-gray-600">Uploaded: 04/04/2024</div>
+                        </div>
+                    </div>
+                    <div class="border rounded overflow-hidden">
+                        <div class="bg-gradient-to-br from-blue-300 to-blue-400 h-48 flex items-center justify-center">
+                            <div class="text-center text-gray-600">
+                                <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <div class="text-sm">Wash Effect Detail</div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50">
+                            <div class="text-xs text-gray-600">Uploaded: 04/04/2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

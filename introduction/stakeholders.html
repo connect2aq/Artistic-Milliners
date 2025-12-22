@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakeholders & Roles - Artistic Milliners FSD</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        .stakeholder-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-left: 4px solid #0176d3;
+            border-radius: 0.5rem;
+        }
+
+        .stakeholder-section h3 {
+            color: #032d60;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .stakeholder-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stakeholder-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .stakeholder-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.75rem;
+        }
+
+        .stakeholder-content h4 {
+            color: #032d60;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stakeholder-role {
+            color: #8b5cf6;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .stakeholder-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .stakeholder-responsibilities {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid #0176d3;
+        }
+
+        .stakeholder-responsibilities h5 {
+            color: #032d60;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stakeholder-responsibilities ul {
+            margin-left: 1.5rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .stakeholder-responsibilities ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        .raci-matrix {
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .raci-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .raci-table thead {
+            background: linear-gradient(135deg, #032d60 0%, #0176d3 100%);
+            color: white;
+        }
+
+        .raci-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .raci-table th:first-child {
+            width: 30%;
+        }
+
+        .raci-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .raci-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .raci-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-align: center;
+            min-width: 30px;
+        }
+
+        .raci-r {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .raci-a {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .raci-c {
+            background: #fef3c7;
+            color: #78350f;
+        }
+
+        .raci-i {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .raci-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .raci-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .raci-legend-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .raci-legend-description {
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h2 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .team-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-title {
+            color: #032d60;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-role {
+            color: #8b5cf6;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Stakeholders & Roles</h1>
+            <p>Project Team Structure and Responsibilities</p>
+        </div>
+
+        <div class="content">
+            <a href="../index.html" class="back-button">← Back to Home</a>
+
+            <div class="highlight-box">
+                <h2>Governance Model</h2>
+                <p>This Salesforce implementation requires close collaboration between business stakeholders (Sales, PD, R&D leadership), IT teams, Salesforce developers, and external implementation partners. Clear roles and decision-making authority ensure efficient project execution and timely issue resolution.</p>
+            </div>
+
+            <h2 style="color: #032d60; margin: 2rem 0 1rem;">Business Stakeholders</h2>
+
+            <div class="stakeholder-grid">
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">👔</div>
+                    <div class="stakeholder-content">
+                        <h4>Executive Sponsor</h4>
+                        <div class="stakeholder-role">VP Sales / Chief Commercial Officer</div>
+                        <div class="stakeholder-description">
+                            Provides strategic direction, secures budget and resources, removes organizational roadblocks, and champions change across the organization.
+                        </div>
+                        <div class="stakeholder-responsibilities">
+                            <h5>Key Responsibilities:</h5>
+                            <ul>
+                                <li>Approve project scope, timeline, and budget</li>
+                                <li>Resolve escalated issues and cross-functional conflicts</li>
+                                <li>Communicate project vision to leadership and teams</li>
+                                <li>Drive user adoption and accountability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">💼</div>
+                    <div class="stakeholder-content">
+                        <h4>Sales Director</h4>
+                        <div class="stakeholder-role">Head of Sales</div>
+                        <div class="stakeholder-description">
+                            Represents Sales team needs, validates opportunity management workflows, ensures CRM adoption across sales organization.
+                        </div>
+                        <div class="stakeholder-responsibilities">
+                            <h5>Key Responsibilities:</h5>
+                            <ul>
+                                <li>Define opportunity stages and sales process requirements</li>
+                                <li>Review and approve opportunity management workflows</li>
+                                <li>Champion Salesforce adoption within Sales team</li>
+                                <li>Provide feedback during UAT and pilot testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🎨</div>
+                    <div class="stakeholder-content">
+                        <h4>Product Development (PD) Lead</h4>
+                        <div class="stakeholder-role">Head of Product Development</div>
+                        <div class="stakeholder-description">
+                            Represents PD team needs, validates CSR and sample development workflows, ensures alignment with technical requirements.
+                        </div>
+                        <div class="stakeholder-responsibilities">
+                            <h5>Key Responsibilities:</h5>
+                            <ul>
+                                <li>Define CSR and sample development process requirements</li>
+                                <li>Review and approve sample iteration workflows</li>
+                                <li>Validate technical fields and fabric/trim specifications</li>
+                                <li>Ensure PD team adoption and training completion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🔬</div>
+                    <div class="stakeholder-content">
+                        <h4>R&D Lead</h4>
+                        <div class="stakeholder-role">Head of Research & Development</div>
+                        <div class="stakeholder-description">
+                            Represents R&D team needs, validates R&D request workflows, ensures feasibility assessment and cluster engagement processes are accurate.
+                        </div>
+                        <div class="stakeholder-responsibilities">
+                            <h5>Key Responsibilities:</h5>
+                            <ul>
+                                <li>Define R&D request and approval process requirements</li>
+                                <li>Review R&D cost estimation and feasibility workflows</li>
+                                <li>Validate cluster engagement and proposal creation stages</li>
+                                <li>Champion R&D team adoption and process compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">👥</div>
+                    <div class="stakeholder-content">
+                        <h4>Customer Success Manager</h4>
+                        <div class="stakeholder-role">Head of Customer Experience</div>
+                        <div class="stakeholder-description">
+                            Represents customer perspective, validates customer portal requirements, ensures customer-facing processes are intuitive and transparent.
+                        </div>
+                        <div class="stakeholder-responsibilities">
+                            <h5>Key Responsibilities:</h5>
+                            <ul>
+                                <li>Define customer portal features and user experience</li>
+                                <li>Review customer touchpoints and notification preferences</li>
+                                <li>Validate customer-facing reports and dashboards</li>
+                                <li>Coordinate customer onboarding and portal training</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #032d60; margin: 2rem 0 1rem;">Project Team</h2>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-icon">🎯</div>
+                    <div class="team-title">Project Manager</div>
+                    <div class="team-role">Internal or Partner PM</div>
+                    <div class="team-description">
+                        Owns project plan, timeline, budget, risk management, and stakeholder communication. Ensures on-time, on-budget delivery.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">📊</div>
+                    <div class="team-title">Business Analyst</div>
+                    <div class="team-role">Requirements & Process Design</div>
+                    <div class="team-description">
+                        Gathers requirements, documents workflows, creates FSD, validates business logic, conducts UAT.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">⚙️</div>
+                    <div class="team-title">Salesforce Developer</div>
+                    <div class="team-role">Technical Implementation</div>
+                    <div class="team-description">
+                        Configures objects, fields, workflows, automation, validation rules, and custom development as needed.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">🔌</div>
+                    <div class="team-title">Integration Specialist</div>
+                    <div class="team-role">ERP Integration & APIs</div>
+                    <div class="team-description">
+                        Designs and implements bi-directional integration between Salesforce and ERP for order handoff and master data sync.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">🎓</div>
+                    <div class="team-title">Change Management Lead</div>
+                    <div class="team-role">Training & Adoption</div>
+                    <div class="team-description">
+                        Develops training materials, conducts workshops, manages super-user program, drives user adoption.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">✅</div>
+                    <div class="team-title">QA/Testing Lead</div>
+                    <div class="team-role">Quality Assurance</div>
+                    <div class="team-description">
+                        Creates test plans, coordinates UAT, validates workflows, ensures quality before go-live.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">🖥️</div>
+                    <div class="team-title">IT Infrastructure Lead</div>
+                    <div class="team-role">Security & Access</div>
+                    <div class="team-description">
+                        Manages Salesforce licenses, security policies, SSO integration, network access, and technical infrastructure.
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-icon">📈</div>
+                    <div class="team-title">Data Analyst</div>
+                    <div class="team-role">Reports & Dashboards</div>
+                    <div class="team-description">
+                        Designs dashboards, reports, KPI tracking, and analytics for Sales, PD, R&D, and executive teams.
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="color: #032d60; margin: 2rem 0 1rem;">RACI Matrix - Decision Authority</h2>
+
+            <div class="raci-legend">
+                <div class="raci-legend-item">
+                    <div class="raci-legend-badge raci-r">R</div>
+                    <div class="raci-legend-description"><strong>Responsible:</strong> Does the work</div>
+                </div>
+                <div class="raci-legend-item">
+                    <div class="raci-legend-badge raci-a">A</div>
+                    <div class="raci-legend-description"><strong>Accountable:</strong> Final decision authority</div>
+                </div>
+                <div class="raci-legend-item">
+                    <div class="raci-legend-badge raci-c">C</div>
+                    <div class="raci-legend-description"><strong>Consulted:</strong> Provides input</div>
+                </div>
+                <div class="raci-legend-item">
+                    <div class="raci-legend-badge raci-i">I</div>
+                    <div class="raci-legend-description"><strong>Informed:</strong> Kept updated</div>
+                </div>
+            </div>
+
+            <div class="raci-matrix">
+                <table class="raci-table">
+                    <thead>
+                        <tr>
+                            <th>Activity / Deliverable</th>
+                            <th>Executive Sponsor</th>
+                            <th>Sales Director</th>
+                            <th>PD Lead</th>
+                            <th>R&D Lead</th>
+                            <th>Project Manager</th>
+                            <th>Business Analyst</th>
+                            <th>SF Developer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Project Scope & Budget Approval</strong></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Business Requirements Gathering</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opportunity Process Design</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>CSR & Sample Development Process</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>R&D Request Workflow Design</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Salesforce Technical Configuration</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ERP Integration Development</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Customer Portal Design & Build</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>User Acceptance Testing (UAT)</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Training Material Development</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Go-Live Approval</strong></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Post Go-Live Support & Optimization</strong></td>
+                            <td><span class="raci-badge raci-i">I</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-c">C</span></td>
+                            <td><span class="raci-badge raci-a">A</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                            <td><span class="raci-badge raci-r">R</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stakeholder-section">
+                <h3>👥 Engagement Model</h3>
+                <p><strong>Steering Committee Meetings:</strong> Monthly (Executive Sponsor, Sales/PD/R&D Directors, Project Manager)</p>
+                <p><strong>Core Team Meetings:</strong> Weekly (Project Manager, Business Analyst, SF Developer, Integration Specialist)</p>
+                <p><strong>Business Stakeholder Reviews:</strong> Bi-weekly (Sales, PD, R&D leads + Core Team for requirements validation)</p>
+                <p><strong>UAT Sessions:</strong> Daily during UAT phase (Business users + QA team)</p>
+                <p><strong>Training Sessions:</strong> As scheduled during rollout (Change Management Lead + end users)</p>
+            </div>
+
+            <div class="highlight-box">
+                <h2>Success Depends on Collaboration</h2>
+                <p>This implementation requires active participation from Sales, PD, and R&D stakeholders throughout requirements gathering, design reviews, UAT, and training. Clear roles, decision authority, and regular communication ensure the project delivers a solution that meets business needs and drives user adoption.</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

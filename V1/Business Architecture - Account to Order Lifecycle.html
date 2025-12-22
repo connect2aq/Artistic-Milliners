@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Milliners - Opportunity to Order Lifecycle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Salesforce Sans', Arial, sans-serif;
+            background: linear-gradient(135deg, #032d60 0%, #0176d3 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .tree-container {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tree {
+            position: relative;
+        }
+
+        .tree-node {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tree-node::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 50%;
+            width: 1rem;
+            border-left: 2px solid #cbd5e0;
+            border-bottom: 2px solid #cbd5e0;
+        }
+
+        .tree-node:last-child::before {
+            border-left: 2px solid #cbd5e0;
+            bottom: 100%;
+        }
+
+        .tree-node::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            border-left: 2px solid #cbd5e0;
+        }
+
+        .tree-node:last-child::after {
+            display: none;
+        }
+
+        .node-content {
+            margin-left: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+        }
+
+        .node-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .level-0 .node-content {
+            background: linear-gradient(135deg, #032d60 0%, #0176d3 100%);
+            color: white;
+            border-left-color: #0176d3;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .level-1 .node-content {
+            background: linear-gradient(135deg, #0176d3 0%, #1589ee 100%);
+            color: white;
+            border-left-color: #0176d3;
+            font-weight: 600;
+        }
+
+        .level-2 .node-content {
+            background: linear-gradient(135deg, #1589ee 0%, #57a3f3 100%);
+            color: white;
+            border-left-color: #1589ee;
+            font-weight: 600;
+        }
+
+        .level-3 .node-content {
+            background: linear-gradient(135deg, #57a3f3 0%, #78b9f7 100%);
+            color: #1a202c;
+            border-left-color: #57a3f3;
+            font-weight: 500;
+        }
+
+        .level-4 .node-content {
+            background: linear-gradient(135deg, #78b9f7 0%, #9acefb 100%);
+            color: #1a202c;
+            border-left-color: #78b9f7;
+            font-weight: 500;
+        }
+
+        .level-5 .node-content {
+            background: linear-gradient(135deg, #9acefb 0%, #bcdeff 100%);
+            color: #1a202c;
+            border-left-color: #9acefb;
+            font-weight: 500;
+        }
+
+        .level-6 .node-content {
+            background: linear-gradient(135deg, #bcdeff 0%, #ddeeff 100%);
+            color: #1a202c;
+            border-left-color: #bcdeff;
+        }
+
+        .node-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .node-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.5rem;
+            display: inline-block;
+        }
+
+        .node-description {
+            font-size: 0.875rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .node-description ul {
+            margin-top: 0.5rem;
+            padding-left: 1.25rem;
+        }
+
+        .node-description li {
+            margin-bottom: 0.25rem;
+        }
+
+        .tree-children {
+            margin-top: 0.5rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.125rem;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 0.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 0.25rem;
+        }
+
+        .toggle-btn {
+            display: inline-block;
+            margin-left: 0.5rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .collapsed > .tree-children {
+            display: none;
+        }
+
+        /* Stages Section Styles */
+        .stages-section {
+            margin-top: 1rem;
+            margin-left: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .stages-header {
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .stages-header:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .stages-toggle {
+            font-size: 0.875rem;
+            transition: transform 0.3s ease;
+        }
+
+        .stages-section.collapsed .stages-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .stages-content {
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stages-section.collapsed .stages-content {
+            display: none;
+        }
+
+        .stage-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 0.875rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stage-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+
+        .stage-card.sales {
+            border-left-color: #0176d3;
+        }
+
+        .stage-card.pd {
+            border-left-color: #1589ee;
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .stage-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #1a202c;
+            flex: 1;
+        }
+
+        .stage-owner {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.75rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+        }
+
+        .stage-owner.sales {
+            background: #0176d3;
+        }
+
+        .stage-owner.pd {
+            background: #1589ee;
+        }
+
+        .stage-details {
+            color: #4a5568;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .stage-details div {
+            margin-bottom: 0.2rem;
+        }
+
+        .customer-touchpoint {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 3px solid #f59e0b;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.7rem;
+            color: #78350f;
+            display: flex;
+            align-items: start;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+
+        .customer-touchpoint-icon {
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* Workflow Path Styles */
+        .workflow-path {
+            background: linear-gradient(135deg, #0176d3 0%, #1589ee 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .workflow-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .workflow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .workflow-step {
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #0176d3;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .workflow-step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            background: #0176d3;
+            color: white;
+        }
+
+        .workflow-arrow {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Core Concept Section Styles */
+        .core-concept {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid #0176d3;
+        }
+
+        .core-concept-title {
+            color: #032d60;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .core-concept-subtitle {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .core-concept-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .concept-box {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .concept-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .concept-box.sales {
+            border-left-color: #0176d3;
+        }
+
+        .concept-box.pd {
+            border-left-color: #1589ee;
+        }
+
+        .concept-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .concept-box-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a202c;
+        }
+
+        .concept-box-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .concept-box-badge.sales {
+            background: #0176d3;
+        }
+
+        .concept-box-badge.pd {
+            background: #1589ee;
+        }
+
+        .concept-box-description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .concept-box-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .concept-box-list li {
+            padding: 0.5rem 0;
+            color: #2d3748;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .concept-box-list li::before {
+            content: "✓";
+            color: #0176d3;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .core-concept-boxes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .stages-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stages-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Back to Top Button Styles */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #0176d3;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #032d60;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Table of Contents Styles */
+        .toc-container {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-left: 4px solid #0176d3;
+            z-index: 100;
+        }
+
+        .toc-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #032d60;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .toc-link {
+            color: #0176d3;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .toc-link:hover {
+            background: #f0f8ff;
+            transform: translateX(5px);
+        }
+
+        /* Summary Section Styles */
+        .summary-section {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid #0176d3;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #032d60;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0176d3;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .visual-legend {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .legend-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #032d60;
+            margin-bottom: 0.75rem;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .legend-item-full {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #2d3748;
+        }
+
+        .legend-icon {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .core-concept-boxes {
+                grid-template-columns: 1fr;
+            }
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .stages-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stages-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 1rem;
+            }
+            .tree-container {
+                box-shadow: none;
+            }
+            .back-to-top {
+                display: none !important;
+            }
+            .toc-container {
+                position: static;
+                page-break-after: always;
+            }
+            .workflow-path {
+                background: white;
+                border: 2px solid #0176d3;
+                page-break-inside: avoid;
+            }
+            .core-concept {
+                page-break-inside: avoid;
+            }
+            .stages-section {
+                page-break-inside: avoid;
+            }
+            .stages-section.collapsed .stages-content {
+                display: grid !important;
+            }
+            .stages-section.collapsed .stages-toggle {
+                display: none;
+            }
+            .summary-section {
+                background: white;
+                border: 2px solid #0176d3;
+                page-break-inside: avoid;
+            }
+            .node-content {
+                page-break-inside: avoid;
+            }
+            @page {
+                margin: 1.5cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tree-container">
+        <div class="header">
+            <h1>Artistic Milliners - Opportunity to Order Lifecycle</h1>
+        </div>
+
+        <!-- Executive Summary Section -->
+        <div class="summary-section" id="summary">
+            <div class="summary-title">📊 Executive Summary</div>
+            <div class="summary-stats">
+                <div class="stat-card">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Core Objects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33</div>
+                    <div class="stat-label">Total Stages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Customer Touchpoints</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Stage Workflows</div>
+                </div>
+            </div>
+
+            <div class="visual-legend">
+                <div class="legend-title">Visual Guide</div>
+                <div class="legend-items">
+                    <div class="legend-item-full">
+                        <span class="legend-icon" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">📩</span>
+                        <span><strong>Yellow Boxes:</strong> Customer touchpoints - moments where customer interaction occurs</span>
+                    </div>
+                    <div class="legend-item-full">
+                        <span class="legend-icon" style="background: #0176d3; color: white; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.65rem;">Sales</span>
+                        <span><strong>Sales Owned:</strong> Stages managed by Sales team</span>
+                    </div>
+                    <div class="legend-item-full">
+                        <span class="legend-icon" style="background: #1589ee; color: white; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.65rem;">PD</span>
+                        <span><strong>PD Owned:</strong> Stages managed by Product Development team</span>
+                    </div>
+                    <div class="legend-item-full">
+                        <span class="legend-icon">▼</span>
+                        <span><strong>Expandable Sections:</strong> Click section headers to expand/collapse detailed stage information</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc-container" id="tableOfContents">
+            <div class="toc-title">📑 Quick Navigation</div>
+            <div class="toc-links">
+                <a href="#workflowPath" class="toc-link">🔄 Workflow Path</a>
+                <a href="#coreConcept" class="toc-link">💡 Core Concept</a>
+                <a href="#opportunityStages" class="toc-link">📊 Opportunity Stages</a>
+                <a href="#csrStages" class="toc-link">🔄 CSR Lifecycle</a>
+                <a href="#sampleDevStages" class="toc-link">🧵 Sample Development</a>
+                <a href="#rndStages" class="toc-link">🔬 R&D Process</a>
+                <a href="#sampleIssuanceStages" class="toc-link">📮 Sample Issuance</a>
+                <a href="#commercialProposalStages" class="toc-link">💰 Commercial Proposal</a>
+            </div>
+        </div>
+
+        <!-- Complete Workflow Path -->
+        <div class="workflow-path" id="workflowPath">
+            <div class="workflow-title">🔄 Complete Workflow Path - Bird's Eye View</div>
+            <div class="workflow-steps">
+                <div class="workflow-step">🏢 Account</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">💼 Opportunity</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">📋 Customer Sample Request</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">🧵 Sample Development</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">🔄 Iterations</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">📦 Sample Development Order</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">📮 Sample Request</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">💰 Commercial Proposal</div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step">✅ Customer Order</div>
+            </div>
+        </div>
+
+        <!-- Core Concept Section -->
+        <div class="core-concept" id="coreConcept">
+            <div class="core-concept-title">
+                💡 Core Concept — Separation of Commercial Flow and Execution
+            </div>
+            <div class="core-concept-subtitle">
+                By separating commercial negotiations from technical execution, we give customers transparency and predictability. They always know their deal status independent of sampling complexity.
+            </div>
+
+            <div class="core-concept-boxes">
+                <!-- Sales Opportunity Box -->
+                <div class="concept-box sales">
+                    <div class="concept-box-header">
+                        <div class="concept-box-title">Sales Opportunity</div>
+                        <div class="concept-box-badge sales">Sales Owned</div>
+                    </div>
+                    <div class="concept-box-description">
+                        Maintains a single, linear commercial journey from discovery to closed deal—giving customers clarity on pricing and timelines without disruption from technical complexities.
+                    </div>
+                    <ul class="concept-box-list">
+                        <li>Keeps commercial discussions focused and moving forward</li>
+                        <li>Shields customers from internal development iterations</li>
+                        <li>Provides clear milestone visibility throughout the deal lifecycle</li>
+                    </ul>
+                </div>
+
+                <!-- Customer Sample Request Box -->
+                <div class="concept-box pd">
+                    <div class="concept-box-header">
+                        <div class="concept-box-title">Customer Sample Request (CSR)</div>
+                        <div class="concept-box-badge pd">PD Owned</div>
+                    </div>
+                    <div class="concept-box-description">
+                        Handles all technical development, sampling iterations, and R&D work in parallel—without impacting the customer's commercial view or slowing down deal progression.
+                    </div>
+                    <ul class="concept-box-list">
+                        <li>Manages multiple iterations and development cycles independently</li>
+                        <li>Absorbs technical complexity so Sales can focus on customer relationships</li>
+                        <li>Delivers approved samples ready for immediate pricing and ordering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tree">
+            <!-- Account -->
+            <div class="tree-node level-0">
+                <div class="node-content">
+                    <div class="node-title">
+                        <span class="node-icon">🏢</span>
+                        Account
+                    </div>
+                    <div class="node-description">
+                        Represents the Customer / Brand
+                    </div>
+                </div>
+
+                <div class="tree-children">
+                    <!-- Business Opportunity -->
+                    <div class="tree-node level-1">
+                        <div class="node-content">
+                            <div class="node-title">
+                                <span class="node-icon">💼</span>
+                                Business Opportunity
+                            </div>
+                            <div class="node-description">
+                                Commercial context for a customer requirement<br>
+                                (Fabric, Apparel, Yarn, Processing, etc.)
+                            </div>
+
+                            <!-- Stages Section -->
+                            <div class="stages-section" id="opportunityStages">
+                                <div class="stages-header" onclick="toggleStages()">
+                                    <span>📊 Opportunity Stages Flow (Customer View)</span>
+                                    <span class="stages-toggle">▼</span>
+                                </div>
+                                <div class="stages-content">
+                                    <!-- Stage 1: Discovery & Scoping -->
+                                    <div class="stage-card sales">
+                                        <div class="stage-header">
+                                            <span class="stage-name">Discovery & Scoping</span>
+                                            <span class="stage-owner sales">Sales</span>
+                                        </div>
+                                        <div class="stage-details">
+                                            <div><strong>Purpose:</strong> Understand customer need and validate business opportunity</div>
+                                            <div><strong>Activities:</strong></div>
+                                            <div>• Customer requirement captured</div>
+                                            <div>• Business case validated</div>
+                                            <div>• Initial qualification completed</div>
+                                            <div><strong>Exit Criteria:</strong> Customer intent confirmed, ready for PD assessment</div>
+                                        </div>
+                                        <div class="customer-touchpoint">
+                                            <span class="customer-touchpoint-icon">📩</span>
+                                            <span><strong>Customer:</strong> Shares initial requirement and business intent</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stage 2: PD Review -->
+                                    <div class="stage-card pd">
+                                        <div class="stage-header">
+                                            <span class="stage-name">PD Review</span>
+                                            <span class="stage-owner pd">PD</span>
+                                        </div>
+                                        <div class="stage-details">
+                                            <div><strong>Purpose:</strong> Technical feasibility assessment and development planning</div>
+                                            <div><strong>Activities:</strong></div>
+                                            <div>• CSR created with technical specifications</div>
+                                            <div>• Development approach decided</div>
+                                            <div>• Resource and timeline estimates</div>
+                                            <div><strong>Exit Criteria:</strong> CSR approved, ready for sampling execution</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stage 3: Sample in Progress -->
+                                    <div class="stage-card pd">
+                                        <div class="stage-header">
+                                            <span class="stage-name">Sample in Progress</span>
+                                            <span class="stage-owner pd">PD</span>
+                                        </div>
+                                        <div class="stage-details">
+                                            <div><strong>Purpose:</strong> Sample development and customer evaluation cycles</div>
+                                            <div><strong>Activities:</strong></div>
+                                            <div>• Sample Development records in execution</div>
+                                            <div>• Iterations and refinements as needed</div>
+                                            <div>• Customer feedback incorporated</div>
+                                            <div><strong>Exit Criteria:</strong> Customer grants Gold Seal approval on all samples</div>
+                                        </div>
+                                        <div class="customer-touchpoint">
+                                            <span class="customer-touchpoint-icon">🧪</span>
+                                            <span><strong>Customer:</strong> Reviews interim samples and provides feedback</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stage 4: Sample Approved -->
+                                    <div class="stage-card pd">
+                                        <div class="stage-header">
+                                            <span class="stage-name">Sample Approved</span>
+                                            <span class="stage-owner pd">PD</span>
+                                        </div>
+                                        <div class="stage-details">
+                                            <div><strong>Purpose:</strong> Final sample approval and handoff to Sales</div>
+                                            <div><strong>Activities:</strong></div>
+                                            <div>• Customer grants Gold Seal approval</div>
+                                            <div>• Final costing and specifications locked</div>
+                                            <div>• PD → Sales handoff completed</div>
+                                            <div><strong>Exit Criteria:</strong> Commercial Proposal created and ready for customer</div>
+                                        </div>
+                                        <div class="customer-touchpoint">
+                                            <span class="customer-touchpoint-icon">✅</span>
+                                            <span><strong>Customer:</strong> Grants final sample approval (Gold Seal)</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stage 5: Commercial Proposal -->
+                                    <div class="stage-card sales">
+                                        <div class="stage-header">
+                                            <span class="stage-name">Commercial Proposal</span>
+                                            <span class="stage-owner sales">Sales</span>
+                                        </div>
+                                        <div class="stage-details">
+                                            <div><strong>Purpose:</strong> Pricing negotiation and commercial terms finalization</div>
+                                            <div><strong>Activities:</strong></div>
+                                            <div>• Final costing and margins calculated</div>
+                                            <div>• Quote presented to customer</div>
+                                            <div>• Commercial terms negotiated</div>
+                                            <div><strong>Exit Criteria:</strong> Customer accepts proposal and issues PO, or declines</div>
+                                        </div>
+                                        <div class="customer-touchpoint">
+                                            <span class="customer-touchpoint-icon">💬</span>
+                                            <span><strong>Customer:</strong> Reviews pricing and commercial terms</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stage 6: Closed Won / Lost -->
+                                    <div class="stage-card sales">
+                                        <div class="stage-header">
+                                            <span class="stage-name">Closed Won / Lost</span>
+                                            <span class="stage-owner sales">Sales</span>
+                                        </div>
+                                        <div class="stage-details">
+                                            <div><strong>Purpose:</strong> Final deal outcome and opportunity closure</div>
+                                            <div><strong>Outcome - Won:</strong></div>
+                                            <div>• Customer issues Purchase Order</div>
+                                            <div>• Customer Order created in system</div>
+                                            <div><strong>Outcome - Lost:</strong></div>
+                                            <div>• Deal declined by customer or withdrawn</div>
+                                            <div>• Loss reason documented for insights</div>
+                                        </div>
+                                        <div class="customer-touchpoint">
+                                            <span class="customer-touchpoint-icon">📄</span>
+                                            <span><strong>Customer:</strong> Issues Purchase Order (or formally declines)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tree-children">
+                            <!-- Customer Sample Request -->
+                            <div class="tree-node level-2">
+                                <div class="node-content">
+                                    <div class="node-title">
+                                        <span class="node-icon">📋</span>
+                                        Customer Sample Request (CSR)
+                                    </div>
+                                    <div class="node-description">
+                                        Structured representation of customer intent<br>
+                                        Translates discovery discussions into technical evaluation inputs
+                                        <ul>
+                                            <li>• Multiple material / option line items</li>
+                                            <li>• Fabric, yarn, apparel, processing inputs</li>
+                                            <li>• No execution commitment</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Customer Sample Request Stages Section -->
+                                    <div class="stages-section" id="csrStages">
+                                        <div class="stages-header" onclick="toggleCSRStages()">
+                                            <span>🔄 Customer Sample Request Lifecycle Stages</span>
+                                            <span class="stages-toggle">▼</span>
+                                        </div>
+                                        <div class="stages-content">
+                                            <!-- Stage 1: Draft -->
+                                            <div class="stage-card pd">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Draft</span>
+                                                    <span class="stage-owner pd">PD</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Initial CSR creation and configuration</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Capture customer requirements and create CSR line items</div>
+                                                    <div>• Document technical specifications and quality requirements</div>
+                                                    <div>• Review and approve CSR for execution</div>
+                                                    <div><strong>Exit Criteria:</strong> CSR review completed, ready for execution</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 2: In Execution -->
+                                            <div class="stage-card pd">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">In Execution</span>
+                                                    <span class="stage-owner pd">PD</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Active sample development and customer feedback cycles</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Execute sample development and R&D work</div>
+                                                    <div>• Issue physical samples to customer for evaluation</div>
+                                                    <div>• Incorporate customer feedback and iterate as needed</div>
+                                                    <div><strong>Exit Criteria:</strong> All required samples shared with customer</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 3: Final Customer Decision -->
+                                            <div class="stage-card pd">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Final Customer Decision</span>
+                                                    <span class="stage-owner pd">PD</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Awaiting final approval or rejection from customer</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Submit final samples and test results to customer</div>
+                                                    <div>• Customer conducts final evaluation</div>
+                                                    <div>• Await Gold Seal approval or rejection decision</div>
+                                                    <div><strong>Exit Criteria:</strong> Customer grants approval (Gold Seal) or rejects CSR</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 4: Approved (Gold Seal) -->
+                                            <div class="stage-card pd">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Approved (Gold Seal)</span>
+                                                    <span class="stage-owner pd">PD</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Customer has granted final approval for all samples</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Lock technical specifications and finalize costing</div>
+                                                    <div>• Mark all samples as Gold Seal approved</div>
+                                                    <div>• Handoff from PD to Sales for commercial proposal</div>
+                                                    <div><strong>Next Step:</strong> Sales creates Commercial Proposal based on approved samples</div>
+                                                </div>
+                                                <div class="customer-touchpoint">
+                                                    <span class="customer-touchpoint-icon">✅</span>
+                                                    <span><strong>Customer:</strong> Grants Gold Seal approval - confirms all samples meet requirements</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 5: Rejected / Cancelled -->
+                                            <div class="stage-card sales">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Rejected / Cancelled</span>
+                                                    <span class="stage-owner pd">PD</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> CSR closed without customer approval</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Document rejection reason for future learning</div>
+                                                    <div>• Close all associated Sample Development records</div>
+                                                    <div>• Update Opportunity status accordingly</div>
+                                                </div>
+                                                <div class="customer-touchpoint">
+                                                    <span class="customer-touchpoint-icon">❌</span>
+                                                    <span><strong>Customer:</strong> Formally rejects samples or cancels requirement</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tree-children">
+                                    <!-- Apparel Sample Development -->
+                                    <div class="tree-node level-3">
+                                        <div class="node-content">
+                                            <div class="node-title">
+                                                <span class="node-icon">👔</span>
+                                                Apparel Sample Development
+                                            </div>
+                                            <div class="node-description">
+                                                Apparel-specific development intent<br>
+                                                Defines WHY samples are needed, technical specifications, quality parameters, R&D requirements, and development approach
+                                            </div>
+                                        </div>
+
+                                        <div class="tree-children">
+                                            <!-- Apparel Sample Iterations -->
+                                            <div class="tree-node level-4">
+                                                <div class="node-content">
+                                                    <div class="node-title">
+                                                        <span class="node-icon">🔄</span>
+                                                        Apparel Sample Iterations
+                                                    </div>
+                                                    <div class="node-description">
+                                                        Each iteration represents one refinement<br>
+                                                        based on feedback or rejection
+                                                    </div>
+
+                                                    <!-- Sample Development Stages Section -->
+                                                    <div class="stages-section" id="sampleDevStages">
+                                                        <div class="stages-header" onclick="toggleSampleDevStages()">
+                                                            <span>🧵 Development Lifecycle Stages</span>
+                                                            <span class="stages-toggle">▼</span>
+                                                        </div>
+                                                        <div class="stages-content">
+                                                            <!-- Stage 1: New Revision -->
+                                                            <div class="stage-card pd">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">New Revision</span>
+                                                                    <span class="stage-owner pd">PD</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Initiate new iteration cycle based on requirements or feedback</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Review parent requirements or previous feedback</div>
+                                                                    <div>• Plan revision approach and target improvements</div>
+                                                                    <div>• Determine if R&D work is needed for this revision</div>
+                                                                    <div><strong>Exit Criteria:</strong> Revision plan approved and ready to proceed</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Stage 2: R&D -->
+                                                            <div class="stage-card pd">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">R&D</span>
+                                                                    <span class="stage-owner pd">R&D</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Research and feasibility studies</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Execute R&D feasibility studies and trials</div>
+                                                                    <div>• Validate technical approach and materials</div>
+                                                                    <div>• Document R&D outcomes and recommendations</div>
+                                                                    <div><strong>Exit Criteria:</strong> R&D completed and approach validated</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Stage 3: Development Order -->
+                                                            <div class="stage-card pd">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">Development Order</span>
+                                                                    <span class="stage-owner pd">PD</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Active sample production in progress</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Execute SDO (Sample Development Order) in ERP</div>
+                                                                    <div>• Create physical prototypes and samples</div>
+                                                                    <div>• Prepare samples for internal testing</div>
+                                                                    <div><strong>Exit Criteria:</strong> Physical samples ready for testing</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Stage 4: Internal Testing & Validation -->
+                                                            <div class="stage-card pd">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">Internal Testing & Validation</span>
+                                                                    <span class="stage-owner pd">PD</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Internal quality verification</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Complete lab testing and quality control checks</div>
+                                                                    <div>• Perform technical and compliance validation</div>
+                                                                    <div>• Certify ready for customer review</div>
+                                                                    <div><strong>Exit Criteria:</strong> All internal tests passed</div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Stage 5: Review & Feedback -->
+                                                            <div class="stage-card pd">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">Review & Feedback</span>
+                                                                    <span class="stage-owner pd">PD</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Customer evaluation and feedback collection</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Send to customer for evaluation</div>
+                                                                    <div>• Collect and document customer feedback</div>
+                                                                    <div>• Await customer decision on approval or rejection</div>
+                                                                    <div><strong>Exit Criteria:</strong> Customer provides approval or rejection</div>
+                                                                </div>
+                                                                <div class="customer-touchpoint">
+                                                                    <span class="customer-touchpoint-icon">🔍</span>
+                                                                    <span><strong>Customer:</strong> Reviews sample and provides detailed feedback</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Stage 6: Approved (Gold Seal) -->
+                                                            <div class="stage-card pd">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">Approved (Gold Seal)</span>
+                                                                    <span class="stage-owner pd">PD</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Final approval achieved</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Lock specifications and finalize costing</div>
+                                                                    <div>• Archive for reference</div>
+                                                                    <div>• Progress CSR to approved state</div>
+                                                                    <div><strong>Next Step:</strong> CSR progresses to approved state</div>
+                                                                </div>
+                                                                <div class="customer-touchpoint">
+                                                                    <span class="customer-touchpoint-icon">⭐</span>
+                                                                    <span><strong>Customer:</strong> Grants Gold Seal - final approval</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Stage 7: Closed – Rejected -->
+                                                            <div class="stage-card sales">
+                                                                <div class="stage-header">
+                                                                    <span class="stage-name">Closed – Rejected</span>
+                                                                    <span class="stage-owner pd">PD</span>
+                                                                </div>
+                                                                <div class="stage-details">
+                                                                    <div><strong>Purpose:</strong> Development discontinued</div>
+                                                                    <div><strong>Activities:</strong></div>
+                                                                    <div>• Document rejection reason and capture learnings</div>
+                                                                    <div>• Close development record</div>
+                                                                    <div>• Update parent CSR status</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="tree-children">
+                                                    <!-- R&D Request -->
+                                                    <div class="tree-node level-5">
+                                                        <div class="node-content">
+                                                            <div class="node-title">
+                                                                <span class="node-icon">🔬</span>
+                                                                R&D Request (Optional)
+                                                            </div>
+                                                            <div class="node-description">
+                                                                Created by PD Lead<br>
+                                                                Executed by R&D Lead
+                                                            </div>
+
+                                                            <!-- R&D Request Stages Section -->
+                                                            <div class="stages-section" id="rndStages">
+                                                                <div class="stages-header" onclick="toggleRnDStages()">
+                                                                    <span>🔬 R&D Request Lifecycle Stages</span>
+                                                                    <span class="stages-toggle">▼</span>
+                                                                </div>
+                                                                <div class="stages-content">
+                                                                    <!-- Stage 1: R&D Assessment -->
+                                                                    <div class="stage-card pd">
+                                                                        <div class="stage-header">
+                                                                            <span class="stage-name">R&D Assessment</span>
+                                                                            <span class="stage-owner pd">R&D</span>
+                                                                        </div>
+                                                                        <div class="stage-details">
+                                                                            <div><strong>Purpose:</strong> Initial feasibility evaluation</div>
+                                                                            <div><strong>Activities:</strong></div>
+                                                                            <div>• Review request and analyze technical feasibility</div>
+                                                                            <div>• Plan resources and estimate timeline</div>
+                                                                            <div>• Approve R&D approach and scope</div>
+                                                                            <div><strong>Exit Criteria:</strong> Assessment complete, ready for development</div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Stage 2: R&D Development -->
+                                                                    <div class="stage-card pd">
+                                                                        <div class="stage-header">
+                                                                            <span class="stage-name">R&D Development</span>
+                                                                            <span class="stage-owner pd">R&D</span>
+                                                                        </div>
+                                                                        <div class="stage-details">
+                                                                            <div><strong>Purpose:</strong> Active R&D experimentation</div>
+                                                                            <div><strong>Activities:</strong></div>
+                                                                            <div>• Conduct trials, experiments, and prototype development</div>
+                                                                            <div>• Optimize process and analyze cost implications</div>
+                                                                            <div>• Prepare R&D outcomes for validation</div>
+                                                                            <div><strong>Exit Criteria:</strong> R&D work completed</div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Stage 3: Internal Validation -->
+                                                                    <div class="stage-card pd">
+                                                                        <div class="stage-header">
+                                                                            <span class="stage-name">Internal Validation</span>
+                                                                            <span class="stage-owner pd">R&D</span>
+                                                                        </div>
+                                                                        <div class="stage-details">
+                                                                            <div><strong>Purpose:</strong> Validate R&D outcomes</div>
+                                                                            <div><strong>Activities:</strong></div>
+                                                                            <div>• Perform testing, verification, and quality checks</div>
+                                                                            <div>• Review documentation and confirm feasibility</div>
+                                                                            <div>• Prepare final R&D decision</div>
+                                                                            <div><strong>Exit Criteria:</strong> Validation complete</div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Stage 4: Feasible -->
+                                                                    <div class="stage-card pd">
+                                                                        <div class="stage-header">
+                                                                            <span class="stage-name">Feasible</span>
+                                                                            <span class="stage-owner pd">R&D</span>
+                                                                        </div>
+                                                                        <div class="stage-details">
+                                                                            <div><strong>Purpose:</strong> R&D successfully completed</div>
+                                                                            <div><strong>Activities:</strong></div>
+                                                                            <div>• Document technical specs and finalize costing</div>
+                                                                            <div>• Confirm R&D outcomes as feasible</div>
+                                                                            <div>• Hand over validated process to PD team</div>
+                                                                            <div><strong>Next Step:</strong> Sample development continues</div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Stage 5: Not Feasible -->
+                                                                    <div class="stage-card sales">
+                                                                        <div class="stage-header">
+                                                                            <span class="stage-name">Not Feasible</span>
+                                                                            <span class="stage-owner pd">R&D</span>
+                                                                        </div>
+                                                                        <div class="stage-details">
+                                                                            <div><strong>Purpose:</strong> R&D determined not feasible</div>
+                                                                            <div><strong>Activities:</strong></div>
+                                                                            <div>• Document infeasibility reasons and constraints</div>
+                                                                            <div>• Explore alternative approaches if applicable</div>
+                                                                            <div>• Communicate outcome to PD team</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tree-children">
+                                                            <div class="tree-node level-6">
+                                                                <div class="node-content">
+                                                                    <div class="node-title">
+                                                                        <span class="node-icon">⚗️</span>
+                                                                        R&D Execution
+                                                                    </div>
+                                                                    <div class="node-description">
+                                                                        Trials, feasibility, costing
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Sample Development Order -->
+                                                    <div class="tree-node level-5">
+                                                        <div class="node-content">
+                                                            <div class="node-title">
+                                                                <span class="node-icon">📦</span>
+                                                                Sample Development Order (SDO)
+                                                            </div>
+                                                            <div class="node-description">
+                                                                Created by R&D Lead<br>
+                                                                Captured in Salesforce (header only)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tree-children">
+                                                            <div class="tree-node level-6">
+                                                                <div class="node-content">
+                                                                    <div class="node-title">
+                                                                        <span class="node-icon">🏭</span>
+                                                                        Executed in ERP
+                                                                    </div>
+                                                                    <div class="node-description">
+                                                                        Full execution managed in ERP system
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Fabric Sample Development -->
+                                    <div class="tree-node level-3">
+                                        <div class="node-content">
+                                            <div class="node-title">
+                                                <span class="node-icon">🧵</span>
+                                                Fabric Sample Development
+                                            </div>
+                                            <div class="node-description">
+                                                Fabric-specific development intent
+                                            </div>
+                                        </div>
+
+                                        <div class="tree-children">
+                                            <!-- Fabric Sample Iterations -->
+                                            <div class="tree-node level-4">
+                                                <div class="node-content">
+                                                    <div class="node-title">
+                                                        <span class="node-icon">🔄</span>
+                                                        Fabric Sample Iterations
+                                                    </div>
+                                                    <div class="node-description">
+                                                        Refinement cycles for fabric development
+                                                    </div>
+                                                </div>
+
+                                                <div class="tree-children">
+                                                    <!-- R&D Request -->
+                                                    <div class="tree-node level-5">
+                                                        <div class="node-content">
+                                                            <div class="node-title">
+                                                                <span class="node-icon">🔬</span>
+                                                                R&D Request (Optional)
+                                                            </div>
+                                                            <div class="node-description">
+                                                                R&D Execution for fabric trials
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Sample Development Order -->
+                                                    <div class="tree-node level-5">
+                                                        <div class="node-content">
+                                                            <div class="node-title">
+                                                                <span class="node-icon">📦</span>
+                                                                Sample Development Order (SDO)
+                                                            </div>
+                                                            <div class="node-description">
+                                                                Executed in ERP
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Yarn Sample Development -->
+                                    <div class="tree-node level-3">
+                                        <div class="node-content">
+                                            <div class="node-title">
+                                                <span class="node-icon">🪡</span>
+                                                Yarn Sample Development
+                                            </div>
+                                            <div class="node-description">
+                                                Yarn-specific development intent
+                                            </div>
+                                        </div>
+
+                                        <div class="tree-children">
+                                            <!-- Yarn Sample Iterations -->
+                                            <div class="tree-node level-4">
+                                                <div class="node-content">
+                                                    <div class="node-title">
+                                                        <span class="node-icon">🔄</span>
+                                                        Yarn Sample Iterations
+                                                    </div>
+                                                    <div class="node-description">
+                                                        Refinement cycles for yarn development
+                                                    </div>
+                                                </div>
+
+                                                <div class="tree-children">
+                                                    <!-- R&D Request -->
+                                                    <div class="tree-node level-5">
+                                                        <div class="node-content">
+                                                            <div class="node-title">
+                                                                <span class="node-icon">🔬</span>
+                                                                R&D Request (Optional)
+                                                            </div>
+                                                            <div class="node-description">
+                                                                R&D Execution for yarn trials
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Sample Development Order -->
+                                                    <div class="tree-node level-5">
+                                                        <div class="node-content">
+                                                            <div class="node-title">
+                                                                <span class="node-icon">📦</span>
+                                                                Sample Development Order (SDO)
+                                                            </div>
+                                                            <div class="node-description">
+                                                                Executed in ERP
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sample Issuance -->
+                                    <div class="tree-node level-3">
+                                        <div class="node-content">
+                                            <div class="node-title">
+                                                <span class="node-icon">📮</span>
+                                                Sample Issuance (Physical Samples)
+                                            </div>
+                                            <div class="node-description">
+                                                Issuance of existing or developed samples<br>
+                                                May occur with or without new development
+                                            </div>
+
+                                            <!-- Sample Issuance Stages Section -->
+                                            <div class="stages-section" id="sampleIssuanceStages">
+                                                <div class="stages-header" onclick="toggleSampleIssuanceStages()">
+                                                    <span>📮 Sample Issuance Lifecycle Stages</span>
+                                                    <span class="stages-toggle">▼</span>
+                                                </div>
+                                                <div class="stages-content">
+                                                    <!-- Stage 1: Issuance Preparation -->
+                                                    <div class="stage-card pd">
+                                                        <div class="stage-header">
+                                                            <span class="stage-name">Issuance Preparation</span>
+                                                            <span class="stage-owner pd">PD</span>
+                                                        </div>
+                                                        <div class="stage-details">
+                                                            <div><strong>Purpose:</strong> Prepare samples for shipment</div>
+                                                            <div><strong>Activities:</strong></div>
+                                                            <div>• Select and verify samples for shipment</div>
+                                                            <div>• Prepare packaging and documentation</div>
+                                                            <div>• Arrange shipping and logistics</div>
+                                                            <div><strong>Exit Criteria:</strong> Ready for dispatch</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Stage 2: Sample Dispatched -->
+                                                    <div class="stage-card pd">
+                                                        <div class="stage-header">
+                                                            <span class="stage-name">Sample Dispatched</span>
+                                                            <span class="stage-owner pd">PD</span>
+                                                        </div>
+                                                        <div class="stage-details">
+                                                            <div><strong>Purpose:</strong> Samples shipped to customer</div>
+                                                            <div><strong>Activities:</strong></div>
+                                                            <div>• Dispatch samples and share tracking information</div>
+                                                            <div>• Notify customer of shipment</div>
+                                                            <div>• Monitor delivery status</div>
+                                                            <div><strong>Exit Criteria:</strong> Customer receives samples</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Stage 3: Customer Receipt Confirmed -->
+                                                    <div class="stage-card pd">
+                                                        <div class="stage-header">
+                                                            <span class="stage-name">Customer Receipt Confirmed</span>
+                                                            <span class="stage-owner pd">PD</span>
+                                                        </div>
+                                                        <div class="stage-details">
+                                                            <div><strong>Purpose:</strong> Confirm customer received samples</div>
+                                                            <div><strong>Activities:</strong></div>
+                                                            <div>• Obtain delivery confirmation from customer</div>
+                                                            <div>• Schedule follow-up for feedback</div>
+                                                            <div>• Update issuance record status</div>
+                                                            <div><strong>Exit Criteria:</strong> Receipt confirmed</div>
+                                                        </div>
+                                                        <div class="customer-touchpoint">
+                                                            <span class="customer-touchpoint-icon">📦</span>
+                                                            <span><strong>Customer:</strong> Confirms receipt of physical samples</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Stage 4: Sample Review & Feedback -->
+                                                    <div class="stage-card pd">
+                                                        <div class="stage-header">
+                                                            <span class="stage-name">Sample Review & Feedback</span>
+                                                            <span class="stage-owner pd">PD</span>
+                                                        </div>
+                                                        <div class="stage-details">
+                                                            <div><strong>Purpose:</strong> Customer evaluates samples</div>
+                                                            <div><strong>Activities:</strong></div>
+                                                            <div>• Customer reviews samples and provides feedback</div>
+                                                            <div>• Document customer comments and decision</div>
+                                                            <div>• Update parent Sample Development record</div>
+                                                            <div><strong>Exit Criteria:</strong> Feedback received</div>
+                                                        </div>
+                                                        <div class="customer-touchpoint">
+                                                            <span class="customer-touchpoint-icon">💭</span>
+                                                            <span><strong>Customer:</strong> Provides feedback and comments on samples</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Stage 5: Closed -->
+                                                    <div class="stage-card pd">
+                                                        <div class="stage-header">
+                                                            <span class="stage-name">Closed</span>
+                                                            <span class="stage-owner pd">PD</span>
+                                                        </div>
+                                                        <div class="stage-details">
+                                                            <div><strong>Purpose:</strong> Sample issuance process complete</div>
+                                                            <div><strong>Activities:</strong></div>
+                                                            <div>• Collect all feedback and close issuance record</div>
+                                                            <div>• Archive documentation for reference</div>
+                                                            <div>• Update related records as needed</div>
+                                                            <div><strong>Outcome:</strong> Process completed</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tree-children">
+                                            <!-- Sample Apparel Request -->
+                                            <div class="tree-node level-4">
+                                                <div class="node-content">
+                                                    <div class="node-title">
+                                                        <span class="node-icon">👕</span>
+                                                        Sample Apparel Request (SAR)
+                                                    </div>
+                                                    <div class="node-description">
+                                                        SAR Line Items
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sample Fabric Request -->
+                                            <div class="tree-node level-4">
+                                                <div class="node-content">
+                                                    <div class="node-title">
+                                                        <span class="node-icon">🧶</span>
+                                                        Sample Fabric Request (SFR)
+                                                    </div>
+                                                    <div class="node-description">
+                                                        SFR Line Items
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Sample Yarn Request -->
+                                            <div class="tree-node level-4">
+                                                <div class="node-content">
+                                                    <div class="node-title">
+                                                        <span class="node-icon">🧷</span>
+                                                        Sample Yarn Request (SYR)
+                                                    </div>
+                                                    <div class="node-description">
+                                                        SYR Line Items
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commercial Proposal -->
+                            <div class="tree-node level-2">
+                                <div class="node-content">
+                                    <div class="node-title">
+                                        <span class="node-icon">💰</span>
+                                        Commercial Proposal
+                                    </div>
+                                    <div class="node-description">
+                                        Pricing and commercial terms based on:
+                                        <ul>
+                                            <li>• Approved samples</li>
+                                            <li>• Final cluster costs</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Commercial Proposal Stages Section -->
+                                    <div class="stages-section" id="commercialProposalStages">
+                                        <div class="stages-header" onclick="toggleCommercialProposalStages()">
+                                            <span>💰 Commercial Proposal Lifecycle Stages</span>
+                                            <span class="stages-toggle">▼</span>
+                                        </div>
+                                        <div class="stages-content">
+                                            <!-- Stage 1: Draft -->
+                                            <div class="stage-card sales">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Draft</span>
+                                                    <span class="stage-owner sales">Sales</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Proposal creation and preparation</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Gather costs and calculate pricing with margins</div>
+                                                    <div>• Draft commercial terms and conditions</div>
+                                                    <div>• Prepare proposal document for review</div>
+                                                    <div><strong>Exit Criteria:</strong> Proposal ready for review</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 2: Internal Review -->
+                                            <div class="stage-card sales">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Internal Review</span>
+                                                    <span class="stage-owner sales">Sales</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Internal approval and verification</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Management reviews and validates pricing/terms</div>
+                                                    <div>• Verify compliance and margin requirements</div>
+                                                    <div>• Obtain final approval to send to customer</div>
+                                                    <div><strong>Exit Criteria:</strong> Internal approval obtained</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 3: Customer Review -->
+                                            <div class="stage-card sales">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Customer Review</span>
+                                                    <span class="stage-owner sales">Sales</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Customer evaluation and negotiation</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• Send proposal to customer for review</div>
+                                                    <div>• Negotiate terms and pricing as needed</div>
+                                                    <div>• Await customer acceptance or rejection</div>
+                                                    <div><strong>Exit Criteria:</strong> Customer accepts or rejects</div>
+                                                </div>
+                                                <div class="customer-touchpoint">
+                                                    <span class="customer-touchpoint-icon">📋</span>
+                                                    <span><strong>Customer:</strong> Reviews proposal and negotiates commercial terms</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Stage 4: Closed -->
+                                            <div class="stage-card sales">
+                                                <div class="stage-header">
+                                                    <span class="stage-name">Closed</span>
+                                                    <span class="stage-owner sales">Sales</span>
+                                                </div>
+                                                <div class="stage-details">
+                                                    <div><strong>Purpose:</strong> Proposal accepted or rejected</div>
+                                                    <div><strong>Activities:</strong></div>
+                                                    <div>• If accepted: Receive PO and create Customer Order</div>
+                                                    <div>• If rejected/withdrawn: Document reason and close</div>
+                                                    <div>• Update Opportunity to Closed Won or Lost</div>
+                                                    <div><strong>Next Step:</strong> Opportunity moves to Closed Won or Lost</div>
+                                                </div>
+                                                <div class="customer-touchpoint">
+                                                    <span class="customer-touchpoint-icon">✍️</span>
+                                                    <span><strong>Customer:</strong> Accepts proposal and issues PO, or formally declines</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tree-children">
+                                    <div class="tree-node level-3">
+                                        <div class="node-content">
+                                            <div class="node-title">
+                                                <span class="node-icon">📊</span>
+                                                Commercial Proposal Line Items
+                                            </div>
+                                            <div class="node-description">
+                                                Detailed pricing breakdown
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Customer Order -->
+                            <div class="tree-node level-2">
+                                <div class="node-content">
+                                    <div class="node-title">
+                                        <span class="node-icon">✅</span>
+                                        Customer Order
+                                    </div>
+                                    <div class="node-description">
+                                        Confirmed customer commitment<br>
+                                        (Commercial Proposal approved + PO received)
+                                    </div>
+                                </div>
+
+                                <div class="tree-children">
+                                    <div class="tree-node level-3">
+                                        <div class="node-content">
+                                            <div class="node-title">
+                                                <span class="node-icon">🚚</span>
+                                                Order Fulfilment
+                                            </div>
+                                            <div class="node-description">
+                                                Executed in ERP
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+            <p class="text-sm text-blue-900">
+                <strong>Note:</strong> Click on any node to view details. The hierarchy flows from Account (Customer/Brand)
+                through Business Opportunity, Customer Sample Request, to various sample development types, and finally
+                to Commercial Proposal and Customer Order.
+            </p>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
+
+    <script>
+        // Collapse all stages by default on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const stageSections = [
+                'opportunityStages',
+                'csrStages',
+                'sampleDevStages',
+                'rndStages',
+                'sampleIssuanceStages',
+                'commercialProposalStages'
+            ];
+
+            stageSections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.classList.add('collapsed');
+                }
+            });
+        });
+
+        // Back to Top Button functionality
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Toggle stages section for Opportunity
+        function toggleStages() {
+            const stagesSection = document.getElementById('opportunityStages');
+            stagesSection.classList.toggle('collapsed');
+        }
+
+        // Toggle stages section for CSR
+        function toggleCSRStages() {
+            const stagesSection = document.getElementById('csrStages');
+            stagesSection.classList.toggle('collapsed');
+        }
+
+        // Toggle stages section for Sample Development
+        function toggleSampleDevStages() {
+            const stagesSection = document.getElementById('sampleDevStages');
+            stagesSection.classList.toggle('collapsed');
+        }
+
+        // Toggle stages section for R&D Request
+        function toggleRnDStages() {
+            const stagesSection = document.getElementById('rndStages');
+            stagesSection.classList.toggle('collapsed');
+        }
+
+        // Toggle stages section for Sample Issuance
+        function toggleSampleIssuanceStages() {
+            const stagesSection = document.getElementById('sampleIssuanceStages');
+            stagesSection.classList.toggle('collapsed');
+        }
+
+        // Toggle stages section for Commercial Proposal
+        function toggleCommercialProposalStages() {
+            const stagesSection = document.getElementById('commercialProposalStages');
+            stagesSection.classList.toggle('collapsed');
+        }
+
+        // Add click event listeners to all nodes for potential interactivity
+        document.querySelectorAll('.node-content').forEach(node => {
+            node.addEventListener('click', function(e) {
+                // Don't trigger if clicking on stages section
+                if (e.target.closest('.stages-section')) {
+                    return;
+                }
+                e.stopPropagation();
+                // Add subtle pulse animation on click
+                this.style.animation = 'pulse 0.3s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 300);
+            });
+        });
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

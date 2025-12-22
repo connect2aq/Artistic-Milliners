@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Development Order: SDO-2024-0478</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Salesforce Sans', Arial, sans-serif;
+        }
+        .sf-header {
+            background: linear-gradient(to right, #032d60, #1b5297);
+        }
+        .sf-tab {
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .sf-tab.active {
+            border-bottom-color: #0176d3;
+            background: white;
+        }
+        .sf-tab:hover {
+            background: #f3f3f3;
+        }
+        .sf-button {
+            transition: all 0.2s;
+        }
+        .sf-button:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Salesforce Header -->
+    <div class="sf-header text-white px-6 py-3 shadow-lg">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <div class="flex items-center gap-4">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                </svg>
+                <h1 class="text-xl font-semibold">Artistic Milliners</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <input type="search" placeholder="Search..." class="px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 border border-white/30 w-64">
+                <div class="w-8 h-8 bg-white/20 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="bg-white border-b shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="flex gap-6">
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Opportunities</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Accounts</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Customer Sample Requests</a>
+                <a href="#" class="sf-tab active px-4 py-3 font-semibold text-gray-700">Sample Development</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Sample Issuance</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-6">
+        <!-- Breadcrumb -->
+        <div class="mb-4 text-sm">
+            <a href="#" class="text-blue-600 hover:underline">Fabric Sample Development</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <a href="#" class="text-blue-600 hover:underline">FSD-2024-0089</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <a href="#" class="text-blue-600 hover:underline">Iteration 2</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <span class="text-gray-700">SDO-2024-0478</span>
+        </div>
+
+        <!-- Important Notice -->
+        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-6">
+            <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div>
+                    <h3 class="text-purple-900 font-semibold mb-1">Sample Development Order Header</h3>
+                    <p class="text-purple-800 text-sm">
+                        This record captures header information only. Full order execution and details are managed in the ERP system.
+                        Use the "View in ERP" link below to access complete order information.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">Sample Development Order</div>
+                        <h1 class="text-2xl font-bold text-gray-900">SDO-2024-0478</h1>
+                        <h2 class="text-lg text-gray-700 mt-1">12oz Organic Denim - Light Vintage Wash</h2>
+                        <div class="flex items-center gap-4 mt-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-semibold">Completed</span>
+                            <span class="text-sm text-gray-600">Order Date: 04/02/2024</span>
+                            <span class="text-sm text-gray-600">Quantity: 5 yards</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="sf-button px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-semibold">Edit</button>
+                    <button class="sf-button px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 font-semibold flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                        View in ERP
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-6">
+                <nav class="flex gap-8">
+                    <a href="#" class="py-4 border-b-2 border-blue-600 text-blue-600 font-semibold">Details</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Activity</a>
+                </nav>
+            </div>
+
+            <div class="p-6">
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <!-- SDO Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">SDO Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">SDO Number</div>
+                                    <div class="w-2/3 text-sm text-gray-900 font-semibold">SDO-2024-0478</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Sample Iteration</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">FSD-2024-0089 - Iteration 2</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Sample Development</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">FSD-2024-0089</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">CSR</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">CSR-2024-00153</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Account</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">Levi Strauss & Co.</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Status</div>
+                                    <div class="w-2/3">
+                                        <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs font-semibold">Completed</span>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Created By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Ahmed Hassan (R&D Lead)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Details -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Order Details</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Order Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/02/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Required Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/04/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Completed Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/04/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Quantity</div>
+                                    <div class="w-2/3 text-sm text-gray-900 font-semibold">5 yards</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Unit of Measure</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Yards</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Priority</div>
+                                    <div class="w-2/3">
+                                        <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-xs font-semibold">High</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Material Specifications -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Material Specifications</h2>
+                            <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Material Type</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Fabric - Denim</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Fabric Weight</div>
+                                    <div class="w-2/3 text-sm text-gray-900">12 oz/yd²</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Composition</div>
+                                    <div class="w-2/3 text-sm text-gray-900">80% Organic Cotton, 20% Recycled Cotton</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Construction</div>
+                                    <div class="w-2/3 text-sm text-gray-900">3x1 Right Hand Twill</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Width</div>
+                                    <div class="w-2/3 text-sm text-gray-900">58/60 inches</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Wash Type</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Light Vintage Wash</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Color</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Light Blue (Pantone 14-4122 TPX)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Production Instructions -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Production Instructions</h2>
+                            <div class="bg-blue-50 border border-blue-200 rounded p-4">
+                                <div class="text-sm text-gray-700 leading-relaxed space-y-2">
+                                    <p><strong>Dyeing:</strong> Rope dyeing - 85% indigo saturation</p>
+                                    <p><strong>Washing:</strong> Enzyme + Stone wash, 45 minutes at 60°C</p>
+                                    <p><strong>Enzyme:</strong> Cellulase - Neutral pH</p>
+                                    <p><strong>Finishing:</strong> Softener + Anti-slip treatment</p>
+                                    <p><strong>Quality Control:</strong> Full lab testing required before delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <!-- ERP Integration -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">ERP Integration</h2>
+                            <div class="bg-purple-50 border border-purple-200 rounded p-4">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                                    </svg>
+                                    <div>
+                                        <div class="text-sm font-semibold text-purple-900">Full Order Execution in ERP</div>
+                                        <div class="text-xs text-purple-700">Production tracking, inventory, and fulfillment</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 text-sm mb-4">
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">ERP Order ID</div>
+                                        <div class="w-2/3 text-gray-900 font-mono">PRD-FSD-04-0478</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Production Unit</div>
+                                        <div class="w-2/3 text-gray-900">Finishing Plant - Line 3</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">Batch Number</div>
+                                        <div class="w-2/3 text-gray-900 font-mono">BATCH-2024-0892</div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="w-1/3 font-semibold text-gray-600">ERP Status</div>
+                                        <div class="w-2/3"><span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Delivered</span></div>
+                                    </div>
+                                </div>
+                                <a href="#" class="sf-button block text-center px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 font-semibold">
+                                    Open in ERP System →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Cost Summary -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Cost Summary</h2>
+                            <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Raw Material Cost</span>
+                                    <span class="text-gray-900 font-semibold">$145</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Dyeing & Processing</span>
+                                    <span class="text-gray-900 font-semibold">$85</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Labor Cost</span>
+                                    <span class="text-gray-900 font-semibold">$35</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Overhead</span>
+                                    <span class="text-gray-900 font-semibold">$20</span>
+                                </div>
+                                <div class="border-t pt-3 flex justify-between">
+                                    <span class="text-sm font-semibold text-gray-900">Total Production Cost</span>
+                                    <span class="text-sm text-gray-900 font-bold">$285</span>
+                                </div>
+                                <div class="bg-blue-50 rounded p-2 text-xs text-blue-800">
+                                    Cost per yard: $57.00
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Production Timeline -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Production Timeline</h2>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Order Created</div>
+                                        <div class="text-xs text-gray-500">04/02/2024 10:30 AM - Ahmed Hassan</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Materials Reserved</div>
+                                        <div class="text-xs text-gray-500">04/02/2024 11:15 AM - ERP System</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Production Started</div>
+                                        <div class="text-xs text-gray-500">04/02/2024 2:00 PM - Production Line 3</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">QC Inspection Passed</div>
+                                        <div class="text-xs text-gray-500">04/04/2024 9:00 AM - Quality Control</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Delivered to R&D</div>
+                                        <div class="text-xs text-gray-500">04/04/2024 11:30 AM - Warehouse</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quality Control -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Quality Control</h2>
+                            <div class="bg-green-50 border border-green-200 rounded p-4">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-sm font-semibold text-green-900">QC Approved - 04/04/2024</span>
+                                </div>
+                                <div class="text-sm text-gray-700 space-y-1">
+                                    <div class="flex justify-between">
+                                        <span>Inspector:</span>
+                                        <span class="font-semibold">James Lee</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Inspection Type:</span>
+                                        <span class="font-semibold">Full Lab Testing</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Result:</span>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Pass</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-green-300 text-xs text-gray-600">
+                                    All specifications meet customer requirements. Ready for evaluation.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Delivery Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Delivered To</div>
+                                    <div class="w-2/3 text-sm text-gray-900">R&D Department - Lab Section</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Received By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Ahmed Hassan</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Delivery Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/04/2024 11:30 AM</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Location</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Building A - R&D Lab 2</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">System Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Created By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Ahmed Hassan, 04/02/2024 10:30 AM</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Last Modified By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">ERP System, 04/04/2024 11:30 AM</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Salesforce ID</div>
+                                    <div class="w-2/3 text-sm text-gray-900 font-mono text-xs">a1X5e000002AbCdEFG</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">ERP Link</div>
+                                    <div class="w-2/3 text-sm text-gray-900 font-mono text-xs">PRD-FSD-04-0478</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="bg-white rounded-lg shadow-sm border">
+            <div class="p-6 border-b">
+                <h2 class="text-lg font-bold text-gray-800">Order Notes</h2>
+            </div>
+            <div class="p-6">
+                <div class="space-y-4">
+                    <div class="bg-gray-50 rounded p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-sm font-semibold text-blue-600">AH</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-900">Ahmed Hassan</span>
+                                    <span class="text-xs text-gray-500">04/02/2024 10:35 AM</span>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    High priority order for customer evaluation. Need to ensure quality standards are met as this is the second iteration.
+                                    Previous sample was rejected due to color mismatch. Color specifications updated in production instructions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-sm font-semibold text-green-600">JL</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-900">James Lee</span>
+                                    <span class="text-xs text-gray-500">04/04/2024 9:15 AM</span>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    QC inspection completed. All test results meet specifications. Color match is excellent this time.
+                                    Sample approved for customer evaluation. Delivered to R&D lab.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

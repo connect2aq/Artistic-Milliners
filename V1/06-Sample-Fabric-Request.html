@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Fabric Request: SFR-2024-0125</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Salesforce Sans', Arial, sans-serif;
+        }
+        .sf-header {
+            background: linear-gradient(to right, #032d60, #1b5297);
+        }
+        .sf-tab {
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .sf-tab.active {
+            border-bottom-color: #0176d3;
+            background: white;
+        }
+        .sf-tab:hover {
+            background: #f3f3f3;
+        }
+        .sf-button {
+            transition: all 0.2s;
+        }
+        .sf-button:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Salesforce Header -->
+    <div class="sf-header text-white px-6 py-3 shadow-lg">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <div class="flex items-center gap-4">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                </svg>
+                <h1 class="text-xl font-semibold">Artistic Milliners</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <input type="search" placeholder="Search..." class="px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 border border-white/30 w-64">
+                <div class="w-8 h-8 bg-white/20 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="bg-white border-b shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="flex gap-6">
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Opportunities</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Accounts</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Customer Sample Requests</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Sample Development</a>
+                <a href="#" class="sf-tab active px-4 py-3 font-semibold text-gray-700">Sample Issuance</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-6">
+        <!-- Breadcrumb -->
+        <div class="mb-4 text-sm">
+            <a href="#" class="text-blue-600 hover:underline">CSR</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <a href="#" class="text-blue-600 hover:underline">CSR-2024-00153</a>
+            <span class="text-gray-400 mx-2">/</span>
+            <span class="text-gray-700">SFR-2024-0125</span>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="bg-cyan-50 border-l-4 border-cyan-500 p-4 mb-6">
+            <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-cyan-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div>
+                    <h3 class="text-cyan-900 font-semibold mb-1">Sample Fabric Request (SFR)</h3>
+                    <p class="text-cyan-800 text-sm">
+                        Physical sample issuance for customer evaluation. May reference samples from development or existing inventory.
+                        Can occur with or without new sample development activity.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-green-100 rounded flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">Sample Fabric Request</div>
+                        <h1 class="text-2xl font-bold text-gray-900">SFR-2024-0125</h1>
+                        <div class="flex items-center gap-4 mt-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">Shipped</span>
+                            <span class="text-sm text-gray-600">Request Date: 04/08/2024</span>
+                            <span class="text-sm text-gray-600">3 Line Items</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="sf-button px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-semibold">Edit</button>
+                    <button class="sf-button px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-semibold">Delete</button>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">New Line Item</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-6">
+                <nav class="flex gap-8">
+                    <a href="#" class="py-4 border-b-2 border-blue-600 text-blue-600 font-semibold">Details</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Related</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Activity</a>
+                </nav>
+            </div>
+
+            <div class="p-6">
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <!-- SFR Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">SFR Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">SFR Number</div>
+                                    <div class="w-2/3 text-sm text-gray-900 font-semibold">SFR-2024-0125</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">CSR</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">CSR-2024-00153</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Opportunity</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">Spring Collection 2024 - Denim</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Account</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">Levi Strauss & Co.</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Status</div>
+                                    <div class="w-2/3">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Shipped</span>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Request Type</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Physical Sample Issuance</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Owner</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Sarah Johnson</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Request Details -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Request Details</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Request Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/08/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Required By Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/15/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Ship Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/10/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Delivery Method</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Express Courier (DHL)</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Tracking Number</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer font-mono text-xs">1234567890</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Expected Delivery</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/13/2024</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Purpose -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Purpose</h2>
+                            <div class="text-sm text-gray-700 leading-relaxed">
+                                Sending approved fabric samples to customer design team for final evaluation and approval.
+                                These samples include newly developed organic denim fabrics and recycled blend options
+                                that passed quality testing. Customer will use these for fit tests and design validation
+                                before proceeding to commercial proposal stage.
+                            </div>
+                        </div>
+
+                        <!-- Special Instructions -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Special Instructions</h2>
+                            <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <span>Handle with care - avoid folding or creasing samples</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <span>Include technical spec sheets with each sample</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <span>Express delivery required - customer presentation on 04/16</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <span>Request signature confirmation upon delivery</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <!-- Shipping Details -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Shipping Details</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Ship To Contact</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">Michael Chen</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Email</div>
+                                    <div class="w-2/3 text-sm text-gray-900">michael.chen@levi.com</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Phone</div>
+                                    <div class="w-2/3 text-sm text-gray-900">+1 (415) 555-0123</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Ship To Address</div>
+                                    <div class="w-2/3 text-sm text-gray-900">
+                                        Levi's Design Studio<br>
+                                        1155 Battery Street<br>
+                                        San Francisco, CA 94111<br>
+                                        United States
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Carrier</div>
+                                    <div class="w-2/3 text-sm text-gray-900">DHL Express</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Service Level</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Express Worldwide (3-5 days)</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Shipping Cost</div>
+                                    <div class="w-2/3 text-sm text-gray-900">$85.00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Timeline -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Shipping Timeline</h2>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Request Created</div>
+                                        <div class="text-xs text-gray-500">04/08/2024 9:00 AM - Sarah Johnson</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Samples Prepared</div>
+                                        <div class="text-xs text-gray-500">04/09/2024 2:00 PM - Warehouse Team</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Package Shipped</div>
+                                        <div class="text-xs text-gray-500">04/10/2024 10:30 AM - DHL Express</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-white font-bold text-xs">
+                                        4
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">In Transit</div>
+                                        <div class="text-xs text-gray-500">Last Update: 04/11/2024 6:45 PM</div>
+                                        <div class="text-xs text-blue-600 mt-1">Cincinnati Hub, OH</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-white font-bold text-xs">
+                                        5
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm text-gray-500">Out for Delivery</div>
+                                        <div class="text-xs text-gray-400">Expected: 04/13/2024</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-white font-bold text-xs">
+                                        6
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm text-gray-500">Delivered</div>
+                                        <div class="text-xs text-gray-400">Expected: 04/13/2024</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package Contents Summary -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Package Contents Summary</h2>
+                            <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Total Line Items</span>
+                                    <span class="text-gray-900 font-semibold">3</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Total Sample Pieces</span>
+                                    <span class="text-gray-900 font-semibold">15 yards</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Package Weight</span>
+                                    <span class="text-gray-900 font-semibold">2.5 lbs</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Package Dimensions</span>
+                                    <span class="text-gray-900 font-semibold">12" x 10" x 3"</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Development -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Related Sample Developments</h2>
+                            <div class="space-y-2">
+                                <div class="bg-green-50 border border-green-200 rounded p-3">
+                                    <div class="flex items-center justify-between">
+                                        <a href="#" class="text-blue-600 hover:underline text-sm font-semibold">FSD-2024-0089</a>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Approved</span>
+                                    </div>
+                                    <div class="text-xs text-gray-600 mt-1">12oz Organic Denim - Light Vintage</div>
+                                </div>
+                                <div class="bg-green-50 border border-green-200 rounded p-3">
+                                    <div class="flex items-center justify-between">
+                                        <a href="#" class="text-blue-600 hover:underline text-sm font-semibold">FSD-2024-0091</a>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Approved</span>
+                                    </div>
+                                    <div class="text-xs text-gray-600 mt-1">12oz Organic Denim - Dark Indigo</div>
+                                </div>
+                                <div class="bg-green-50 border border-green-200 rounded p-3">
+                                    <div class="flex items-center justify-between">
+                                        <a href="#" class="text-blue-600 hover:underline text-sm font-semibold">FSD-2024-0095</a>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Approved</span>
+                                    </div>
+                                    <div class="text-xs text-gray-600 mt-1">12oz Recycled Blend - Medium Wash</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">System Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Created By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Sarah Johnson, 04/08/2024 9:00 AM</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Last Modified By</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Warehouse System, 04/10/2024 10:30 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Lists -->
+        <div class="space-y-6">
+            <!-- SFR Line Items -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b flex items-center justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold text-gray-800">SFR Line Items</h2>
+                        <p class="text-sm text-gray-600 mt-1">Fabric samples included in this shipment</p>
+                    </div>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-semibold">New Line Item</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Line #</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Sample Development</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Description</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Quantity</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Source</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50 cursor-pointer">
+                                <td class="px-6 py-4">
+                                    <span class="text-sm font-semibold text-gray-900">1</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#" class="text-blue-600 hover:underline text-sm">FSD-2024-0089</a>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700">12oz Organic Denim - Light Vintage Wash</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">5 yards</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs font-semibold">New Development</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 cursor-pointer">
+                                <td class="px-6 py-4">
+                                    <span class="text-sm font-semibold text-gray-900">2</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#" class="text-blue-600 hover:underline text-sm">FSD-2024-0091</a>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700">12oz Organic Denim - Dark Indigo</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">5 yards</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs font-semibold">New Development</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 cursor-pointer">
+                                <td class="px-6 py-4">
+                                    <span class="text-sm font-semibold text-gray-900">3</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#" class="text-blue-600 hover:underline text-sm">FSD-2024-0095</a>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700">12oz Recycled Blend - Medium Wash</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">5 yards</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs font-semibold">New Development</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Files & Documents -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-gray-800">Files & Documents</h2>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-semibold">Upload Files</button>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="border rounded p-4 hover:bg-gray-50 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-red-100 rounded flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-gray-900 truncate">Packing_List.pdf</div>
+                                    <div class="text-xs text-gray-500">87 KB</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded p-4 hover:bg-gray-50 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-red-100 rounded flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-gray-900 truncate">Technical_Specs_All.pdf</div>
+                                    <div class="text-xs text-gray-500">542 KB</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border rounded p-4 hover:bg-gray-50 cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-red-100 rounded flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-gray-900 truncate">Shipping_Label.pdf</div>
+                                    <div class="text-xs text-gray-500">124 KB</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

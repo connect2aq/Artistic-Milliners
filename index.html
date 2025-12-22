@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Milliners - Functional Specification Document</title>
+    <link rel="stylesheet" href="shared/styles.css">
+    <style>
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            border-color: #0176d3;
+            box-shadow: 0 8px 16px rgba(1, 118, 211, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #032d60;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #032d60;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #0176d3;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Artistic Milliners</h1>
+            <p>Salesforce Functional Specification Document</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Opportunity to Order Lifecycle Implementation</p>
+        </div>
+
+        <div class="content">
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Core Objects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Total Stages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Customer Touchpoints</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Stage Workflows</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">📋 Introduction & Overview</h2>
+            <div class="card-grid">
+                <a href="introduction/executive-summary.html" class="card">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Executive Summary</div>
+                    <div class="card-description">
+                        High-level overview, business challenges, proposed solution, and expected benefits.
+                    </div>
+                </a>
+
+                <a href="introduction/business-case.html" class="card">
+                    <div class="card-icon">💼</div>
+                    <div class="card-title">Business Case</div>
+                    <div class="card-description">
+                        Strategic justification, ROI analysis, risk assessment, and investment overview.
+                    </div>
+                </a>
+
+                <a href="introduction/scope-and-objectives.html" class="card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Scope & Objectives</div>
+                    <div class="card-description">
+                        Project boundaries, success criteria, in/out scope, and key assumptions.
+                    </div>
+                </a>
+
+                <a href="introduction/stakeholders.html" class="card">
+                    <div class="card-icon">👥</div>
+                    <div class="card-title">Stakeholders & Roles</div>
+                    <div class="card-description">
+                        Business stakeholders, project team, RACI matrix, and governance model.
+                    </div>
+                </a>
+            </div>
+
+            <h2 class="section-title">🏗️ Architecture Documents</h2>
+            <div class="card-grid">
+                <a href="architecture/business-architecture.html" class="card">
+                    <div class="card-icon">🌳</div>
+                    <div class="card-title">Business Architecture</div>
+                    <div class="card-description">
+                        Complete object hierarchy showing all 9 core objects, 32 stages, relationships, and fields.
+                    </div>
+                </a>
+
+                <a href="#" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Data Architecture</div>
+                    <div class="card-description">
+                        Entity relationship diagrams, field specifications, data model, and validation rules.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="#" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">🔌</div>
+                    <div class="card-title">Integration Architecture</div>
+                    <div class="card-description">
+                        ERP integration design, API specifications, data synchronization, and security model.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+            </div>
+
+            <h2 class="section-title">🔄 Process Flows</h2>
+            <div class="card-grid">
+                <a href="processes/opportunity.html" class="card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Opportunity To Order Process</div>
+                    <div class="card-description">
+                        Complete end-to-end process from customer discovery through sample development, approval, and order placement.
+                    </div>
+                </a>
+
+                <a href="processes/sample-development.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">🧵</div>
+                    <div class="card-title">Sample Development Process</div>
+                    <div class="card-description">
+                        Detailed workflow for sample iteration, R&D, and lab validation processes.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="processes/rnd-request.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-title">R&D Request Approval Process</div>
+                    <div class="card-description">
+                        R&D feasibility assessment, cluster engagement, and customer approval workflow.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="processes/sample-issuance.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">📮</div>
+                    <div class="card-title">Sample Issuance Process</div>
+                    <div class="card-description">
+                        SAR, SFR, SYR workflows for dispatching physical samples to customers.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="processes/quote-to-order.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Quote To Order Process</div>
+                    <div class="card-description">
+                        Commercial proposal creation, customer negotiation, and order finalization.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+            </div>
+
+            <h2 class="section-title">📦 Object Specifications</h2>
+            <div class="card-grid">
+                <a href="objects/opportunity.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">💼</div>
+                    <div class="card-title">Business Opportunity</div>
+                    <div class="card-description">
+                        Commercial context, stages, fields, and relationships for the Opportunity object.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="objects/csr.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">Customer Sample Request (CSR)</div>
+                    <div class="card-description">
+                        Technical requirements, line items, stages, and approval workflow.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="objects/sample-development.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">👔</div>
+                    <div class="card-title">Sample Development & Iterations</div>
+                    <div class="card-description">
+                        Sample development intent, iterations, R&D requests, and validation stages.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="objects/commercial-proposal.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">💰</div>
+                    <div class="card-title">Commercial Proposal (Quote)</div>
+                    <div class="card-description">
+                        Pricing, terms, line items, approval workflow, and customer negotiation.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+
+                <a href="objects/customer-order.html" class="card" style="opacity: 0.6; pointer-events: none;">
+                    <div class="card-icon">✅</div>
+                    <div class="card-title">Customer Order</div>
+                    <div class="card-description">
+                        Order confirmation, ERP handoff, and fulfillment initiation.
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">Coming Soon</div>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

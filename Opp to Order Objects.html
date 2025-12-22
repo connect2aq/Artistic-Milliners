@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Request to Order - Object Model</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-slate-800 mb-2 text-center">
+            Customer Request to Order
+        </h1>
+        <p class="text-slate-600 mb-8 text-center">
+            Complete object model from customer sample request through order fulfillment
+        </p>
+
+        <!-- Account Level -->
+        <div class="mb-6">
+            <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">Account</h2>
+                        <p class="text-blue-100">Represents the Customer / Brand</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <svg class="w-8 h-8 text-slate-400 my-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Business Opportunity Level -->
+        <div class="mb-6">
+            <div class="bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">Business Opportunity</h2>
+                        <p class="text-purple-100">Commercial context for customer requirement</p>
+                        <p class="text-sm text-purple-200 mt-1">
+                            (Fabric, Apparel, Yarn, Processing, etc.)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <svg class="w-8 h-8 text-slate-400 my-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Customer Sample Request -->
+        <div class="mb-6">
+            <div class="bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-lg shadow-lg p-6 text-white">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">Customer Sample Request (CSR)</h2>
+                    </div>
+                </div>
+                <p class="text-indigo-100 mb-3">
+                    Structured representation of customer intent - Translates discovery discussions into technical evaluation inputs
+                </p>
+                <div class="bg-indigo-800/40 rounded-lg p-4">
+                    <p class="font-semibold text-indigo-100 mb-2">Can include:</p>
+                    <ul class="space-y-1 text-indigo-50 text-sm">
+                        <li>• Multiple material / option line items</li>
+                        <li>• Fabric, yarn, apparel, processing inputs</li>
+                        <li>• No execution commitment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <svg class="w-8 h-8 text-slate-400 my-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          
+            <!-- Left Column - Sample Development -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-700 text-center">Sample Development Path</h3>
+            
+                <!-- Apparel Sample Development -->
+                <div class="bg-white rounded-lg shadow-md p-5 border-t-4 border-rose-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Apparel Sample Development</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Apparel-specific development intent - Defines WHY apparel samples are needed
+                    </p>
+
+                    <div class="bg-rose-50 rounded-lg p-4">
+                        <p class="font-semibold text-rose-900 mb-3 text-sm">Apparel Sample Iterations</p>
+                        <p class="text-xs text-slate-600 mb-3">
+                            Each iteration represents one refinement based on feedback or rejection
+                        </p>
+                        
+                        <div class="bg-white rounded p-3 mb-2 border border-rose-200">
+                            <p class="font-semibold text-xs text-slate-700 mb-2">
+                                R&D Request (Optional)
+                            </p>
+                            <p class="text-xs text-slate-500 mb-2">
+                                Created by PD Lead, Executed by R&D Lead
+                            </p>
+                            <div class="pl-3 border-l-2 border-blue-300">
+                                <p class="text-xs text-blue-700 font-medium">R&D Execution</p>
+                                <p class="text-xs text-slate-500">Trials, feasibility, costing</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-rose-100 to-rose-50 rounded p-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                                <p class="font-semibold text-sm text-rose-900">
+                                    Sample Development Order (SDO)
+                                </p>
+                            </div>
+                            <p class="text-xs text-slate-600 mb-2">
+                                Created by R&D Lead, Captured in Salesforce (header only)
+                            </p>
+                            <div class="bg-rose-600 text-white text-xs font-semibold px-3 py-1 rounded inline-block">
+                                Executed in ERP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fabric Sample Development -->
+                <div class="bg-white rounded-lg shadow-md p-5 border-t-4 border-green-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Fabric Sample Development</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Fabric-specific development intent
+                    </p>
+
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <p class="font-semibold text-green-900 mb-3 text-sm">Fabric Sample Iterations</p>
+                        
+                        <div class="bg-white rounded p-3 mb-2 border border-green-200">
+                            <p class="font-semibold text-xs text-slate-700 mb-2">
+                                R&D Request (Optional)
+                            </p>
+                            <div class="pl-3 border-l-2 border-blue-300">
+                                <p class="text-xs text-blue-700 font-medium">R&D Execution</p>
+                                <p class="text-xs text-slate-500">Trials, feasibility, costing</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-green-100 to-green-50 rounded p-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                                <p class="font-semibold text-sm text-green-900">
+                                    Sample Development Order (SDO)
+                                </p>
+                            </div>
+                            <div class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded inline-block">
+                                Executed in ERP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yarn Sample Development -->
+                <div class="bg-white rounded-lg shadow-md p-5 border-t-4 border-amber-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Yarn Sample Development</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Yarn-specific development intent
+                    </p>
+
+                    <div class="bg-amber-50 rounded-lg p-4">
+                        <p class="font-semibold text-amber-900 mb-3 text-sm">Yarn Sample Iterations</p>
+                        
+                        <div class="bg-white rounded p-3 mb-2 border border-amber-200">
+                            <p class="font-semibold text-xs text-slate-700 mb-2">
+                                R&D Request (Optional)
+                            </p>
+                            <div class="pl-3 border-l-2 border-blue-300">
+                                <p class="text-xs text-blue-700 font-medium">R&D Execution</p>
+                                <p class="text-xs text-slate-500">Trials, feasibility, costing</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-amber-100 to-amber-50 rounded p-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                                <p class="font-semibold text-sm text-amber-900">
+                                    Sample Development Order (SDO)
+                                </p>
+                            </div>
+                            <div class="bg-amber-600 text-white text-xs font-semibold px-3 py-1 rounded inline-block">
+                                Executed in ERP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Sample Issuance -->
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-700 text-center">Sample Issuance Path</h3>
+            
+                <!-- Sample Issuance -->
+                <div class="bg-white rounded-lg shadow-md p-5 border-t-4 border-cyan-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Sample Issuance (Physical Samples)</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Issuance of existing or developed samples - May occur with or without new development
+                    </p>
+
+                    <div class="space-y-3">
+                        <!-- SAR -->
+                        <div class="bg-rose-50 rounded-lg p-3 border border-rose-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
+                                </svg>
+                                <p class="font-semibold text-sm text-rose-900">
+                                    Sample Apparel Request (SAR)
+                                </p>
+                            </div>
+                            <p class="text-xs text-slate-500 pl-6">→ SAR Line Items</p>
+                        </div>
+
+                        <!-- SFR -->
+                        <div class="bg-green-50 rounded-lg p-3 border border-green-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                                </svg>
+                                <p class="font-semibold text-sm text-green-900">
+                                    Sample Fabric Request (SFR)
+                                </p>
+                            </div>
+                            <p class="text-xs text-slate-500 pl-6">→ SFR Line Items</p>
+                        </div>
+
+                        <!-- SYR -->
+                        <div class="bg-amber-50 rounded-lg p-3 border border-amber-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                                </svg>
+                                <p class="font-semibold text-sm text-amber-900">
+                                    Sample Yarn Request (SYR)
+                                </p>
+                            </div>
+                            <p class="text-xs text-slate-500 pl-6">→ SYR Line Items</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commercial Path - Separate Section -->
+        <div class="mt-8">
+            <h3 class="text-xl font-bold text-slate-700 text-center mb-6">Commercial Path</h3>
+          
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Commercial Proposal -->
+                <div class="bg-white rounded-lg shadow-md p-5 border-t-4 border-teal-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Commercial Proposal</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">
+                        Pricing and commercial terms based on:
+                    </p>
+                    <div class="bg-teal-50 rounded p-3 text-sm mb-3">
+                        <ul class="space-y-1 text-slate-700">
+                            <li>• Approved samples</li>
+                            <li>• Final cluster costs</li>
+                        </ul>
+                    </div>
+                    <div class="text-xs text-slate-500 pl-4 border-l-2 border-teal-300">
+                        Contains Commercial Proposal Line Items
+                    </div>
+                </div>
+
+                <!-- Customer Order -->
+                <div class="bg-white rounded-lg shadow-md p-5 border-t-4 border-emerald-500">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">Customer Order</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">
+                        Confirmed customer commitment
+                    </p>
+                    <div class="bg-emerald-50 rounded p-3 text-xs text-slate-700 mb-3">
+                        <p class="mb-1">✓ Commercial Proposal approved</p>
+                        <p>✓ PO received</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded p-3 text-center">
+                        <p class="font-bold text-sm">Order Fulfilment</p>
+                        <p class="text-xs mt-1 text-emerald-100">Executed in ERP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h3 class="font-bold text-slate-800 mb-4">Key Points</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-600">
+                <div>
+                    <p class="font-semibold text-slate-700 mb-1">Customer Sample Request (CSR):</p>
+                    <p>• Structured intent from discovery</p>
+                    <p>• No execution commitment</p>
+                    <p>• Multi-material line items possible</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-slate-700 mb-1">Sample Development:</p>
+                    <p>• Cluster-specific (Apparel/Fabric/Yarn)</p>
+                    <p>• Optional R&D per iteration</p>
+                    <p>• SDO executes in ERP</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-slate-700 mb-1">Sample Issuance:</p>
+                    <p>• Can occur with or without development</p>
+                    <p>• Separate requests per cluster (SAR/SFR/SYR)</p>
+                    <p>• Each has line items</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Print Button -->
+        <div class="text-center mt-8 no-print">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-colors">
+                Print or Save as PDF
+            </button>
+        </div>
+    </div>
+</body>
+</html>
+

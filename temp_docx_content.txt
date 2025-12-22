@@ -1,0 +1,203 @@
+🔒 FIELD LOCK – FINAL PROPOSAL
+(Account excluded, as agreed)
+
+1️⃣ Opportunity (Commercial System of Record)
+Only object with real business stages
+A. Identity & Commercial Control (LOCKED)
+
+B. Opportunity Stage (LOCKED – Business Stage)
+Final Stages (already agreed):
+Discovery & Scoping
+Product Development Review
+R&D Initiated (conditional)
+Sample Management
+Commercial Proposal
+Order Finalization (Closed Won)
+Closed Lost
+
+C. Context Fields (LOCKED)
+
+2️⃣ Customer Sample Request (CSR)
+Commercial intent bridge between Opportunity and Development
+A. Identity & Governance (LOCKED)
+
+B. Request Definition (LOCKED)
+
+C. Status (UX Only)
+
+3️⃣ CSR Line Item
+Technical decomposition of the request
+A. Identity (LOCKED)
+
+B. Technical Definition (LOCKED)
+
+4️⃣ Sample Development (Parent – Intent Only)
+NO execution stages here
+A. Identity & Governance (LOCKED)
+
+B. Administrative Status (LOCKED)
+🚫 No Path component here
+
+5️⃣ Sample Iteration (Execution Object)
+ALL sample stages live here (UX only)
+A. Identity (LOCKED)
+
+B. UX Status Path (LOCKED)
+Final Status Values (UX only):
+Draft
+In Execution
+Customer Review
+Approved
+Rejected
+
+C. Outcome & Feedback (LOCKED)
+
+6️⃣ R&D Request
+Triggered conditionally, repeatable
+A. Identity & Governance (LOCKED)
+
+B. UX Status Path (LOCKED)
+UX Status Values:
+Requested
+In Analysis
+In Development
+Completed
+Rejected
+
+C. Commercial Inputs (LOCKED)
+
+7️⃣ Quote / Commercial Proposal
+Approval & negotiation UX only
+A. Identity (LOCKED)
+
+B. Pricing & Approval (LOCKED)
+
+8️⃣ Sales Order (Pre-ERP Handoff)
+Created ONLY after Closed Won
+A. Identity (LOCKED)
+
+B. ERP Handoff Fields (LOCKED)
+
+
+TABLE:
+Field	Type	Notes
+Opportunity Name	Text	Style / Program reference
+Account	Lookup	Customer / Brand
+Close Date	Date	Forecast & reporting
+Amount	Currency	Commercial value
+Currency	ISO Code	Multi-currency
+Opportunity Owner	User	Sales / Merchandiser
+
+TABLE:
+Field	Type
+Stage	Picklist
+
+TABLE:
+Field	Type	Purpose
+Customer Type	Picklist	External / Internal / Nominated
+Product Category	Picklist	Apparel / Fabric / Yarn
+Required Clusters	Multi-select	Apparel / Denim / Processing / Spinning
+Complexity Level	Picklist	UX & planning
+
+TABLE:
+Field	Type
+CSR Number	Auto Number
+Opportunity	Lookup
+Account	Formula (via Opportunity)
+CSR Owner	User
+
+TABLE:
+Field	Type
+Requested Product Type	Picklist
+Request Reason	Picklist
+Target Quantity	Number
+Target Delivery Date	Date
+
+TABLE:
+Field	Type	Notes
+CSR Status	Picklist	UX only, non-blocking
+
+TABLE:
+Field	Type
+CSR Line Number	Auto Number
+Parent CSR	Master-Detail
+
+TABLE:
+Field	Type
+Item Type	Picklist
+Composition	Text
+Construction	Text
+Finish / Wash	Text
+Special Instructions	Long Text
+
+TABLE:
+Field	Type
+Sample Development Number	Auto Number
+CSR	Lookup
+Opportunity	Formula
+Account	Formula
+Sample Development Owner	User (PD Lead)
+
+TABLE:
+Field	Type	Notes
+Sample Development Status	Picklist	Draft / Active / Closed
+
+TABLE:
+Field	Type
+Sample Iteration Number	Auto Number
+Sample Development	Master-Detail
+Iteration Owner	User
+
+TABLE:
+Field	Type
+Sample Iteration Status	Picklist
+
+TABLE:
+Field	Type
+Brand Feedback	Long Text
+Approval Date	Date
+Rejection Reason	Picklist
+Sample Images	Files
+
+TABLE:
+Field	Type
+R&D Request Number	Auto Number
+Related Sample Iteration	Lookup
+Opportunity	Lookup
+R&D Owner	User
+
+TABLE:
+Field	Type
+R&D Status	Picklist
+
+TABLE:
+Field	Type
+R&D Cost Estimate	Currency
+R&D Timeline (Days)	Number
+Feasibility Notes	Long Text
+
+TABLE:
+Field	Type
+Quote Number	Auto Number
+Opportunity	Lookup
+Quote Owner	User
+
+TABLE:
+Field	Type
+Total Amount	Currency
+Discount %	Percent
+Approval Status	Picklist
+Quote Status	Picklist
+
+TABLE:
+Field	Type
+Sales Order Number	Auto Number
+Opportunity	Lookup
+Account	Lookup
+
+TABLE:
+Field	Type
+PO Number	Text
+ERP Sync Status	Picklist
+ERP Order ID	Text
+Order Status	Picklist

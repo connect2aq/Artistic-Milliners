@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity: Spring Collection 2024 - Denim Fabric Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Salesforce Sans', Arial, sans-serif;
+        }
+        .sf-header {
+            background: linear-gradient(to right, #032d60, #1b5297);
+        }
+        .sf-tab {
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .sf-tab.active {
+            border-bottom-color: #0176d3;
+            background: white;
+        }
+        .sf-tab:hover {
+            background: #f3f3f3;
+        }
+        .sf-button {
+            transition: all 0.2s;
+        }
+        .sf-button:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Salesforce Header -->
+    <div class="sf-header text-white px-6 py-3 shadow-lg">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <div class="flex items-center gap-4">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                </svg>
+                <h1 class="text-xl font-semibold">Artistic Milliners</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <input type="search" placeholder="Search..." class="px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 border border-white/30 w-64">
+                <div class="w-8 h-8 bg-white/20 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="bg-white border-b shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="flex gap-6">
+                <a href="#" class="sf-tab active px-4 py-3 font-semibold text-gray-700">Opportunities</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Accounts</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Customer Sample Requests</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Sample Development</a>
+                <a href="#" class="sf-tab px-4 py-3 text-gray-600">Sample Issuance</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 py-6">
+        <!-- Page Header -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6 p-6">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500 mb-1">Opportunity</div>
+                        <h1 class="text-2xl font-bold text-gray-900">Spring Collection 2024 - Denim Fabric Development</h1>
+                        <div class="flex items-center gap-4 mt-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">PD Review</span>
+                            <span class="text-sm text-gray-600">Amount: $250,000</span>
+                            <span class="text-sm text-gray-600">Close Date: 06/30/2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="sf-button px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 font-semibold">Edit</button>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">New CSR</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-sm border mb-6">
+            <div class="border-b px-6">
+                <nav class="flex gap-8">
+                    <a href="#" class="py-4 border-b-2 border-blue-600 text-blue-600 font-semibold">Details</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Related</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Activity</a>
+                    <a href="#" class="py-4 text-gray-600 hover:text-gray-900">Chatter</a>
+                </nav>
+            </div>
+
+            <div class="p-6">
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <!-- Opportunity Information -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Opportunity Information</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Opportunity Owner</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Sarah Johnson</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Account Name</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">Levi Strauss & Co.</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Opportunity Type</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Fabric Development</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Stage</div>
+                                    <div class="w-2/3 text-sm text-gray-900">PD Review</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Next Step</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Schedule technical review meeting</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Commercial Details -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Commercial Details</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Amount</div>
+                                    <div class="w-2/3 text-sm text-gray-900">$250,000.00</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Close Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">06/30/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Lead Source</div>
+                                    <div class="w-2/3 text-sm text-gray-900">Existing Customer</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Campaign</div>
+                                    <div class="w-2/3 text-sm text-blue-600 hover:underline cursor-pointer">Spring 2024 Outreach</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Description</h2>
+                            <div class="text-sm text-gray-700 leading-relaxed">
+                                Levi's is looking to develop sustainable denim fabrics for their Spring 2024 collection.
+                                Focus on organic cotton blends with recycled materials. Target weight range 10-14 oz.
+                                Multiple wash effects required. Initial order volume estimated at 500,000 yards.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <!-- Stage Path -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Sales Path</h2>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-sm text-gray-700">Discovery & Scoping</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                        2
+                                    </div>
+                                    <div class="text-sm font-semibold text-gray-900">PD Review</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                        3
+                                    </div>
+                                    <div class="text-sm text-gray-500">Sample in Progress</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                        4
+                                    </div>
+                                    <div class="text-sm text-gray-500">Sample Approved</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                        5
+                                    </div>
+                                    <div class="text-sm text-gray-500">Commercial Proposal</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                        6
+                                    </div>
+                                    <div class="text-sm text-gray-500">Closed – Won</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                        7
+                                    </div>
+                                    <div class="text-sm text-gray-500">Closed – Lost</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Dates -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Key Dates</h2>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Created Date</div>
+                                    <div class="w-2/3 text-sm text-gray-900">03/15/2024</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Last Modified</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/12/2024 2:30 PM</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 text-sm font-semibold text-gray-600">Last Activity</div>
+                                    <div class="w-2/3 text-sm text-gray-900">04/10/2024</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Roles -->
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800 mb-4 pb-2 border-b">Contact Roles</h2>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                    <div>
+                                        <div class="text-sm font-semibold text-blue-600 hover:underline cursor-pointer">Michael Chen</div>
+                                        <div class="text-xs text-gray-600">Sr. Product Developer - Decision Maker</div>
+                                    </div>
+                                    <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                                    <div>
+                                        <div class="text-sm font-semibold text-blue-600 hover:underline cursor-pointer">Emma Rodriguez</div>
+                                        <div class="text-xs text-gray-600">Sustainability Manager - Influencer</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Lists -->
+        <div class="space-y-6">
+            <!-- Customer Sample Requests -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-gray-800">Customer Sample Requests</h2>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-semibold">New CSR</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">CSR Number</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Request Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Due Date</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Total Line Items</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50 cursor-pointer">
+                                <td class="px-6 py-4">
+                                    <a href="#" class="text-blue-600 hover:underline font-semibold">CSR-2024-00153</a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs font-semibold">In Progress</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700">03/20/2024</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">04/20/2024</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">8</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 cursor-pointer">
+                                <td class="px-6 py-4">
+                                    <a href="#" class="text-blue-600 hover:underline font-semibold">CSR-2024-00147</a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Completed</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-700">03/15/2024</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">03/30/2024</td>
+                                <td class="px-6 py-4 text-sm text-gray-700">5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Commercial Proposals -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-gray-800">Commercial Proposals</h2>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-semibold">New Proposal</button>
+                </div>
+                <div class="p-6 text-center text-gray-500">
+                    No records to display
+                </div>
+            </div>
+
+            <!-- Customer Orders -->
+            <div class="bg-white rounded-lg shadow-sm border">
+                <div class="p-6 border-b flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-gray-800">Customer Orders</h2>
+                    <button class="sf-button px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-semibold">New Order</button>
+                </div>
+                <div class="p-6 text-center text-gray-500">
+                    No records to display
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Opportunity & CSR Governance Model</title>
+    <style>
+      :root {
+        --sales: #2563eb;
+        --pd: #16a34a;
+        --rd: #7c3aed;
+        --neutral: #334155;
+        --bg: #f8fafc;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: #0f172a;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: auto;
+        padding: 32px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 12px 0;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-top: 40px;
+      }
+
+      p.lead {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+
+      .section {
+        margin-bottom: 48px;
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      }
+
+      .flex {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .badge.sales {
+        background: rgba(37, 99, 235, 0.12);
+        color: var(--sales);
+      }
+      .badge.pd {
+        background: rgba(22, 163, 74, 0.12);
+        color: var(--pd);
+      }
+      .badge.rd {
+        background: rgba(124, 58, 237, 0.12);
+        color: var(--rd);
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .stage {
+        border: 2px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 18px;
+        background: #ffffff;
+        position: relative;
+      }
+
+      .stage h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .stage ul {
+        padding-left: 18px;
+        margin: 8px 0 12px;
+      }
+
+      .stage li {
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+
+      .stage::after {
+        content: '→';
+        position: absolute;
+        right: -18px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 22px;
+        color: #94a3b8;
+      }
+
+      .stage:last-child::after {
+        display: none;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      .table th,
+      .table td {
+        padding: 12px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+      }
+
+      .table th {
+        background: #f1f5f9;
+      }
+
+      .highlight {
+        background: #f0f9ff;
+        border-left: 4px solid var(--sales);
+        padding: 14px;
+        border-radius: 8px;
+      }
+
+      .csr-flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .csr-stage {
+        flex: 1 1 200px;
+        border-radius: 12px;
+        padding: 16px;
+        background: #ffffff;
+        border: 2px dashed #cbd5f5;
+      }
+
+      .csr-stage h4 {
+        margin: 0 0 6px 0;
+        font-size: 15px;
+      }
+
+      .footer-note {
+        margin-top: 32px;
+        font-size: 13px;
+        color: #475569;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section">
+        <h1>End-to-End Sales & Product Development Lifecycle</h1>
+        <p class="lead">
+          This model explains how a customer requirement moves from first discussion to final Purchase Order — covering sales qualification, product
+          development, sampling, approvals, and commercial negotiation — with clear ownership and visibility at every step.
+        </p>
+        <div class="highlight">
+          The goal is simple: keep the <strong>sales journey predictable</strong> while managing product development complexity in a structured and transparent
+          way.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>1. Core Concept — Separation of Commercial Flow and Execution</h2>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          To avoid confusion and delays, we clearly separate <strong>commercial decision-making</strong> from <strong>execution activities</strong>. This
+          ensures customers always have a clear view of where they stand commercially, even while development work is ongoing.
+        </p>
+        <div class="flex">
+          <div
+            class="card"
+            style="flex: 1"
+          >
+            <h3>Sales Opportunity</h3>
+            <ul>
+              <li>Single commercial lifecycle</li>
+              <li>Never branches into execution</li>
+              <li>Observes milestones only</li>
+            </ul>
+            <span class="badge sales">Sales Owned</span>
+          </div>
+          <div
+            class="card"
+            style="flex: 1"
+          >
+            <h3>Customer Sample Request (CSR)</h3>
+            <p style="font-size: 13px; color: #475569">
+              A structured way to manage all sampling and product development work required to validate a customer requirement.
+            </p>
+            <ul>
+              <li>Bridge between sales and execution</li>
+              <li>All operational complexity lives here</li>
+            </ul>
+            <span class="badge pd">PD Owned</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>2. End-to-End Opportunity Flow (Customer View)</h2>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          Below is the complete sales journey as experienced by the customer — from initial requirement discussion, through sample approval, to commercial
+          agreement and Purchase Order.
+        </p>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          <strong>Customer Touchpoints:</strong> The annotations below highlight where the customer directly interacts during the opportunity lifecycle —
+          providing requirements, approving samples, negotiating commercials, and issuing the final PO.
+        </p>
+        <div class="flow">
+          <div class="stage">
+            <h3>Discovery & Scoping</h3>
+            <ul>
+              <li>Requirement captured</li>
+              <li>Customer intent validated</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📩 <strong>Customer:</strong> Shares initial requirement and business intent</p>
+            <span class="badge sales">Sales</span>
+          </div>
+          <div class="stage">
+            <h3>PD Review</h3>
+            <ul>
+              <li>CSR created</li>
+              <li>Development path decided</li>
+            </ul>
+            <span class="badge pd">PD</span>
+          </div>
+          <div class="stage">
+            <h3>Sample in Progress</h3>
+            <ul>
+              <li>Sample Development / Issuance</li>
+              <li>Iterations allowed</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🧪 <strong>Customer:</strong> Reviews interim samples and provides feedback</p>
+            <span class="badge pd">PD</span>
+          </div>
+          <div class="stage">
+            <h3>Sample Approved</h3>
+            <ul>
+              <li>Gold Seal approved</li>
+              <li>PD → Sales handoff</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">✅ <strong>Customer:</strong> Grants final sample approval (Gold Seal)</p>
+            <span class="badge sales">Sales</span>
+          </div>
+          <div class="stage">
+            <h3>Commercial Proposal</h3>
+            <ul>
+              <li>Costing & margin finalized</li>
+              <li>Quote negotiated</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">💬 <strong>Customer:</strong> Reviews pricing and commercial terms</p>
+            <span class="badge sales">Sales</span>
+          </div>
+          <div class="stage">
+            <h3>Closed Won / Lost</h3>
+            <ul>
+              <li>PO received or deal dropped</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📄 <strong>Customer:</strong> Issues Purchase Order (or formally declines)</p>
+            <span class="badge sales">Sales</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>3. Object Responsibility Matrix</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Object</th>
+              <th>Purpose</th>
+              <th>Owner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Opportunity</td>
+              <td>Commercial intent → PO</td>
+              <td>Sales</td>
+            </tr>
+            <tr>
+              <td>CSR</td>
+              <td>Customer-approved sampling scope</td>
+              <td>PD</td>
+            </tr>
+            <tr>
+              <td>Sample Development</td>
+              <td>Create / iterate samples</td>
+              <td>PD / R&D</td>
+            </tr>
+            <tr>
+              <td>Sample Iteration</td>
+              <td>Versioning & retries</td>
+              <td>PD / R&D</td>
+            </tr>
+            <tr>
+              <td>R&D Request</td>
+              <td>Technical feasibility</td>
+              <td>R&D</td>
+            </tr>
+            <tr>
+              <td>Sample Issuance</td>
+              <td>Physical dispatch</td>
+              <td>PD / ERP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>4. Customer Sample Request (CSR) – Execution Control</h2>
+        <h3 style="margin-top: 32px">How a Customer Sample Request Moves Between Stages</h3>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>From Stage</th>
+              <th>To Stage</th>
+              <th>When This Happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Draft</td>
+              <td>In Execution</td>
+              <td>PD finalizes scope and clicks <em>Start Execution</em></td>
+            </tr>
+            <tr>
+              <td>In Execution</td>
+              <td>Customer Review</td>
+              <td>First sample is submitted to the customer</td>
+            </tr>
+            <tr>
+              <td>Customer Review</td>
+              <td>In Execution</td>
+              <td>Customer requests revision or a new iteration</td>
+            </tr>
+            <tr>
+              <td>Customer Review</td>
+              <td>Approved (Gold Seal)</td>
+              <td>Final customer approval is received</td>
+            </tr>
+            <tr>
+              <td>Any</td>
+              <td>Rejected / Cancelled</td>
+              <td>Explicit stop decision by customer or business</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          The Customer Sample Request (CSR) formally controls when execution is allowed to begin. Until CSR enters <strong>In Execution</strong>, no sampling or
+          development work starts.
+        </p>
+
+        <div class="csr-flow">
+          <div class="csr-stage">
+            <h4>Draft</h4>
+            <p>Scope is defined; execution not yet allowed</p>
+          </div>
+          <div
+            class="csr-stage"
+            style="border: 2px solid #2563eb; background: #f0f9ff"
+          >
+            <h4>In Execution</h4>
+            <p><strong>Execution Starts Here</strong><br />Authorizes Sample Development and/or Sample Issuance to begin, including R&D if required.</p>
+          </div>
+          <div class="csr-stage">
+            <h4>Customer Review</h4>
+            <p>Samples submitted for customer feedback</p>
+          </div>
+          <div class="csr-stage">
+            <h4>Approved (Gold Seal)</h4>
+            <p>Final sample approval received</p>
+          </div>
+          <div class="csr-stage">
+            <h4>Rejected / Cancelled</h4>
+            <p>Explicit stop decision</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Sample Development – Customer View</h2>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          Sample Development is the phase where product ideas are converted into physical samples and validated before any commercial commitment is finalized.
+        </p>
+
+        <div class="flow">
+          <div class="stage">
+            <h3>Define Sample Requirements</h3>
+            <ul>
+              <li>Product requirements finalized</li>
+              <li>Sample scope confirmed</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📩 <strong>Customer:</strong> Confirms expectations and requirements</p>
+          </div>
+
+          <div class="stage">
+            <h3>Sample Development & R&D</h3>
+            <ul>
+              <li>Sample developed or modified</li>
+              <li>R&D engaged if required</li>
+              <li>Iterations may occur</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">⚙️ <strong>Internal:</strong> Managed without impacting sales stages</p>
+          </div>
+
+          <div class="stage">
+            <h3>Internal Testing & Validation</h3>
+            <ul>
+              <li>Quality and feasibility checks</li>
+              <li>Internal validation completed</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🔍 <strong>Internal:</strong> Ensures readiness for customer review</p>
+          </div>
+
+          <div class="stage">
+            <h3>Sample Review & Feedback</h3>
+            <ul>
+              <li>Samples shared</li>
+              <li>Feedback captured</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🧪 <strong>Customer:</strong> Reviews samples and provides feedback</p>
+          </div>
+
+          <div class="stage">
+            <h3>Sample Approved (Gold Seal)</h3>
+            <ul>
+              <li>Final sample approved</li>
+              <li>Product validation complete</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">✅ <strong>Customer:</strong> Grants final approval</p>
+          </div>
+        </div>
+
+        <div
+          class="highlight"
+          style="margin-top: 24px"
+        >
+          Once the sample is approved (Gold Seal), Product Development is complete and the Opportunity moves forward into Sample Approved.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>R&D Development – When New Technical Work Is Required</h2>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          <em
+            >This is a simplified, customer-facing view of our R&D process. Internally, R&D follows a more detailed, controlled workflow to ensure feasibility,
+            quality, and cost discipline.</em
+          >
+        </p>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          R&D is initiated only when a requirement cannot be fulfilled using existing designs or standard development. This ensures innovation is controlled,
+          feasible, and commercially viable.
+        </p>
+
+        <div class="flow">
+          <div class="stage">
+            <h3>R&D Assessment</h3>
+            <ul>
+              <li>Technical feasibility evaluated</li>
+              <li>Initial risks and constraints identified</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🧠 <strong>R&D:</strong> Confirms feasibility or flags constraints</p>
+          </div>
+
+          <div class="stage">
+            <h3>R&D Development</h3>
+            <ul>
+              <li>New solution or approach developed</li>
+              <li>Prototypes or formulations created</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">⚗️ <strong>R&D:</strong> Performs controlled technical work</p>
+          </div>
+
+          <div class="stage">
+            <h3>Internal Validation</h3>
+            <ul>
+              <li>Technical validation completed</li>
+              <li>Outputs shared with Sample Development</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🔬 <strong>Internal:</strong> Confirms readiness for sampling</p>
+          </div>
+
+          <div class="stage">
+            <h3>R&D Outcome</h3>
+            <ul>
+              <li>Feasible → feeds Sample Development</li>
+              <li>Not feasible → request closed</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📌 <strong>Outcome:</strong> Clear go / no-go decision</p>
+          </div>
+        </div>
+
+        <div
+          class="highlight"
+          style="margin-top: 24px"
+        >
+          R&D operates fully under Sample Development and does not directly affect Opportunity stages or commercial reporting.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Sample Issuance – Customer View</h2>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          Sample Issuance covers the controlled preparation, dispatch, and tracking of physical samples shared with the customer for review.
+        </p>
+
+        <div class="flow">
+          <div class="stage">
+            <h3>Issuance Preparation</h3>
+            <ul>
+              <li>Sample identified or produced</li>
+              <li>Quantity and logistics confirmed</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📦 <strong>Internal:</strong> Prepares samples for dispatch</p>
+          </div>
+
+          <div class="stage">
+            <h3>Sample Dispatch</h3>
+            <ul>
+              <li>Samples shipped to customer</li>
+              <li>Tracking details recorded</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🚚 <strong>Internal:</strong> Ships and tracks samples</p>
+          </div>
+
+          <div class="stage">
+            <h3>Customer Receipt</h3>
+            <ul>
+              <li>Samples received by customer</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📬 <strong>Customer:</strong> Confirms receipt of samples</p>
+          </div>
+
+          <div class="stage">
+            <h3>Sample Review & Feedback</h3>
+            <ul>
+              <li>Customer reviews samples</li>
+              <li>Feedback provided</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🧪 <strong>Customer:</strong> Reviews issued samples</p>
+          </div>
+        </div>
+
+        <div
+          class="highlight"
+          style="margin-top: 24px"
+        >
+          Sample Issuance supports both Sample Development and direct Customer Review, without altering Opportunity stages.
+        </div>
+      </div>
+      <div class="section">
+        <h2>Commercial Proposal – Customer View</h2>
+        <p
+          class="lead"
+          style="font-size: 14px; color: #475569; max-width: 900px"
+        >
+          The Commercial Proposal phase begins only after the final sample is approved. This phase focuses on pricing, margins, terms, and commercial alignment
+          — translating the approved product into a formal business offer.
+        </p>
+
+        <div class="flow">
+          <div class="stage">
+            <h3>Costing & Margin Finalization</h3>
+            <ul>
+              <li>Final BOM and cost inputs confirmed</li>
+              <li>Margin validation completed</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">💼 <strong>Internal:</strong> Sales and Finance finalize commercials</p>
+          </div>
+
+          <div class="stage">
+            <h3>Internal Review & Approval</h3>
+            <ul>
+              <li>Commercial approvals obtained</li>
+              <li>Exception handling if required</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">🧾 <strong>Internal:</strong> Management and finance approvals</p>
+          </div>
+
+          <div class="stage">
+            <h3>Proposal Shared</h3>
+            <ul>
+              <li>Formal quote issued</li>
+              <li>Commercial terms communicated</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">📤 <strong>Customer:</strong> Receives formal commercial proposal</p>
+          </div>
+
+          <div class="stage">
+            <h3>Negotiation & Alignment</h3>
+            <ul>
+              <li>Pricing and terms discussed</li>
+              <li>Revisions handled if required</li>
+            </ul>
+            <p style="font-size: 12px; color: #475569">💬 <strong>Customer:</strong> Negotiates commercials and terms</p>
+          </div>
+        </div>
+
+        <div
+          class="highlight"
+          style="margin-top: 24px"
+        >
+          Commercial Proposal is owned by Sales and does not re-open sampling or technical execution.
+        </div>
+      </div>
+
+      <div class="footer-note">Key Rule: Opportunity stages are milestone-driven and never controlled by execution events.</div>
+    </div>
+  </body>
+</html>

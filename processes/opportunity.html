@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunity To Order Process - Artistic Milliners FSD</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        /* Process Diagram Styles */
+        .process-diagram {
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .swimlane-container {
+            min-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #032d60;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .swimlane {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            min-height: 180px;
+            border-bottom: 2px solid #032d60;
+        }
+
+        .swimlane:last-child {
+            border-bottom: none;
+        }
+
+        .swimlane-header {
+            background: linear-gradient(135deg, #032d60 0%, #0176d3 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 2px solid #032d60;
+        }
+
+        .swimlane-content {
+            background: #fafafa;
+            padding: 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Process Elements */
+        .process-box {
+            background: white;
+            border: 2px solid #0176d3;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-width: 150px;
+            max-width: 180px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .process-box.start {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .process-box.end {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .process-box.customer {
+            background: #ede9fe;
+            border-color: #8b5cf6;
+        }
+
+        .process-box-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: #032d60;
+        }
+
+        .process-box-details {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .process-box-details div {
+            margin-bottom: 0.25rem;
+        }
+
+        .decision {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border: 2px solid #f59e0b;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .decision-text {
+            transform: rotate(-45deg);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #032d60;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* Arrows */
+        .arrow {
+            flex-shrink: 0;
+            width: 60px;
+            height: 2px;
+            background: #0176d3;
+            position: relative;
+        }
+
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #0176d3;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .arrow.vertical {
+            width: 2px;
+            height: 40px;
+        }
+
+        .arrow.vertical::after {
+            right: -4px;
+            top: auto;
+            bottom: -6px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid #0176d3;
+        }
+
+        /* Stage Labels */
+        .stage-label {
+            position: absolute;
+            top: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Connector Lines */
+        .connector-vertical {
+            width: 2px;
+            height: 60px;
+            background: #0176d3;
+            margin: 0 auto;
+        }
+
+        .connector-horizontal {
+            height: 2px;
+            flex: 1;
+            background: #0176d3;
+            align-self: center;
+        }
+
+        /* Customer Touchpoint Icon */
+        .customer-icon {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #8b5cf6;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* Notes */
+        .note-box {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            color: #78350f;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Opportunity To Order Process</h1>
+            <p>Complete lifecycle from discovery to customer order placement</p>
+        </div>
+
+        <div class="content">
+            <a href="../index.html" class="back-button">← Back to Index</a>
+
+            <h2 style="margin-bottom: 1.5rem; color: #032d60;">Process Flow Diagram</h2>
+
+            <div class="process-diagram">
+                <div class="swimlane-container">
+
+                    <!-- Swimlane 1: Discovery & Scoping -->
+                    <div class="swimlane">
+                        <div class="swimlane-header">Discovery & Scoping</div>
+                        <div class="swimlane-content">
+                            <div class="process-box start">
+                                <div class="stage-label">Discovery & Scoping</div>
+                                <div class="process-box-title">Initial Engagement</div>
+                                <div class="process-box-details">
+                                    <div>• Meet with customer</div>
+                                    <div>• Understand requirements</div>
+                                    <div>• Validate business opportunity</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box customer">
+                                <div class="customer-icon">👤</div>
+                                <div class="process-box-title">CSR Assessment</div>
+                                <div class="process-box-details">
+                                    <div>• Customer shares detailed requirements</div>
+                                    <div>• Discuss technical feasibility</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">CSR Creation</div>
+                                <div class="process-box-details">
+                                    <div>• Create CSR in Salesforce</div>
+                                    <div>• Document all requirements</div>
+                                    <div>• Add CSR Line Items</div>
+                                    <div>• Move Opp to PD Review</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swimlane 2: Product Development (PD) Review -->
+                    <div class="swimlane">
+                        <div class="swimlane-header">Product Development (PD) Review</div>
+                        <div class="swimlane-content">
+                            <div class="process-box">
+                                <div class="stage-label">PD Review</div>
+                                <div class="process-box-title">PD Assessment</div>
+                                <div class="process-box-details">
+                                    <div>• Review CSR Line Items</div>
+                                    <div>• Assess technical feasibility</div>
+                                    <div>• Estimate timeline and resources</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">Add Sample Development</div>
+                                <div class="process-box-details">
+                                    <div>• Create Sample Development records</div>
+                                    <div>• Link to CSR Line Items</div>
+                                    <div>• Define R&D requirements</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="decision">
+                                <div class="decision-text">Is R&D needed?</div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">Mark Sample Iteration</div>
+                                <div class="process-box-details">
+                                    <div>• Set status: "In Execution"</div>
+                                    <div>• Move Opp to "Sample in Progress"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swimlane 3: Sample Development -->
+                    <div class="swimlane">
+                        <div class="swimlane-header">Sample Development</div>
+                        <div class="swimlane-content">
+                            <div class="process-box">
+                                <div class="stage-label">Sample in Progress</div>
+                                <div class="process-box-title">R&D Process</div>
+                                <div class="process-box-details">
+                                    <div>• IF R&D Required:</div>
+                                    <div>• Execute R&D Request lifecycle</div>
+                                    <div>• Feasibility trials and validation</div>
+                                    <div>• Get customer approval on R&D</div>
+                                </div>
+                                <div class="note-box">
+                                    Note: R&D is a separate parallel workflow. See R&D Request Process for details.
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">Sample Iteration</div>
+                                <div class="process-box-details">
+                                    <div>• R&D → In Development</div>
+                                    <div>• Create physical samples</div>
+                                    <div>• Lab Validation</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">Sample Issuance (SAR)</div>
+                                <div class="process-box-details">
+                                    <div>• Prepare samples for dispatch</div>
+                                    <div>• Ship to customer</div>
+                                    <div>• Track delivery</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box customer">
+                                <div class="customer-icon">👤</div>
+                                <div class="process-box-title">Customer Review</div>
+                                <div class="process-box-details">
+                                    <div>• Customer receives samples</div>
+                                    <div>• Reviews and provides feedback</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="decision">
+                                <div class="decision-text">Approved?</div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">Mark as Closed</div>
+                                <div class="process-box-details">
+                                    <div>• Close Sample Iteration</div>
+                                    <div>• If approved: Lock specs</div>
+                                    <div>• If rejected: Create new revision</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swimlane 4: Sample Issuance -->
+                    <div class="swimlane">
+                        <div class="swimlane-header">Sample Issuance</div>
+                        <div class="swimlane-content">
+                            <div class="process-box">
+                                <div class="stage-label">Sample Approved</div>
+                                <div class="process-box-title">All Samples Approved</div>
+                                <div class="process-box-details">
+                                    <div>• Verify all Sample Developments approved</div>
+                                    <div>• Finalize costing</div>
+                                    <div>• Lock specifications</div>
+                                    <div>• Move Opp to "Sample Approved"</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">PD → Sales Handoff</div>
+                                <div class="process-box-details">
+                                    <div>• Prepare commercial proposal data</div>
+                                    <div>• Share final costs with Sales</div>
+                                    <div>• Update CSR to "Approved"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swimlane 5: Commercial Proposal -->
+                    <div class="swimlane">
+                        <div class="swimlane-header">Commercial Proposal</div>
+                        <div class="swimlane-content">
+                            <div class="process-box">
+                                <div class="stage-label">Proposal & Pricing</div>
+                                <div class="process-box-title">Create Quote</div>
+                                <div class="process-box-details">
+                                    <div>• Generate Commercial Proposal</div>
+                                    <div>• Add proposal line items</div>
+                                    <div>• Set pricing and terms</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box customer">
+                                <div class="customer-icon">👤</div>
+                                <div class="process-box-title">Customer Pricing Review</div>
+                                <div class="process-box-details">
+                                    <div>• Present proposal to customer</div>
+                                    <div>• Negotiate terms if needed</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="decision">
+                                <div class="decision-text">Proposal Accepted?</div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box">
+                                <div class="process-box-title">Mark as Closed</div>
+                                <div class="process-box-details">
+                                    <div>• If accepted: Wait for PO</div>
+                                    <div>• If rejected: Close opportunity</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swimlane 6: Closed -->
+                    <div class="swimlane">
+                        <div class="swimlane-header">Closed</div>
+                        <div class="swimlane-content">
+                            <div class="process-box customer">
+                                <div class="customer-icon">👤</div>
+                                <div class="process-box-title">Customer Issues PO</div>
+                                <div class="process-box-details">
+                                    <div>• Customer sends Purchase Order</div>
+                                    <div>• Confirms final order commitment</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+
+                            <div class="process-box end">
+                                <div class="stage-label">Closed - Won</div>
+                                <div class="process-box-title">Create Customer Order</div>
+                                <div class="process-box-details">
+                                    <div>• Create Customer Order in Salesforce</div>
+                                    <div>• Link to Opportunity & Proposal</div>
+                                    <div>• Sync to ERP</div>
+                                    <div>• Close Opportunity as "Won"</div>
+                                </div>
+                            </div>
+
+                            <div class="arrow"></div>
+                            <div class="arrow"></div>
+
+                            <div class="process-box end">
+                                <div class="process-box-title">Start Fulfillment</div>
+                                <div class="process-box-details">
+                                    <div>• Hand off to operations</div>
+                                    <div>• Begin production planning</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #f1f5f9; border-radius: 0.5rem;">
+                <h3 style="color: #032d60; margin-bottom: 1rem;">Process Legend</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 20px; height: 20px; background: #fffbeb; border: 2px solid #f59e0b; border-radius: 0.25rem;"></div>
+                        <span style="font-size: 0.85rem;">Start Point</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 20px; height: 20px; background: #d1fae5; border: 2px solid #10b981; border-radius: 0.25rem;"></div>
+                        <span style="font-size: 0.85rem;">End Point</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 20px; height: 20px; background: #ede9fe; border: 2px solid #8b5cf6; border-radius: 0.25rem;"></div>
+                        <span style="font-size: 0.85rem;">Customer Touchpoint</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <div style="width: 20px; height: 20px; background: white; border: 2px solid #f59e0b; transform: rotate(45deg);"></div>
+                        <span style="font-size: 0.85rem;">Decision Point</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
