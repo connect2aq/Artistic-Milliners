@@ -203,18 +203,86 @@
       .toggle-btn {
         display: inline-block;
         margin-left: 0.5rem;
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.3);
         text-align: center;
-        line-height: 20px;
-        font-size: 0.75rem;
+        line-height: 24px;
+        font-size: 0.875rem;
         font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .toggle-btn:hover {
+        background: rgba(255, 255, 255, 0.5);
+        transform: scale(1.1);
+      }
+
+      .toggle-btn.collapsed {
+        transform: rotate(-90deg);
+      }
+
+      .toggle-btn.collapsed:hover {
+        transform: rotate(-90deg) scale(1.1);
       }
 
       .collapsed > .tree-children {
         display: none;
+      }
+
+      /* Relationship Badges */
+      .relationship-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        white-space: nowrap;
+      }
+
+      .relationship-badge.parent {
+        background: rgba(16, 185, 129, 0.2);
+        color: #065f46;
+        border: 1px solid rgba(16, 185, 129, 0.4);
+      }
+
+      .level-0 .relationship-badge.parent,
+      .level-1 .relationship-badge.parent,
+      .level-2 .relationship-badge.parent {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .relationship-badge.child {
+        background: #ede9fe;
+        color: #6b21a8;
+        border: 1px solid #a855f7;
+      }
+
+      .level-3 .relationship-badge.child,
+      .level-4 .relationship-badge.child {
+        background: #ede9fe;
+        color: #6b21a8;
+        border: 1px solid #a855f7;
+      }
+
+      .relationship-badge-icon {
+        font-size: 0.625rem;
+      }
+
+      /* Has Children Indicator */
+      .has-children {
+        position: relative;
+      }
+
+      .has-children > .node-content {
+        padding-right: 3rem;
       }
 
       /* Stages Section Styles */
@@ -921,57 +989,23 @@
               <span class="legend-icon">▼</span>
               <span><strong>Expandable Sections:</strong> Click section headers to expand/collapse detailed stage information</span>
             </div>
+            <div class="legend-item-full">
+              <span
+                class="legend-icon"
+                style="background: rgba(16, 185, 129, 0.2); color: #065f46; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.65rem; border: 1px solid rgba(16, 185, 129, 0.4)"
+                >👨‍👧‍👦 Has Children</span
+              >
+              <span><strong>Parent Object:</strong> Object has child records beneath it. Click ▼ to expand/collapse children</span>
+            </div>
+            <div class="legend-item-full">
+              <span
+                class="legend-icon"
+                style="background: #ede9fe; color: #6b21a8; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.65rem; border: 1px solid #a855f7"
+                >⬆️ Child of ...</span
+              >
+              <span><strong>Child Object:</strong> This object belongs to a parent object (e.g., CSR is child of Opportunity)</span>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Table of Contents -->
-      <div
-        class="toc-container"
-        id="tableOfContents"
-      >
-        <div class="toc-title">📑 Quick Navigation</div>
-        <div class="toc-links">
-          <a
-            href="#workflowPath"
-            class="toc-link"
-            >🔄 Workflow Path</a
-          >
-          <a
-            href="#coreConcept"
-            class="toc-link"
-            >💡 Core Concept</a
-          >
-          <a
-            href="#opportunityStages"
-            class="toc-link"
-            >📊 Opportunity Stages</a
-          >
-          <a
-            href="#csrStages"
-            class="toc-link"
-            >🔄 CSR Lifecycle</a
-          >
-          <a
-            href="#sampleDevStages"
-            class="toc-link"
-            >🧵 Sample Development</a
-          >
-          <a
-            href="#rndStages"
-            class="toc-link"
-            >🔬 R&D Process</a
-          >
-          <a
-            href="#sampleIssuanceStages"
-            class="toc-link"
-            >📮 Sample Issuance</a
-          >
-          <a
-            href="#commercialProposalStages"
-            class="toc-link"
-            >💰 Commercial Proposal</a
-          >
         </div>
       </div>
 
@@ -1051,22 +1085,46 @@
 
       <div class="tree">
         <!-- Account -->
-        <div class="tree-node level-0">
+        <div class="tree-node level-0 has-children">
           <div class="node-content">
             <div class="node-title">
               <span class="node-icon">🏢</span>
               Account
+              <span class="relationship-badge parent">
+                <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                Has Children
+              </span>
+              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
             </div>
-            <div class="node-description">Represents the Customer / Brand</div>
+            <div class="node-description">
+              Represents the Customer / Brand
+              <div style="margin-top: 0.75rem; display: flex; gap: 1rem;">
+                <a href="javascript:void(0)" onclick="expandAll(event)" style="color: #0176d3; text-decoration: none; font-size: 0.875rem; font-weight: 600; cursor: pointer;">
+                  ➕ Expand All
+                </a>
+                <a href="javascript:void(0)" onclick="collapseAll(event)" style="color: #0176d3; text-decoration: none; font-size: 0.875rem; font-weight: 600; cursor: pointer;">
+                  ➖ Collapse All
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="tree-children">
             <!-- Business Opportunity -->
-            <div class="tree-node level-1">
+            <div class="tree-node level-1 has-children">
               <div class="node-content">
                 <div class="node-title">
                   <span class="node-icon">💼</span>
                   Business Opportunity
+                  <span class="relationship-badge child">
+                    <span class="relationship-badge-icon">⬆️</span>
+                    Child of Account
+                  </span>
+                  <span class="relationship-badge parent">
+                    <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                    Has Children
+                  </span>
+                  <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                 </div>
                 <div class="node-description">
                   Commercial context for a customer requirement<br />
@@ -1278,11 +1336,20 @@
 
               <div class="tree-children">
                 <!-- Customer Sample Request -->
-                <div class="tree-node level-2">
+                <div class="tree-node level-2 has-children">
                   <div class="node-content">
                     <div class="node-title">
                       <span class="node-icon">📋</span>
                       Customer Sample Request (CSR)
+                      <span class="relationship-badge child">
+                        <span class="relationship-badge-icon">⬆️</span>
+                        Child of Opportunity
+                      </span>
+                      <span class="relationship-badge parent">
+                        <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                        Has Children
+                      </span>
+                      <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                     </div>
                     <div class="node-description">
                       Structured representation of customer intent<br />
@@ -1525,11 +1592,20 @@
                     </div>
 
                     <!-- Apparel Sample Development -->
-                    <div class="tree-node level-3">
+                    <div class="tree-node level-3 has-children">
                       <div class="node-content">
                         <div class="node-title">
                           <span class="node-icon">👔</span>
                           Apparel Sample Development
+                          <span class="relationship-badge child">
+                            <span class="relationship-badge-icon">⬆️</span>
+                            Child of CSR
+                          </span>
+                          <span class="relationship-badge parent">
+                            <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                            Has Children
+                          </span>
+                          <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                         </div>
                         <div class="node-description">
                           Apparel-specific development intent<br />
@@ -1586,11 +1662,20 @@
 
                       <div class="tree-children">
                         <!-- Apparel Sample Iterations -->
-                        <div class="tree-node level-4">
+                        <div class="tree-node level-4 has-children">
                           <div class="node-content">
                             <div class="node-title">
                               <span class="node-icon">🔄</span>
                               Apparel Sample Iterations
+                              <span class="relationship-badge child">
+                                <span class="relationship-badge-icon">⬆️</span>
+                                Child of Apparel Sample Development
+                              </span>
+                              <span class="relationship-badge parent">
+                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                Has Children
+                              </span>
+                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                             </div>
                             <div class="node-description">
                               Each iteration represents one refinement<br />
@@ -1763,6 +1848,10 @@
                                 <div class="node-title">
                                   <span class="node-icon">🔬</span>
                                   R&D Request (Optional)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
                                 </div>
                                 <div class="node-description">
                                   Requested by PD Lead<br />
@@ -1953,6 +2042,10 @@
                                 <div class="node-title">
                                   <span class="node-icon">📦</span>
                                   Sample Development Order (SDO)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
                                 </div>
                                 <div class="node-description">
                                   Created by R&D Lead<br />
@@ -1978,11 +2071,20 @@
                     </div>
 
                     <!-- Fabric Sample Development -->
-                    <div class="tree-node level-3">
+                    <div class="tree-node level-3 has-children">
                       <div class="node-content">
                         <div class="node-title">
                           <span class="node-icon">🧵</span>
                           Fabric Sample Development
+                          <span class="relationship-badge child">
+                            <span class="relationship-badge-icon">⬆️</span>
+                            Child of CSR
+                          </span>
+                          <span class="relationship-badge parent">
+                            <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                            Has Children
+                          </span>
+                          <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                         </div>
                         <div class="node-description">Fabric-specific development intent</div>
                       </div>
@@ -2016,6 +2118,10 @@
                                 <div class="node-title">
                                   <span class="node-icon">📦</span>
                                   Sample Development Order (SDO)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
                                 </div>
                                 <div class="node-description">Executed in ERP</div>
                               </div>
@@ -2026,11 +2132,20 @@
                     </div>
 
                     <!-- Yarn Sample Development -->
-                    <div class="tree-node level-3">
+                    <div class="tree-node level-3 has-children">
                       <div class="node-content">
                         <div class="node-title">
                           <span class="node-icon">🪡</span>
                           Yarn Sample Development
+                          <span class="relationship-badge child">
+                            <span class="relationship-badge-icon">⬆️</span>
+                            Child of CSR
+                          </span>
+                          <span class="relationship-badge parent">
+                            <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                            Has Children
+                          </span>
+                          <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                         </div>
                         <div class="node-description">Yarn-specific development intent</div>
                       </div>
@@ -2064,6 +2179,10 @@
                                 <div class="node-title">
                                   <span class="node-icon">📦</span>
                                   Sample Development Order (SDO)
+                                  <span class="relationship-badge child">
+                                    <span class="relationship-badge-icon">⬆️</span>
+                                    Child of Sample Iteration
+                                  </span>
                                 </div>
                                 <div class="node-description">Executed in ERP</div>
                               </div>
@@ -2073,26 +2192,21 @@
                       </div>
                     </div>
 
-                    <!-- Sample Issuance (Logical Grouping) -->
-                    <div class="tree-node level-3">
-                      <div class="node-content">
-                        <div class="node-title">
-                          <span class="node-icon">📮</span>
-                          Sample Issuance (Physical Samples)
-                        </div>
-                        <div class="node-description">
-                          Logical grouping for physical sample issuance requests<br />
-                          Includes apparel, fabric, and yarn sample requests
-                        </div>
-                      </div>
-
-                      <div class="tree-children">
-                        <!-- Sample Apparel Request -->
-                        <div class="tree-node level-4">
+                    <!-- Sample Apparel Request -->
+                    <div class="tree-node level-3 has-children">
                           <div class="node-content">
                             <div class="node-title">
                               <span class="node-icon">👕</span>
                               Sample Apparel Request (SAR)
+                              <span class="relationship-badge child">
+                                <span class="relationship-badge-icon">⬆️</span>
+                                Child of CSR
+                              </span>
+                              <span class="relationship-badge parent">
+                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                Has Children
+                              </span>
+                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                             </div>
                             <div class="node-description">
                               Request for physical apparel samples to be issued to customer<br />
@@ -2218,11 +2332,20 @@
                         </div>
 
                         <!-- Sample Fabric Request -->
-                        <div class="tree-node level-4">
+                        <div class="tree-node level-4 has-children">
                           <div class="node-content">
                             <div class="node-title">
                               <span class="node-icon">🧶</span>
                               Sample Fabric Request (SFR)
+                              <span class="relationship-badge child">
+                                <span class="relationship-badge-icon">⬆️</span>
+                                Child of CSR
+                              </span>
+                              <span class="relationship-badge parent">
+                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                Has Children
+                              </span>
+                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                             </div>
                             <div class="node-description">Request for physical fabric samples to be issued to customer</div>
                           </div>
@@ -2242,11 +2365,20 @@
                         </div>
 
                         <!-- Sample Yarn Request -->
-                        <div class="tree-node level-4">
+                        <div class="tree-node level-4 has-children">
                           <div class="node-content">
                             <div class="node-title">
                               <span class="node-icon">🧷</span>
                               Sample Yarn Request (SYR)
+                              <span class="relationship-badge child">
+                                <span class="relationship-badge-icon">⬆️</span>
+                                Child of CSR
+                              </span>
+                              <span class="relationship-badge parent">
+                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                                Has Children
+                              </span>
+                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                             </div>
                             <div class="node-description">Request for physical yarn samples to be issued to customer</div>
                           </div>
@@ -2266,15 +2398,22 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
                 <!-- Commercial Proposal -->
-                <div class="tree-node level-2">
+                <div class="tree-node level-2 has-children">
                   <div class="node-content">
                     <div class="node-title">
                       <span class="node-icon">💰</span>
                       Commercial Proposal
+                      <span class="relationship-badge child">
+                        <span class="relationship-badge-icon">⬆️</span>
+                        Child of Opportunity
+                      </span>
+                      <span class="relationship-badge parent">
+                        <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                        Has Children
+                      </span>
+                      <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
                     </div>
                     <div class="node-description">
                       Pricing and commercial terms based on:
@@ -2441,6 +2580,10 @@
                     <div class="node-title">
                       <span class="node-icon">✅</span>
                       Customer Order
+                      <span class="relationship-badge child">
+                        <span class="relationship-badge-icon">⬆️</span>
+                        Child of Opportunity
+                      </span>
                     </div>
                     <div class="node-description">
                       Confirmed customer commitment<br />
@@ -2515,13 +2658,6 @@
           </div>
         </div>
       </div>
-
-      <div class="mt-8 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-        <p class="text-sm text-blue-900">
-          <strong>Note:</strong> Click on any node to view details. The hierarchy flows from Account (Customer/Brand) through Business Opportunity, Customer
-          Sample Request, to various sample development types, and finally to Commercial Proposal and Customer Order.
-        </p>
-      </div>
     </div>
 
     <!-- Back to Top Button -->
@@ -2534,14 +2670,25 @@
     </div>
 
     <script>
-      // Collapse all stages by default on page load
+      // Collapse all stages and tree nodes by default on page load
       window.addEventListener('DOMContentLoaded', function () {
+        // Collapse all stage sections
         const stageSections = ['opportunityStages', 'csrStages', 'sampleDevStages', 'rndStages', 'sampleIssuanceStages', 'commercialProposalStages'];
 
         stageSections.forEach((sectionId) => {
           const section = document.getElementById(sectionId);
           if (section) {
             section.classList.add('collapsed');
+          }
+        });
+
+        // Collapse all tree nodes with children by default
+        const treeNodesWithChildren = document.querySelectorAll('.tree-node.has-children');
+        treeNodesWithChildren.forEach((node) => {
+          node.classList.add('collapsed');
+          const toggleBtn = node.querySelector('.toggle-btn');
+          if (toggleBtn) {
+            toggleBtn.classList.add('collapsed');
           }
         });
       });
@@ -2582,6 +2729,44 @@
       function toggleStages() {
         const stagesSection = document.getElementById('opportunityStages');
         stagesSection.classList.toggle('collapsed');
+      }
+
+      // Toggle tree node expand/collapse
+      function toggleNode(event, nodeElement) {
+        event.stopPropagation();
+        const toggleBtn = nodeElement.querySelector('.toggle-btn');
+        nodeElement.classList.toggle('collapsed');
+        if (toggleBtn) {
+          toggleBtn.classList.toggle('collapsed');
+        }
+      }
+
+      // Expand all tree nodes
+      function expandAll(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const treeNodesWithChildren = document.querySelectorAll('.tree-node.has-children');
+        treeNodesWithChildren.forEach((node) => {
+          node.classList.remove('collapsed');
+          const toggleBtn = node.querySelector('.toggle-btn');
+          if (toggleBtn) {
+            toggleBtn.classList.remove('collapsed');
+          }
+        });
+      }
+
+      // Collapse all tree nodes
+      function collapseAll(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const treeNodesWithChildren = document.querySelectorAll('.tree-node.has-children');
+        treeNodesWithChildren.forEach((node) => {
+          node.classList.add('collapsed');
+          const toggleBtn = node.querySelector('.toggle-btn');
+          if (toggleBtn) {
+            toggleBtn.classList.add('collapsed');
+          }
+        });
       }
 
       // Toggle stages section for CSR
