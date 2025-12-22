@@ -330,6 +330,10 @@
         display: none;
       }
 
+      .stages-section.collapsed .collapse-button-container {
+        display: none;
+      }
+
       /* Fields Section Styles */
       .fields-section {
         margin-top: 1rem;
@@ -1041,13 +1045,21 @@
       }
 
       @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       @keyframes zoomIn {
-        from { transform: scale(0.8); }
-        to { transform: scale(1); }
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
       }
 
       @media (max-width: 768px) {
@@ -1127,44 +1139,51 @@
       </div>
 
       <!-- Document Purpose Section -->
-      <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; color: white; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
-        <h2 style="font-size: 1.75rem; font-weight: 700; margin: 0 0 1.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
-          📘 About This Document
-        </h2>
+      <div
+        style="
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          border-radius: 1rem;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          color: white;
+          box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        "
+      >
+        <h2 style="font-size: 1.75rem; font-weight: 700; margin: 0 0 1.5rem 0; display: flex; align-items: center; gap: 0.5rem">📘 About This Document</h2>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 0.5rem 0; opacity: 0.95;">Purpose</h3>
-          <p style="margin: 0; line-height: 1.8; opacity: 0.9;">
-            This document provides a complete visual map of Artistic Milliners' <strong>Opportunity-to-Order lifecycle</strong> in Salesforce.
-            It shows all business objects, their relationships, lifecycle stages, process flows, and data fields that will be tracked in the system.
+        <div style="margin-bottom: 1.5rem">
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 0.5rem 0; opacity: 0.95">Purpose</h3>
+          <p style="margin: 0; line-height: 1.8; opacity: 0.9">
+            This document provides a complete visual map of Artistic Milliners' <strong>Opportunity-to-Order lifecycle</strong> in Salesforce. It shows all
+            business objects, their relationships, lifecycle stages, process flows, and data fields that will be tracked in the system.
           </p>
         </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 0.75rem 0; opacity: 0.95;">Who Should Read This</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px);">
-              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem;">👔 Business Stakeholders</div>
-              <div style="font-size: 0.95rem; opacity: 0.9;">Understand how your processes will work in Salesforce and validate the solution design</div>
+        <div style="margin-bottom: 1.5rem">
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 0.75rem 0; opacity: 0.95">Who Should Read This</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem">
+            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px)">
+              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem">👔 Business Stakeholders</div>
+              <div style="font-size: 0.95rem; opacity: 0.9">Understand how your processes will work in Salesforce and validate the solution design</div>
             </div>
-            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px);">
-              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem;">👥 Sales/PD/R&D Teams</div>
-              <div style="font-size: 0.95rem; opacity: 0.9;">See the stages you'll manage, data you'll enter, and workflows you'll follow daily</div>
+            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px)">
+              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem">👥 Sales/PD/R&D Teams</div>
+              <div style="font-size: 0.95rem; opacity: 0.9">See the stages you'll manage, data you'll enter, and workflows you'll follow daily</div>
             </div>
-            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px);">
-              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem;">💻 Implementation Team</div>
-              <div style="font-size: 0.95rem; opacity: 0.9;">Technical reference for building objects, fields, stages, and automation in Salesforce</div>
+            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px)">
+              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem">💻 Implementation Team</div>
+              <div style="font-size: 0.95rem; opacity: 0.9">Technical reference for building objects, fields, stages, and automation in Salesforce</div>
             </div>
-            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px);">
-              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem;">📚 Training Team</div>
-              <div style="font-size: 0.95rem; opacity: 0.9;">Foundation for creating user training materials and change management plans</div>
+            <div style="background: rgba(255, 255, 255, 0.15); padding: 1rem; border-radius: 0.5rem; backdrop-filter: blur(10px)">
+              <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 1.05rem">📚 Training Team</div>
+              <div style="font-size: 0.95rem; opacity: 0.9">Foundation for creating user training materials and change management plans</div>
             </div>
           </div>
         </div>
 
         <div>
-          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 0.75rem 0; opacity: 0.95;">How to Navigate</h3>
-          <ul style="margin: 0; padding-left: 1.5rem; line-height: 2; opacity: 0.9;">
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 0.75rem 0; opacity: 0.95">How to Navigate</h3>
+          <ul style="margin: 0; padding-left: 1.5rem; line-height: 2; opacity: 0.9">
             <li><strong>Expand/Collapse:</strong> Click <strong>▼</strong> arrows or section headers to show/hide details</li>
             <li><strong>Expand All:</strong> Use "Expand All" / "Collapse All" links in the Account section to open/close everything at once</li>
             <li><strong>Process Flows:</strong> Click process flow diagram thumbnails to view full-size workflows with zoom capability</li>
@@ -1234,7 +1253,14 @@
             <div class="legend-item-full">
               <span
                 class="legend-icon"
-                style="background: rgba(16, 185, 129, 0.2); color: #065f46; padding: 0.25rem 0.5rem; border-radius: 0.75rem; font-size: 0.65rem; border: 1px solid rgba(16, 185, 129, 0.4)"
+                style="
+                  background: rgba(16, 185, 129, 0.2);
+                  color: #065f46;
+                  padding: 0.25rem 0.5rem;
+                  border-radius: 0.75rem;
+                  font-size: 0.65rem;
+                  border: 1px solid rgba(16, 185, 129, 0.4);
+                "
                 >👨‍👧‍👦 Has Children</span
               >
               <span><strong>Parent Object:</strong> Object has child records beneath it. Click ▼ to expand/collapse children</span>
@@ -1336,15 +1362,27 @@
                 <span class="relationship-badge-icon">👨‍👧‍👦</span>
                 Has Children
               </span>
-              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+              <span
+                class="toggle-btn"
+                onclick="toggleNode(event, this.closest('.tree-node'))"
+                >▼</span
+              >
             </div>
             <div class="node-description">
               Represents the Customer / Brand
-              <div style="margin-top: 0.75rem; display: flex; gap: 1rem;">
-                <a href="javascript:void(0)" onclick="expandAll(event)" style="color: #0176d3; text-decoration: none; font-size: 0.875rem; font-weight: 600; cursor: pointer;">
+              <div style="margin-top: 0.75rem; display: flex; gap: 1rem">
+                <a
+                  href="javascript:void(0)"
+                  onclick="expandAll(event)"
+                  style="color: #0176d3; text-decoration: none; font-size: 0.875rem; font-weight: 600; cursor: pointer"
+                >
                   ➕ Expand All
                 </a>
-                <a href="javascript:void(0)" onclick="collapseAll(event)" style="color: #0176d3; text-decoration: none; font-size: 0.875rem; font-weight: 600; cursor: pointer;">
+                <a
+                  href="javascript:void(0)"
+                  onclick="collapseAll(event)"
+                  style="color: #0176d3; text-decoration: none; font-size: 0.875rem; font-weight: 600; cursor: pointer"
+                >
                   ➖ Collapse All
                 </a>
               </div>
@@ -1366,7 +1404,11 @@
                     <span class="relationship-badge-icon">👨‍👧‍👦</span>
                     Has Children
                   </span>
-                  <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                  <span
+                    class="toggle-btn"
+                    onclick="toggleNode(event, this.closest('.tree-node'))"
+                    >▼</span
+                  >
                 </div>
                 <div class="node-description">
                   Commercial context for a customer requirement<br />
@@ -1380,7 +1422,7 @@
                 >
                   <div
                     class="stages-header"
-                    onclick="toggleStages()"
+                    onclick="toggleStages('opportunityStages')"
                   >
                     <span>📊 Opportunity Stages Flow</span>
                     <span class="stages-toggle">▼</span>
@@ -1404,6 +1446,41 @@
                         <span class="customer-touchpoint-icon">📩</span>
                         <span><strong>Customer:</strong> Shares initial requirement and business intent</span>
                       </div>
+
+                      <!-- Automated Actions -->
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                          border-left: 3px solid #10b981;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to Sales Rep: "New opportunity assigned - [Customer] - [Product Type]"<br />
+                          • Task created for Sales Rep: "Conduct discovery call with customer" (Due: 2 days)<br />
+                          • Opportunity added to Sales pipeline dashboard
+                        </div>
+                      </div>
+
+                      <!-- Time-Based Escalations -->
+                      <div
+                        style="
+                          margin-top: 0.75rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                          border-left: 3px solid #f59e0b;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • After 5 days: Reminder email to Sales Rep<br />
+                          • After 10 days: Alert to Sales Manager + auto-task: "Review stalled opportunity"
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Stage 2: PD Review -->
@@ -1419,6 +1496,41 @@
                         <div>• Development approach decided</div>
                         <div>• Resource and timeline estimates</div>
                         <div><strong>Exit Criteria:</strong> CSR approved, ready for sampling execution</div>
+                      </div>
+
+                      <!-- Automated Actions -->
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                          border-left: 3px solid #10b981;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to PD Manager: "New opportunity requires technical assessment - [Customer]"<br />
+                          • Email to Sales Rep: "Opportunity with PD team for technical review"<br />
+                          • Task created for PD Manager: "Create CSR and assess feasibility" (Due: 3 days)
+                        </div>
+                      </div>
+
+                      <!-- Time-Based Escalations -->
+                      <div
+                        style="
+                          margin-top: 0.75rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                          border-left: 3px solid #f59e0b;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • After 3 days: Reminder to PD Manager: "CSR creation pending"<br />
+                          • After 7 days: Escalate to PD Director
+                        </div>
                       </div>
                     </div>
 
@@ -1440,6 +1552,42 @@
                         <span class="customer-touchpoint-icon">🧪</span>
                         <span><strong>Customer:</strong> Reviews interim samples and provides feedback</span>
                       </div>
+
+                      <!-- Automated Actions -->
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                          border-left: 3px solid #10b981;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to assigned PD team: "CSR approved - begin sample development"<br />
+                          • Email to Customer: "Your sample development has started - estimated completion: [date]"<br />
+                          • Email to Sales Rep: "Sample development in progress - keep customer updated"
+                        </div>
+                      </div>
+
+                      <!-- Time-Based Escalations -->
+                      <div
+                        style="
+                          margin-top: 0.75rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                          border-left: 3px solid #f59e0b;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • After 18 days: Alert to PD team + Sales Rep: "Sample approaching target timeline (21 days)"<br />
+                          • After 25 days: Escalate to PD Manager: "Sample development delayed - update customer"<br />
+                          • After 30 days: Escalate to PD Director + auto-email to customer with status update
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Stage 4: Sample Approved -->
@@ -1460,6 +1608,43 @@
                         <span class="customer-touchpoint-icon">✅</span>
                         <span><strong>Customer:</strong> Grants final sample approval (Gold Seal)</span>
                       </div>
+
+                      <!-- Automated Actions -->
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                          border-left: 3px solid #10b981;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to Sales Rep: "🎉 Customer granted Gold Seal approval - ready for proposal"<br />
+                          • Email to PD team: "Gold Seal approved - handoff to Sales complete"<br />
+                          • Email to Customer: "Thank you for approving samples - commercial proposal coming soon"<br />
+                          • Task created for Sales Rep: "Create Commercial Proposal" (Due: 2 days)<br />
+                          • Update CSR status to "Approved (Gold Seal)"
+                        </div>
+                      </div>
+
+                      <!-- Time-Based Escalations -->
+                      <div
+                        style="
+                          margin-top: 0.75rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                          border-left: 3px solid #f59e0b;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • After 2 days: Reminder to Sales Rep: "Commercial proposal not yet created"<br />
+                          • After 5 days: Alert to Sales Manager
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Stage 5: Commercial Proposal -->
@@ -1479,6 +1664,42 @@
                       <div class="customer-touchpoint">
                         <span class="customer-touchpoint-icon">💬</span>
                         <span><strong>Customer:</strong> Reviews pricing and commercial terms</span>
+                      </div>
+
+                      <!-- Automated Actions -->
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                          border-left: 3px solid #10b981;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to Sales Manager (if Amount > threshold): "High-value proposal requires review"<br />
+                          • Email to Customer: "Commercial proposal attached - valid for 30 days"
+                        </div>
+                      </div>
+
+                      <!-- Time-Based Escalations -->
+                      <div
+                        style="
+                          margin-top: 0.75rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                          border-left: 3px solid #f59e0b;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • After 10 days: Auto-email to customer: "Following up on proposal sent [date]"<br />
+                          • After 14 days: Alert to Sales Manager: "Proposal aging without response"<br />
+                          • After 25 days: Alert: "Proposal expiring soon (5 days remaining)"<br />
+                          • After 30 days: Auto-mark as "Expired" + task to Sales Rep
+                        </div>
                       </div>
                     </div>
 
@@ -1501,17 +1722,87 @@
                         <span class="customer-touchpoint-icon">📄</span>
                         <span><strong>Customer:</strong> Issues Purchase Order (or formally declines)</span>
                       </div>
+
+                      <!-- Automated Actions - Won -->
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                          border-left: 3px solid #10b981;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions (When Closed Won)</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to Sales Team: "🎉 Order confirmed! PO received from [Customer]"<br />
+                          • Email to ERP Team: "New customer order ready for processing - PO attached"<br />
+                          • Email to Customer: "Thank you for your order - order confirmation attached"<br />
+                          • ERP Integration: Customer Order data sent to ERP<br />
+                          • Sales forecast updated, revenue recognized
+                        </div>
+                      </div>
+
+                      <!-- Automated Actions - Lost -->
+                      <div
+                        style="
+                          margin-top: 0.75rem;
+                          padding: 0.75rem;
+                          background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+                          border-left: 3px solid #ef4444;
+                          border-radius: 0.375rem;
+                        "
+                      >
+                        <div style="font-weight: 600; color: #dc2626; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions (When Closed Lost)</div>
+                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                          • Email to Sales Manager: "Opportunity lost - [Customer] - Reason: [X]"<br />
+                          • Task created for Sales Rep: "Document loss reason and lessons learned" (Due: 1 day)
+                        </div>
+                      </div>
                     </div>
+                  </div>
+
+                  <!-- Collapse Button -->
+                  <div
+                    class="collapse-button-container"
+                    style="
+                      text-align: center;
+                      padding: 0.65rem;
+                      background: rgba(0, 0, 0, 0.02);
+                      border-top: 1px solid rgba(0, 0, 0, 0.1);
+                      border-radius: 0 0 0.5rem 0.5rem;
+                    "
+                  >
+                    <button
+                      onclick="toggleStages('opportunityStages')"
+                      style="
+                        background: #f8fafc;
+                        color: #475569;
+                        border: 1px solid #cbd5e1;
+                        padding: 0.45rem 1.25rem;
+                        border-radius: 0.375rem;
+                        cursor: pointer;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        transition: all 0.2s;
+                      "
+                    >
+                      ▲ Collapse Section
+                    </button>
                   </div>
                 </div>
 
                 <!-- Process Flow Diagram Section -->
                 <div class="process-flow-section">
-                  <div class="process-flow-header">
-                    🔄 Opportunity Process Flow Diagram
-                  </div>
-                  <div class="process-flow-thumbnail" onclick="openModal('placeholder-opportunity-flow.png')">
-                    <img src="placeholder-opportunity-flow.png" alt="Opportunity Process Flow">
+                  <div class="process-flow-header">🔄 Opportunity Process Flow Diagram</div>
+                  <div
+                    class="process-flow-thumbnail"
+                    onclick="openModal('placeholder-opportunity-flow.png')"
+                  >
+                    <img
+                      src="placeholder-opportunity-flow.png"
+                      alt="Opportunity Process Flow"
+                    />
                   </div>
                 </div>
 
@@ -1601,7 +1892,11 @@
                         <span class="relationship-badge-icon">👨‍👧‍👦</span>
                         Has Children
                       </span>
-                      <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                      <span
+                        class="toggle-btn"
+                        onclick="toggleNode(event, this.closest('.tree-node'))"
+                        >▼</span
+                      >
                     </div>
                     <div class="node-description">
                       Structured representation of customer intent<br />
@@ -1640,6 +1935,41 @@
                             <div>• Review and approve CSR for execution</div>
                             <div><strong>Exit Criteria:</strong> CSR review completed, ready for execution</div>
                           </div>
+
+                          <!-- Automated Actions -->
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to PD Manager: "New CSR created for [Customer] - [Opportunity]"<br />
+                              • Task created for PD Manager: "Review and approve CSR" (Due: 2 days)<br />
+                              • Link CSR to parent Opportunity record
+                            </div>
+                          </div>
+
+                          <!-- Time-Based Escalations -->
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                              border-left: 3px solid #f59e0b;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • After 3 days: Reminder to PD Manager: "CSR pending review"<br />
+                              • After 7 days: Escalate to PD Director
+                            </div>
+                          </div>
                         </div>
 
                         <!-- Stage 2: In Execution -->
@@ -1656,6 +1986,41 @@
                             <div>• Incorporate customer feedback and iterate as needed</div>
                             <div><strong>Exit Criteria:</strong> All required samples shared with customer</div>
                           </div>
+
+                          <!-- Automated Actions -->
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to PD Team: "CSR approved - begin sample development"<br />
+                              • Email to Sales Rep: "Sample development started - target completion: [date]"<br />
+                              • Update parent Opportunity stage to "Sample in Progress"
+                            </div>
+                          </div>
+
+                          <!-- Time-Based Escalations -->
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                              border-left: 3px solid #f59e0b;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • After 14 days: Alert to PD Manager: "Sample development in progress for 2+ weeks"<br />
+                              • After 21 days: Escalate to PD Director + notify Sales Rep of delay
+                            </div>
+                          </div>
                         </div>
 
                         <!-- Stage 3: Final Customer Decision -->
@@ -1671,6 +2036,41 @@
                             <div>• Customer conducts final evaluation</div>
                             <div>• Await Gold Seal approval or rejection decision</div>
                             <div><strong>Exit Criteria:</strong> Customer grants approval (Gold Seal) or rejects CSR</div>
+                          </div>
+
+                          <!-- Automated Actions -->
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Customer: "Final samples submitted for your review and approval"<br />
+                              • Email to Sales Rep: "Customer evaluation in progress"<br />
+                              • Email to PD Manager: "Awaiting customer decision on CSR"
+                            </div>
+                          </div>
+
+                          <!-- Time-Based Escalations -->
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                              border-left: 3px solid #f59e0b;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • After 7 days: Auto-email to customer: "Gentle reminder - awaiting your feedback on samples"<br />
+                              • After 14 days: Alert to Sales Rep: "Customer decision pending for 2+ weeks"
+                            </div>
                           </div>
                         </div>
 
@@ -1692,6 +2092,25 @@
                             <span class="customer-touchpoint-icon">✅</span>
                             <span><strong>Customer:</strong> Grants Gold Seal approval - confirms all samples meet requirements</span>
                           </div>
+
+                          <!-- Automated Actions -->
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Sales Rep: "🎉 Customer granted Gold Seal - ready for commercial proposal"<br />
+                              • Email to PD Manager: "CSR approved - handoff to Sales complete"<br />
+                              • Update parent Opportunity stage to "Sample Approved"<br />
+                              • Task created for Sales Rep: "Create Commercial Proposal" (Due: 2 days)
+                            </div>
+                          </div>
                         </div>
 
                         <!-- Stage 5: Rejected / Cancelled -->
@@ -1711,17 +2130,69 @@
                             <span class="customer-touchpoint-icon">❌</span>
                             <span><strong>Customer:</strong> Formally rejects samples or cancels requirement</span>
                           </div>
+
+                          <!-- Automated Actions -->
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+                              border-left: 3px solid #ef4444;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #dc2626; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Sales Manager: "CSR rejected by customer - [Reason]"<br />
+                              • Email to PD Manager: "CSR closed - samples did not meet customer requirements"<br />
+                              • Task created for PD Manager: "Document rejection learnings" (Due: 2 days)<br />
+                              • Close all child Sample Iteration records
+                            </div>
+                          </div>
                         </div>
+                      </div>
+
+                      <!-- Collapse Button -->
+                      <div
+                        class="collapse-button-container"
+                        style="
+                          text-align: center;
+                          padding: 0.65rem;
+                          background: rgba(0, 0, 0, 0.02);
+                          border-top: 1px solid rgba(0, 0, 0, 0.1);
+                          border-radius: 0 0 0.5rem 0.5rem;
+                        "
+                      >
+                        <button
+                          onclick="toggleCSRStages()"
+                          style="
+                            background: #f8fafc;
+                            color: #475569;
+                            border: 1px solid #cbd5e1;
+                            padding: 0.45rem 1.25rem;
+                            border-radius: 0.375rem;
+                            cursor: pointer;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                            transition: all 0.2s;
+                          "
+                        >
+                          ▲ Collapse Section
+                        </button>
                       </div>
                     </div>
 
                     <!-- Process Flow Diagram Section -->
                     <div class="process-flow-section">
-                      <div class="process-flow-header">
-                        🔄 Customer Sample Request Process Flow Diagram
-                      </div>
-                      <div class="process-flow-thumbnail" onclick="openModal('placeholder-csr-flow.png')">
-                        <img src="placeholder-csr-flow.png" alt="Customer Sample Request Process Flow">
+                      <div class="process-flow-header">🔄 Customer Sample Request Process Flow Diagram</div>
+                      <div
+                        class="process-flow-thumbnail"
+                        onclick="openModal('placeholder-csr-flow.png')"
+                      >
+                        <img
+                          src="placeholder-csr-flow.png"
+                          alt="Customer Sample Request Process Flow"
+                        />
                       </div>
                     </div>
 
@@ -1867,7 +2338,11 @@
                             <span class="relationship-badge-icon">👨‍👧‍👦</span>
                             Has Children
                           </span>
-                          <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                          <span
+                            class="toggle-btn"
+                            onclick="toggleNode(event, this.closest('.tree-node'))"
+                            >▼</span
+                          >
                         </div>
                         <div class="node-description">
                           Apparel-specific development intent<br />
@@ -1937,7 +2412,11 @@
                                 <span class="relationship-badge-icon">👨‍👧‍👦</span>
                                 Has Children
                               </span>
-                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                              <span
+                                class="toggle-btn"
+                                onclick="toggleNode(event, this.closest('.tree-node'))"
+                                >▼</span
+                              >
                             </div>
                             <div class="node-description">
                               Each iteration represents one refinement<br />
@@ -1971,6 +2450,40 @@
                                     <div>• Determine if R&D work is needed for this revision</div>
                                     <div><strong>Exit Criteria:</strong> Revision plan approved and ready to proceed</div>
                                   </div>
+
+                                  <!-- Automated Actions -->
+                                  <div
+                                    style="
+                                      margin-top: 1rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                      border-left: 3px solid #10b981;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • Email to PD team: "New sample iteration created - [Sample Type]"<br />
+                                      • Task created for PD Lead: "Review requirements and plan revision" (Due: 1 day)
+                                    </div>
+                                  </div>
+
+                                  <!-- Time-Based Escalations -->
+                                  <div
+                                    style="
+                                      margin-top: 0.75rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                      border-left: 3px solid #f59e0b;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • After 2 days: Reminder to PD Lead: "Revision planning pending"<br />
+                                      • After 4 days: Escalate to PD Manager
+                                    </div>
+                                  </div>
                                 </div>
 
                                 <!-- Stage 2: R&D -->
@@ -1987,6 +2500,39 @@
                                     <div>• R&D completes development and validates approach</div>
                                     <div><strong>Exit Criteria:</strong> R&D work completed, ready for sample production</div>
                                     <div><strong>Note:</strong> Owned by R&D Lead, visible to PD for tracking</div>
+                                  </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 1rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                      border-left: 3px solid #10b981;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • Email to R&D Lead: "R&D work assigned - [Sample Iteration]"<br />
+                                      • Email to PD team: "Sample in R&D phase - monitoring progress"<br />
+                                      • Auto-create R&D Request record if needed
+                                    </div>
+                                  </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 0.75rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                      border-left: 3px solid #f59e0b;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • After 5 days: Alert to R&D Lead: "R&D work in progress for 5+ days"<br />
+                                      • After 10 days: Escalate to R&D Manager + notify PD Manager
+                                    </div>
                                   </div>
                                 </div>
 
@@ -2005,6 +2551,39 @@
                                     <div><strong>Exit Criteria:</strong> Physical samples completed and ready for testing</div>
                                     <div><strong>Note:</strong> Owned by R&D Lead, visible to PD for tracking</div>
                                   </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 1rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                      border-left: 3px solid #10b981;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • Email to R&D team: "Physical sample production started - SDO created"<br />
+                                      • Email to PD team: "Sample in development - estimated completion: [date]"<br />
+                                      • Auto-create SDO in ERP system
+                                    </div>
+                                  </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 0.75rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                      border-left: 3px solid #f59e0b;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • After 7 days: Alert to R&D team: "Sample development in progress for 7+ days"<br />
+                                      • After 14 days: Escalate to R&D Manager + PD Manager
+                                    </div>
+                                  </div>
                                 </div>
 
                                 <!-- Stage 4: Internal Testing & Validation -->
@@ -2020,6 +2599,39 @@
                                     <div>• Perform technical and compliance validation</div>
                                     <div>• Determine if sample passes internal standards</div>
                                     <div><strong>Exit Criteria:</strong> Internal validation decision made</div>
+                                  </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 1rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                      border-left: 3px solid #10b981;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • Email to QC Lab: "Sample ready for internal testing - [Iteration]"<br />
+                                      • Email to PD team: "Sample in testing phase"<br />
+                                      • Task created for QC Lead: "Complete quality validation" (Due: 3 days)
+                                    </div>
+                                  </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 0.75rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                      border-left: 3px solid #f59e0b;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • After 3 days: Reminder to QC Lab: "Testing pending completion"<br />
+                                      • After 5 days: Escalate to PD Manager
+                                    </div>
                                   </div>
                                 </div>
 
@@ -2040,17 +2652,88 @@
                                     <div>• Document rejection reasons and learnings</div>
                                     <div>• May trigger new revision or close development</div>
                                   </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 1rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                      border-left: 3px solid #10b981;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">
+                                      📧 Automated Actions (When Approved)
+                                    </div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • Email to PD team: "✅ Sample approved - ready for customer dispatch"<br />
+                                      • Email to Sales Rep: "Sample passed internal testing - ready for SAR"<br />
+                                      • Update SAR/SFR/SYR status: "Ready for Dispatch"
+                                    </div>
+                                  </div>
+
+                                  <div
+                                    style="
+                                      margin-top: 0.75rem;
+                                      padding: 0.75rem;
+                                      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+                                      border-left: 3px solid #ef4444;
+                                      border-radius: 0.375rem;
+                                    "
+                                  >
+                                    <div style="font-weight: 600; color: #dc2626; margin-bottom: 0.5rem; font-size: 0.85rem">
+                                      📧 Automated Actions (When Rejected)
+                                    </div>
+                                    <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                      • Email to PD Manager: "Sample failed internal testing - [Reason]"<br />
+                                      • Task created for PD Lead: "Document failure learnings" (Due: 1 day)<br />
+                                      • Consider creating new revision
+                                    </div>
+                                  </div>
                                 </div>
+                              </div>
+
+                              <!-- Collapse Button -->
+                              <div
+                                class="collapse-button-container"
+                                style="
+                                  text-align: center;
+                                  padding: 0.65rem;
+                                  background: rgba(0, 0, 0, 0.02);
+                                  border-top: 1px solid rgba(0, 0, 0, 0.1);
+                                  border-radius: 0 0 0.5rem 0.5rem;
+                                "
+                              >
+                                <button
+                                  onclick="toggleSampleDevStages()"
+                                  style="
+                                    background: #f8fafc;
+                                    color: #475569;
+                                    border: 1px solid #cbd5e1;
+                                    padding: 0.45rem 1.25rem;
+                                    border-radius: 0.375rem;
+                                    cursor: pointer;
+                                    font-size: 0.8rem;
+                                    font-weight: 500;
+                                    transition: all 0.2s;
+                                  "
+                                >
+                                  ▲ Collapse Section
+                                </button>
                               </div>
                             </div>
 
                             <!-- Process Flow Diagram Section -->
                             <div class="process-flow-section">
-                              <div class="process-flow-header">
-                                🔄 Sample Development Process Flow Diagram
-                              </div>
-                              <div class="process-flow-thumbnail" onclick="openModal('placeholder-sample-dev-flow.png')">
-                                <img src="placeholder-sample-dev-flow.png" alt="Sample Development Process Flow">
+                              <div class="process-flow-header">🔄 Sample Development Process Flow Diagram</div>
+                              <div
+                                class="process-flow-thumbnail"
+                                onclick="openModal('placeholder-sample-dev-flow.png')"
+                              >
+                                <img
+                                  src="placeholder-sample-dev-flow.png"
+                                  alt="Sample Development Process Flow"
+                                />
                               </div>
                             </div>
 
@@ -2157,6 +2840,38 @@
                                         <div>• Determine if external cluster engagement needed</div>
                                         <div><strong>Exit Criteria:</strong> Request validated and ready for execution</div>
                                       </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 1rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                          border-left: 3px solid #10b981;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to R&D Lead: "New R&D request from PD - [Sample]"<br />
+                                          • Task created for R&D Lead: "Review and validate request scope" (Due: 2 days)
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 0.75rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                          border-left: 3px solid #f59e0b;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • After 2 days: Reminder to R&D Lead<br />
+                                          • After 5 days: Escalate to R&D Manager
+                                        </div>
+                                      </div>
                                     </div>
 
                                     <!-- Stage 2: Cluster Engagement -->
@@ -2172,6 +2887,38 @@
                                         <div>• Share requirements and request cluster input</div>
                                         <div>• Coordinate with clusters for trials and testing</div>
                                         <div><strong>Exit Criteria:</strong> Cluster engagement complete or not needed</div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 1rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                          border-left: 3px solid #10b981;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to External Clusters: "R&D collaboration request - [Details]"<br />
+                                          • Email to R&D Lead: "Cluster coordination initiated"
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 0.75rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                          border-left: 3px solid #f59e0b;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • After 5 days: Reminder to R&D Lead: "Cluster response pending"<br />
+                                          • After 10 days: Escalate to R&D Manager
+                                        </div>
                                       </div>
                                     </div>
 
@@ -2189,6 +2936,38 @@
                                         <div>• Document findings and determine feasibility</div>
                                         <div><strong>Exit Criteria:</strong> Feasibility determined (feasible or not feasible)</div>
                                       </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 1rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                          border-left: 3px solid #10b981;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to R&D team: "Begin feasibility trials - [Requirements]"<br />
+                                          • Email to PD team: "R&D assessment in progress"
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 0.75rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                          border-left: 3px solid #f59e0b;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • After 7 days: Alert to R&D Lead: "Assessment in progress for 7+ days"<br />
+                                          • After 14 days: Escalate to R&D Manager
+                                        </div>
+                                      </div>
                                     </div>
 
                                     <!-- Stage 4: Proposal Creation -->
@@ -2204,6 +2983,39 @@
                                         <div>• Prepare cost estimates and timeline projections</div>
                                         <div>• Compile R&D proposal for customer review</div>
                                         <div><strong>Exit Criteria:</strong> Proposal ready for customer presentation</div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 1rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                          border-left: 3px solid #10b981;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to Commercial team: "R&D proposal needs costing input"<br />
+                                          • Email to Sales Rep: "R&D proposal being prepared for customer"<br />
+                                          • Task created for R&D Lead: "Complete proposal" (Due: 3 days)
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 0.75rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                          border-left: 3px solid #f59e0b;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • After 3 days: Reminder to R&D Lead<br />
+                                          • After 7 days: Escalate to R&D Manager
+                                        </div>
                                       </div>
                                     </div>
 
@@ -2225,6 +3037,39 @@
                                         <span class="customer-touchpoint-icon">🔬</span>
                                         <span><strong>Customer:</strong> Reviews R&D proposal and approves/rejects approach</span>
                                       </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 1rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                          border-left: 3px solid #10b981;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to Customer: "R&D proposal attached for your review"<br />
+                                          • Email to Sales Rep: "R&D proposal shared with customer"<br />
+                                          • Task created for Sales Rep: "Follow up on R&D approval" (Due: 7 days)
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 0.75rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                          border-left: 3px solid #f59e0b;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • After 7 days: Auto-email to customer: "Following up on R&D proposal"<br />
+                                          • After 14 days: Alert to Sales Manager: "R&D approval pending"
+                                        </div>
+                                      </div>
                                     </div>
 
                                     <!-- Stage 6: Closed -->
@@ -2244,17 +3089,87 @@
                                         <div>• Document rejection reasons and learnings</div>
                                         <div>• Close R&D request and update Sample Iteration</div>
                                       </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 1rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                          border-left: 3px solid #10b981;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">
+                                          📧 Automated Actions (When Approved)
+                                        </div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to PD team: "✅ R&D approved - proceed with sample development"<br />
+                                          • Email to R&D team: "R&D outcomes handed over to PD"<br />
+                                          • Update parent Sample Iteration: Move to "In Development"
+                                        </div>
+                                      </div>
+
+                                      <div
+                                        style="
+                                          margin-top: 0.75rem;
+                                          padding: 0.75rem;
+                                          background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+                                          border-left: 3px solid #ef4444;
+                                          border-radius: 0.375rem;
+                                        "
+                                      >
+                                        <div style="font-weight: 600; color: #dc2626; margin-bottom: 0.5rem; font-size: 0.85rem">
+                                          📧 Automated Actions (When Rejected)
+                                        </div>
+                                        <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                          • Email to PD Manager: "R&D rejected by customer - [Reason]"<br />
+                                          • Task created for PD Lead: "Document R&D rejection learnings" (Due: 2 days)
+                                        </div>
+                                      </div>
                                     </div>
+                                  </div>
+
+                                  <!-- Collapse Button -->
+                                  <div
+                                    class="collapse-button-container"
+                                    style="
+                                      text-align: center;
+                                      padding: 0.65rem;
+                                      background: rgba(0, 0, 0, 0.02);
+                                      border-top: 1px solid rgba(0, 0, 0, 0.1);
+                                      border-radius: 0 0 0.5rem 0.5rem;
+                                    "
+                                  >
+                                    <button
+                                      onclick="toggleRnDStages()"
+                                      style="
+                                        background: #f8fafc;
+                                        color: #475569;
+                                        border: 1px solid #cbd5e1;
+                                        padding: 0.45rem 1.25rem;
+                                        border-radius: 0.375rem;
+                                        cursor: pointer;
+                                        font-size: 0.8rem;
+                                        font-weight: 500;
+                                        transition: all 0.2s;
+                                      "
+                                    >
+                                      ▲ Collapse Section
+                                    </button>
                                   </div>
                                 </div>
 
                                 <!-- Process Flow Diagram Section -->
                                 <div class="process-flow-section">
-                                  <div class="process-flow-header">
-                                    🔄 R&D Request Process Flow Diagram
-                                  </div>
-                                  <div class="process-flow-thumbnail" onclick="openModal('placeholder-rnd-flow.png')">
-                                    <img src="placeholder-rnd-flow.png" alt="R&D Request Process Flow">
+                                  <div class="process-flow-header">🔄 R&D Request Process Flow Diagram</div>
+                                  <div
+                                    class="process-flow-thumbnail"
+                                    onclick="openModal('placeholder-rnd-flow.png')"
+                                  >
+                                    <img
+                                      src="placeholder-rnd-flow.png"
+                                      alt="R&D Request Process Flow"
+                                    />
                                   </div>
                                 </div>
 
@@ -2366,7 +3281,11 @@
                             <span class="relationship-badge-icon">👨‍👧‍👦</span>
                             Has Children
                           </span>
-                          <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                          <span
+                            class="toggle-btn"
+                            onclick="toggleNode(event, this.closest('.tree-node'))"
+                            >▼</span
+                          >
                         </div>
                         <div class="node-description">Fabric-specific development intent</div>
                       </div>
@@ -2427,7 +3346,11 @@
                             <span class="relationship-badge-icon">👨‍👧‍👦</span>
                             Has Children
                           </span>
-                          <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                          <span
+                            class="toggle-btn"
+                            onclick="toggleNode(event, this.closest('.tree-node'))"
+                            >▼</span
+                          >
                         </div>
                         <div class="node-description">Yarn-specific development intent</div>
                       </div>
@@ -2476,210 +3399,397 @@
 
                     <!-- Sample Apparel Request -->
                     <div class="tree-node level-3 has-children">
-                          <div class="node-content">
-                            <div class="node-title">
-                              <span class="node-icon">👕</span>
-                              Sample Apparel Request (SAR)
-                              <span class="relationship-badge child">
-                                <span class="relationship-badge-icon">⬆️</span>
-                                Child of CSR
-                              </span>
-                              <span class="relationship-badge parent">
-                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
-                                Has Children
-                              </span>
-                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
-                            </div>
-                            <div class="node-description">
-                              Request for physical apparel samples to be issued to customer<br />
-                              Tracks preparation, shipment, and customer feedback
-                            </div>
+                      <div class="node-content">
+                        <div class="node-title">
+                          <span class="node-icon">👕</span>
+                          Sample Apparel Request (SAR)
+                          <span class="relationship-badge child">
+                            <span class="relationship-badge-icon">⬆️</span>
+                            Child of CSR
+                          </span>
+                          <span class="relationship-badge parent">
+                            <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                            Has Children
+                          </span>
+                          <span
+                            class="toggle-btn"
+                            onclick="toggleNode(event, this.closest('.tree-node'))"
+                            >▼</span
+                          >
+                        </div>
+                        <div class="node-description">
+                          Request for physical apparel samples to be issued to customer<br />
+                          Tracks preparation, shipment, and customer feedback
+                        </div>
 
-                            <!-- SAR Stages Section -->
-                            <div
-                              class="stages-section"
-                              id="sampleIssuanceStages"
-                            >
+                        <!-- SAR Stages Section -->
+                        <div
+                          class="stages-section"
+                          id="sampleIssuanceStages"
+                        >
+                          <div
+                            class="stages-header"
+                            onclick="toggleSampleIssuanceStages()"
+                          >
+                            <span>📮 SAR Lifecycle Stages</span>
+                            <span class="stages-toggle">▼</span>
+                          </div>
+                          <div class="stages-content">
+                            <!-- Stage 1: Issuance Preparation -->
+                            <div class="stage-card pd">
+                              <div class="stage-header">
+                                <span class="stage-name">Issuance Preparation</span>
+                                <span class="stage-owner pd">PD</span>
+                              </div>
+                              <div class="stage-details">
+                                <div><strong>Purpose:</strong> Prepare samples for shipment</div>
+                                <div><strong>Activities:</strong></div>
+                                <div>• Select and verify samples for shipment</div>
+                                <div>• Prepare packaging and documentation</div>
+                                <div>• Arrange shipping and logistics</div>
+                                <div><strong>Exit Criteria:</strong> Ready for dispatch</div>
+                              </div>
+
                               <div
-                                class="stages-header"
-                                onclick="toggleSampleIssuanceStages()"
+                                style="
+                                  margin-top: 1rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                  border-left: 3px solid #10b981;
+                                  border-radius: 0.375rem;
+                                "
                               >
-                                <span>📮 SAR Lifecycle Stages</span>
-                                <span class="stages-toggle">▼</span>
+                                <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • Email to PD team: "Prepare samples for dispatch - [Customer]"<br />
+                                  • Task created for Logistics: "Arrange sample shipment" (Due: 2 days)
+                                </div>
                               </div>
-                              <div class="stages-content">
-                                <!-- Stage 1: Issuance Preparation -->
-                                <div class="stage-card pd">
-                                  <div class="stage-header">
-                                    <span class="stage-name">Issuance Preparation</span>
-                                    <span class="stage-owner pd">PD</span>
-                                  </div>
-                                  <div class="stage-details">
-                                    <div><strong>Purpose:</strong> Prepare samples for shipment</div>
-                                    <div><strong>Activities:</strong></div>
-                                    <div>• Select and verify samples for shipment</div>
-                                    <div>• Prepare packaging and documentation</div>
-                                    <div>• Arrange shipping and logistics</div>
-                                    <div><strong>Exit Criteria:</strong> Ready for dispatch</div>
-                                  </div>
-                                </div>
 
-                                <!-- Stage 2: Sample Dispatched -->
-                                <div class="stage-card pd">
-                                  <div class="stage-header">
-                                    <span class="stage-name">Sample Dispatched</span>
-                                    <span class="stage-owner pd">PD</span>
-                                  </div>
-                                  <div class="stage-details">
-                                    <div><strong>Purpose:</strong> Samples shipped to customer</div>
-                                    <div><strong>Activities:</strong></div>
-                                    <div>• Dispatch samples and share tracking information</div>
-                                    <div>• Notify customer of shipment</div>
-                                    <div>• Monitor delivery status</div>
-                                    <div><strong>Exit Criteria:</strong> Customer receives samples</div>
-                                  </div>
+                              <div
+                                style="
+                                  margin-top: 0.75rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                  border-left: 3px solid #f59e0b;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • After 2 days: Reminder to PD team<br />
+                                  • After 4 days: Escalate to PD Manager
                                 </div>
+                              </div>
+                            </div>
 
-                                <!-- Stage 3: Customer Receipt Confirmed -->
-                                <div class="stage-card pd">
-                                  <div class="stage-header">
-                                    <span class="stage-name">Customer Receipt Confirmed</span>
-                                    <span class="stage-owner pd">PD</span>
-                                  </div>
-                                  <div class="stage-details">
-                                    <div><strong>Purpose:</strong> Confirm customer received samples</div>
-                                    <div><strong>Activities:</strong></div>
-                                    <div>• Obtain delivery confirmation from customer</div>
-                                    <div>• Schedule follow-up for feedback</div>
-                                    <div>• Update issuance record status</div>
-                                    <div><strong>Exit Criteria:</strong> Receipt confirmed</div>
-                                  </div>
-                                  <div class="customer-touchpoint">
-                                    <span class="customer-touchpoint-icon">📦</span>
-                                    <span><strong>Customer:</strong> Confirms receipt of physical samples</span>
-                                  </div>
+                            <!-- Stage 2: Sample Dispatched -->
+                            <div class="stage-card pd">
+                              <div class="stage-header">
+                                <span class="stage-name">Sample Dispatched</span>
+                                <span class="stage-owner pd">PD</span>
+                              </div>
+                              <div class="stage-details">
+                                <div><strong>Purpose:</strong> Samples shipped to customer</div>
+                                <div><strong>Activities:</strong></div>
+                                <div>• Dispatch samples and share tracking information</div>
+                                <div>• Notify customer of shipment</div>
+                                <div>• Monitor delivery status</div>
+                                <div><strong>Exit Criteria:</strong> Customer receives samples</div>
+                              </div>
+
+                              <div
+                                style="
+                                  margin-top: 1rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                  border-left: 3px solid #10b981;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • Email to Customer: "Samples dispatched - Tracking: [Number]"<br />
+                                  • Email to Sales Rep: "Samples shipped to customer"<br />
+                                  • Email to PD team: "Monitor delivery status"
                                 </div>
+                              </div>
 
-                                <!-- Stage 4: Sample Review & Feedback -->
-                                <div class="stage-card pd">
-                                  <div class="stage-header">
-                                    <span class="stage-name">Sample Review & Feedback</span>
-                                    <span class="stage-owner pd">PD</span>
-                                  </div>
-                                  <div class="stage-details">
-                                    <div><strong>Purpose:</strong> Customer evaluates samples</div>
-                                    <div><strong>Activities:</strong></div>
-                                    <div>• Customer reviews samples and provides feedback</div>
-                                    <div>• Document customer comments and decision</div>
-                                    <div>• Update parent Sample Development record</div>
-                                    <div><strong>Exit Criteria:</strong> Feedback received</div>
-                                  </div>
-                                  <div class="customer-touchpoint">
-                                    <span class="customer-touchpoint-icon">💭</span>
-                                    <span><strong>Customer:</strong> Provides feedback and comments on samples</span>
-                                  </div>
+                              <div
+                                style="
+                                  margin-top: 0.75rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                  border-left: 3px solid #f59e0b;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • After 7 days: Alert to Logistics: "Delivery pending confirmation"<br />
+                                  • After 10 days: Escalate to PD Manager + contact courier
                                 </div>
+                              </div>
+                            </div>
 
-                                <!-- Stage 5: Closed -->
-                                <div class="stage-card pd">
-                                  <div class="stage-header">
-                                    <span class="stage-name">Closed</span>
-                                    <span class="stage-owner pd">PD</span>
-                                  </div>
-                                  <div class="stage-details">
-                                    <div><strong>Purpose:</strong> Sample issuance process complete</div>
-                                    <div><strong>Activities:</strong></div>
-                                    <div>• Collect all feedback and close issuance record</div>
-                                    <div>• Archive documentation for reference</div>
-                                    <div>• Update related records as needed</div>
-                                    <div><strong>Outcome:</strong> Process completed</div>
-                                  </div>
+                            <!-- Stage 3: Customer Receipt Confirmed -->
+                            <div class="stage-card pd">
+                              <div class="stage-header">
+                                <span class="stage-name">Customer Receipt Confirmed</span>
+                                <span class="stage-owner pd">PD</span>
+                              </div>
+                              <div class="stage-details">
+                                <div><strong>Purpose:</strong> Confirm customer received samples</div>
+                                <div><strong>Activities:</strong></div>
+                                <div>• Obtain delivery confirmation from customer</div>
+                                <div>• Schedule follow-up for feedback</div>
+                                <div>• Update issuance record status</div>
+                                <div><strong>Exit Criteria:</strong> Receipt confirmed</div>
+                              </div>
+                              <div class="customer-touchpoint">
+                                <span class="customer-touchpoint-icon">📦</span>
+                                <span><strong>Customer:</strong> Confirms receipt of physical samples</span>
+                              </div>
+
+                              <div
+                                style="
+                                  margin-top: 1rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                  border-left: 3px solid #10b981;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • Email to Sales Rep: "Customer confirmed sample receipt"<br />
+                                  • Task created for Sales Rep: "Follow up for feedback" (Due: 5 days)
+                                </div>
+                              </div>
+
+                              <div
+                                style="
+                                  margin-top: 0.75rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                  border-left: 3px solid #f59e0b;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • After 7 days: Reminder to Sales Rep: "Follow up for customer feedback"<br />
+                                  • After 14 days: Escalate to Sales Manager
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Stage 4: Sample Review & Feedback -->
+                            <div class="stage-card pd">
+                              <div class="stage-header">
+                                <span class="stage-name">Sample Review & Feedback</span>
+                                <span class="stage-owner pd">PD</span>
+                              </div>
+                              <div class="stage-details">
+                                <div><strong>Purpose:</strong> Customer evaluates samples</div>
+                                <div><strong>Activities:</strong></div>
+                                <div>• Customer reviews samples and provides feedback</div>
+                                <div>• Document customer comments and decision</div>
+                                <div>• Update parent Sample Development record</div>
+                                <div><strong>Exit Criteria:</strong> Feedback received</div>
+                              </div>
+                              <div class="customer-touchpoint">
+                                <span class="customer-touchpoint-icon">💭</span>
+                                <span><strong>Customer:</strong> Provides feedback and comments on samples</span>
+                              </div>
+
+                              <div
+                                style="
+                                  margin-top: 1rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                  border-left: 3px solid #10b981;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • Email to PD team: "Customer feedback received - [Comments]"<br />
+                                  • Email to Sales Rep: "Review customer feedback and next steps"<br />
+                                  • Update parent CSR with feedback notes
+                                </div>
+                              </div>
+
+                              <div
+                                style="
+                                  margin-top: 0.75rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                                  border-left: 3px solid #f59e0b;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • After 7 days: Reminder to Sales Rep: "Customer feedback pending"<br />
+                                  • After 14 days: Escalate to Sales Manager
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Stage 5: Closed -->
+                            <div class="stage-card pd">
+                              <div class="stage-header">
+                                <span class="stage-name">Closed</span>
+                                <span class="stage-owner pd">PD</span>
+                              </div>
+                              <div class="stage-details">
+                                <div><strong>Purpose:</strong> Sample issuance process complete</div>
+                                <div><strong>Activities:</strong></div>
+                                <div>• Collect all feedback and close issuance record</div>
+                                <div>• Archive documentation for reference</div>
+                                <div>• Update related records as needed</div>
+                                <div><strong>Outcome:</strong> Process completed</div>
+                              </div>
+
+                              <div
+                                style="
+                                  margin-top: 1rem;
+                                  padding: 0.75rem;
+                                  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                                  border-left: 3px solid #10b981;
+                                  border-radius: 0.375rem;
+                                "
+                              >
+                                <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                                <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                                  • Email to PD team: "SAR closed - feedback documented"<br />
+                                  • Archive all related documentation
                                 </div>
                               </div>
                             </div>
                           </div>
 
-                          <div class="tree-children">
-                            <!-- SAR Line Items -->
-                            <div class="tree-node level-5">
-                              <div class="node-content">
-                                <div class="node-title">
-                                  <span class="node-icon">📋</span>
-                                  SAR Line Items
-                                </div>
-                                <div class="node-description">Individual apparel samples included in this issuance request</div>
-                              </div>
-                            </div>
+                          <!-- Collapse Button -->
+                          <div
+                            class="collapse-button-container"
+                            style="
+                              text-align: center;
+                              padding: 0.65rem;
+                              background: rgba(0, 0, 0, 0.02);
+                              border-top: 1px solid rgba(0, 0, 0, 0.1);
+                              border-radius: 0 0 0.5rem 0.5rem;
+                            "
+                          >
+                            <button
+                              onclick="toggleSampleIssuanceStages()"
+                              style="
+                                background: #f8fafc;
+                                color: #475569;
+                                border: 1px solid #cbd5e1;
+                                padding: 0.45rem 1.25rem;
+                                border-radius: 0.375rem;
+                                cursor: pointer;
+                                font-size: 0.8rem;
+                                font-weight: 500;
+                                transition: all 0.2s;
+                              "
+                            >
+                              ▲ Collapse Section
+                            </button>
                           </div>
                         </div>
+                      </div>
 
-                        <!-- Sample Fabric Request -->
-                        <div class="tree-node level-4 has-children">
+                      <div class="tree-children">
+                        <!-- SAR Line Items -->
+                        <div class="tree-node level-5">
                           <div class="node-content">
                             <div class="node-title">
-                              <span class="node-icon">🧶</span>
-                              Sample Fabric Request (SFR)
-                              <span class="relationship-badge child">
-                                <span class="relationship-badge-icon">⬆️</span>
-                                Child of CSR
-                              </span>
-                              <span class="relationship-badge parent">
-                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
-                                Has Children
-                              </span>
-                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                              <span class="node-icon">📋</span>
+                              SAR Line Items
                             </div>
-                            <div class="node-description">Request for physical fabric samples to be issued to customer</div>
-                          </div>
-
-                          <div class="tree-children">
-                            <!-- SFR Line Items -->
-                            <div class="tree-node level-5">
-                              <div class="node-content">
-                                <div class="node-title">
-                                  <span class="node-icon">📋</span>
-                                  SFR Line Items
-                                </div>
-                                <div class="node-description">Individual fabric samples included in this issuance request</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Sample Yarn Request -->
-                        <div class="tree-node level-4 has-children">
-                          <div class="node-content">
-                            <div class="node-title">
-                              <span class="node-icon">🧷</span>
-                              Sample Yarn Request (SYR)
-                              <span class="relationship-badge child">
-                                <span class="relationship-badge-icon">⬆️</span>
-                                Child of CSR
-                              </span>
-                              <span class="relationship-badge parent">
-                                <span class="relationship-badge-icon">👨‍👧‍👦</span>
-                                Has Children
-                              </span>
-                              <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
-                            </div>
-                            <div class="node-description">Request for physical yarn samples to be issued to customer</div>
-                          </div>
-
-                          <div class="tree-children">
-                            <!-- SYR Line Items -->
-                            <div class="tree-node level-5">
-                              <div class="node-content">
-                                <div class="node-title">
-                                  <span class="node-icon">📋</span>
-                                  SYR Line Items
-                                </div>
-                                <div class="node-description">Individual yarn samples included in this issuance request</div>
-                              </div>
-                            </div>
+                            <div class="node-description">Individual apparel samples included in this issuance request</div>
                           </div>
                         </div>
                       </div>
                     </div>
+
+                    <!-- Sample Fabric Request -->
+                    <div class="tree-node level-4 has-children">
+                      <div class="node-content">
+                        <div class="node-title">
+                          <span class="node-icon">🧶</span>
+                          Sample Fabric Request (SFR)
+                          <span class="relationship-badge child">
+                            <span class="relationship-badge-icon">⬆️</span>
+                            Child of CSR
+                          </span>
+                          <span class="relationship-badge parent">
+                            <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                            Has Children
+                          </span>
+                          <span
+                            class="toggle-btn"
+                            onclick="toggleNode(event, this.closest('.tree-node'))"
+                            >▼</span
+                          >
+                        </div>
+                        <div class="node-description">Request for physical fabric samples to be issued to customer</div>
+                      </div>
+
+                      <div class="tree-children">
+                        <!-- SFR Line Items -->
+                        <div class="tree-node level-5">
+                          <div class="node-content">
+                            <div class="node-title">
+                              <span class="node-icon">📋</span>
+                              SFR Line Items
+                            </div>
+                            <div class="node-description">Individual fabric samples included in this issuance request</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Sample Yarn Request -->
+                    <div class="tree-node level-4 has-children">
+                      <div class="node-content">
+                        <div class="node-title">
+                          <span class="node-icon">🧷</span>
+                          Sample Yarn Request (SYR)
+                          <span class="relationship-badge child">
+                            <span class="relationship-badge-icon">⬆️</span>
+                            Child of CSR
+                          </span>
+                          <span class="relationship-badge parent">
+                            <span class="relationship-badge-icon">👨‍👧‍👦</span>
+                            Has Children
+                          </span>
+                          <span
+                            class="toggle-btn"
+                            onclick="toggleNode(event, this.closest('.tree-node'))"
+                            >▼</span
+                          >
+                        </div>
+                        <div class="node-description">Request for physical yarn samples to be issued to customer</div>
+                      </div>
+
+                      <div class="tree-children">
+                        <!-- SYR Line Items -->
+                        <div class="tree-node level-5">
+                          <div class="node-content">
+                            <div class="node-title">
+                              <span class="node-icon">📋</span>
+                              SYR Line Items
+                            </div>
+                            <div class="node-description">Individual yarn samples included in this issuance request</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- Commercial Proposal -->
                 <div class="tree-node level-2 has-children">
@@ -2695,7 +3805,11 @@
                         <span class="relationship-badge-icon">👨‍👧‍👦</span>
                         Has Children
                       </span>
-                      <span class="toggle-btn" onclick="toggleNode(event, this.closest('.tree-node'))">▼</span>
+                      <span
+                        class="toggle-btn"
+                        onclick="toggleNode(event, this.closest('.tree-node'))"
+                        >▼</span
+                      >
                     </div>
                     <div class="node-description">
                       Pricing and commercial terms based on:
@@ -2732,6 +3846,39 @@
                             <div>• Prepare proposal document for review</div>
                             <div><strong>Exit Criteria:</strong> Proposal ready for review</div>
                           </div>
+
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Commercial team: "New proposal draft - [Customer]"<br />
+                              • Task created for Sales Rep: "Complete proposal draft" (Due: 2 days)<br />
+                              • Pull approved sample costs from CSR
+                            </div>
+                          </div>
+
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                              border-left: 3px solid #f59e0b;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • After 2 days: Reminder to Sales Rep<br />
+                              • After 5 days: Escalate to Sales Manager
+                            </div>
+                          </div>
                         </div>
 
                         <!-- Stage 2: Internal Review -->
@@ -2747,6 +3894,38 @@
                             <div>• Verify compliance and margin requirements</div>
                             <div>• Obtain final approval to send to customer</div>
                             <div><strong>Exit Criteria:</strong> Internal approval obtained</div>
+                          </div>
+
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Sales Manager (if Amount > threshold): "High-value proposal requires approval"<br />
+                              • Task created for Sales Manager: "Review and approve proposal" (Due: 1 day)
+                            </div>
+                          </div>
+
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                              border-left: 3px solid #f59e0b;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • After 1 day: Reminder to Sales Manager<br />
+                              • After 3 days: Escalate to Sales Director
+                            </div>
                           </div>
                         </div>
 
@@ -2768,6 +3947,41 @@
                             <span class="customer-touchpoint-icon">📋</span>
                             <span><strong>Customer:</strong> Reviews proposal and negotiates commercial terms</span>
                           </div>
+
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Customer: "Commercial proposal attached - valid for 30 days"<br />
+                              • Email to Sales Manager: "Proposal sent to customer - [Value]"<br />
+                              • Update parent Opportunity stage to "Commercial Proposal"
+                            </div>
+                          </div>
+
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+                              border-left: 3px solid #f59e0b;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • After 10 days: Auto-email to customer: "Following up on proposal"<br />
+                              • After 14 days: Alert to Sales Manager: "Proposal aging without response"<br />
+                              • After 25 days: Alert: "Proposal expiring soon (5 days remaining)"<br />
+                              • After 30 days: Auto-mark as "Expired" + task to Sales Rep
+                            </div>
+                          </div>
                         </div>
 
                         <!-- Stage 4: Closed -->
@@ -2788,19 +4002,174 @@
                             <span class="customer-touchpoint-icon">✍️</span>
                             <span><strong>Customer:</strong> Accepts proposal and issues PO, or formally declines</span>
                           </div>
+
+                          <div
+                            style="
+                              margin-top: 1rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+                              border-left: 3px solid #10b981;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions (When Accepted)</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Sales Team: "🎉 Proposal accepted - PO received from [Customer]"<br />
+                              • Email to ERP Team: "Create Customer Order from PO - [Details]"<br />
+                              • Update parent Opportunity to "Closed Won"<br />
+                              • ERP Integration: Send order data to ERP system
+                            </div>
+                          </div>
+
+                          <div
+                            style="
+                              margin-top: 0.75rem;
+                              padding: 0.75rem;
+                              background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+                              border-left: 3px solid #ef4444;
+                              border-radius: 0.375rem;
+                            "
+                          >
+                            <div style="font-weight: 600; color: #dc2626; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions (When Rejected)</div>
+                            <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
+                              • Email to Sales Manager: "Proposal declined by customer - [Reason]"<br />
+                              • Task created for Sales Rep: "Document rejection reason and learnings" (Due: 1 day)<br />
+                              • Update parent Opportunity to "Closed Lost"
+                            </div>
+                          </div>
                         </div>
+                      </div>
+
+                      <!-- Collapse Button -->
+                      <div
+                        class="collapse-button-container"
+                        style="
+                          text-align: center;
+                          padding: 0.65rem;
+                          background: rgba(0, 0, 0, 0.02);
+                          border-top: 1px solid rgba(0, 0, 0, 0.1);
+                          border-radius: 0 0 0.5rem 0.5rem;
+                        "
+                      >
+                        <button
+                          onclick="toggleCommercialProposalStages()"
+                          style="
+                            background: #f8fafc;
+                            color: #475569;
+                            border: 1px solid #cbd5e1;
+                            padding: 0.45rem 1.25rem;
+                            border-radius: 0.375rem;
+                            cursor: pointer;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                            transition: all 0.2s;
+                          "
+                        >
+                          ▲ Collapse Section
+                        </button>
                       </div>
                     </div>
 
                     <!-- Process Flow Diagram Section -->
                     <div class="process-flow-section">
-                      <div class="process-flow-header">
-                        🔄 Commercial Proposal Process Flow Diagram
-                      </div>
-                      <div class="process-flow-thumbnail" onclick="openModal('placeholder-commercial-flow.png')">
-                        <img src="placeholder-commercial-flow.png" alt="Commercial Proposal Process Flow">
+                      <div class="process-flow-header">🔄 Commercial Proposal Process Flow Diagram</div>
+                      <div
+                        class="process-flow-thumbnail"
+                        onclick="openModal('placeholder-commercial-flow.png')"
+                      >
+                        <img
+                          src="placeholder-commercial-flow.png"
+                          alt="Commercial Proposal Process Flow"
+                        />
                       </div>
                     </div>
+
+                    <!-- Automation & Escalations Section -->
+                    <!-- <div class="stages-section collapsed" id="commercialProposalAutomation">
+                      <div class="stages-header" onclick="toggleStages('commercialProposalAutomation')">
+                        <span>🤖 Automation & Escalations</span>
+                        <span class="stages-toggle">▼</span>
+                      </div>
+                      <div class="stages-content" style="padding: 1.5rem;">
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #10b981;">
+                          <h4 style="color: #10b981; margin: 0 0 1rem 0; font-size: 1.1rem;">📧 Automated Actions by Stage</h4>
+
+                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal enters "Draft":</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              📧 Email to Sales Rep: "Commercial proposal created from Gold Seal samples"<br>
+                              ✅ Task created for Sales Rep: "Finalize pricing, margins, and terms" (Due: 1 day)
+                            </div>
+                          </div>
+
+                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal moves to "Internal Review":</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              📧 Email to Sales Manager: "Proposal ready for internal review - Amount: $[X]"<br>
+                              📧 Email to Finance (if high value): "High-value proposal requires margin review"<br>
+                              ✅ Task created for Sales Manager: "Review and approve proposal" (Due: 1 day)
+                            </div>
+                          </div>
+
+                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal moves to "Customer Review":</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              📧 Email to Customer: "Commercial proposal attached - valid for 30 days"<br>
+                              📧 Email to Sales Rep: "Proposal sent to customer - follow up in 3 days"<br>
+                              ✅ Task created for Sales Rep: "Follow up with customer on proposal" (Due: 3 days)
+                            </div>
+                          </div>
+
+                          <div style="padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #61dafb; margin-bottom: 0.5rem;">When Proposal moves to "Closed":</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              <strong>IF Accepted:</strong><br>
+                              📧 Email to Sales Team: "🎉 Proposal accepted! PO received - $[Amount]"<br>
+                              📧 Email to ERP Team: "Customer order ready - PO attached"<br>
+                              📧 Email to Customer: "Thank you for your order - order confirmation attached"<br>
+                              🔗 Auto-create: Customer Order record<br>
+                              📊 Update Opportunity to "Closed Won"<br>
+                              🔗 ERP Integration: Send order data to ERP<br><br>
+                              <strong>IF Rejected:</strong><br>
+                              📧 Email to Sales Manager: "Proposal rejected - [Customer] - Reason: [X]"<br>
+                              ✅ Task created for Sales Rep: "Document rejection reason" (Due: 1 day)<br>
+                              📊 Update Opportunity to "Closed Lost"
+                            </div>
+                          </div>
+                        </div>
+
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #f59e0b;">
+                          <h4 style="color: #f59e0b; margin: 0 0 1rem 0; font-size: 1.1rem;">⏰ Time-Based Escalations</h4>
+
+                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Stage: Draft</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              • After 2 days: Reminder to Sales Rep<br>
+                              • After 4 days: Alert to Sales Manager
+                            </div>
+                          </div>
+
+                          <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Stage: Internal Review</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              • After 1 day: Reminder to Sales Manager<br>
+                              • After 3 days: Escalate to Sales Director
+                            </div>
+                          </div>
+
+                          <div style="padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 0.375rem;">
+                            <div style="font-weight: 600; color: #fbbf24; margin-bottom: 0.5rem;">Stage: Customer Review</div>
+                            <div style="margin-left: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8);">
+                              • After 7 days: Auto-email to customer: "Following up on proposal sent [date]"<br>
+                              • After 14 days: Alert to Sales Manager: "Proposal aging - [Customer]"<br>
+                              • After 21 days: Auto-email to customer: "Is this still a priority? How can we help?"<br>
+                              • After 25 days: Alert: "Proposal expiring soon (5 days remaining)"<br>
+                              • After 30 days: Auto-update status: "Expired" + task to Sales Rep: "Contact customer"
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
 
                     <!-- Core Fields Section -->
                     <div
@@ -2953,20 +4322,61 @@
     </div>
 
     <!-- Modal for Process Flow Diagrams -->
-    <div id="processFlowModal" class="modal" onclick="closeModal()">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div
+      id="processFlowModal"
+      class="modal"
+      onclick="closeModal()"
+    >
+      <div
+        class="modal-content"
+        onclick="event.stopPropagation()"
+      >
+        <span
+          class="modal-close"
+          onclick="closeModal()"
+          >&times;</span
+        >
 
         <!-- Zoom Controls -->
         <div class="zoom-controls">
-          <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">➕</button>
-          <span class="zoom-level" id="zoomLevel">100%</span>
-          <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">➖</button>
-          <button class="zoom-btn" onclick="resetZoom()" title="Reset Zoom">↺</button>
+          <button
+            class="zoom-btn"
+            onclick="zoomIn()"
+            title="Zoom In"
+          >
+            ➕
+          </button>
+          <span
+            class="zoom-level"
+            id="zoomLevel"
+            >100%</span
+          >
+          <button
+            class="zoom-btn"
+            onclick="zoomOut()"
+            title="Zoom Out"
+          >
+            ➖
+          </button>
+          <button
+            class="zoom-btn"
+            onclick="resetZoom()"
+            title="Reset Zoom"
+          >
+            ↺
+          </button>
         </div>
 
-        <div class="image-container" id="imageContainer">
-          <img id="modalImage" class="modal-image" src="" alt="Process Flow Diagram">
+        <div
+          class="image-container"
+          id="imageContainer"
+        >
+          <img
+            id="modalImage"
+            class="modal-image"
+            src=""
+            alt="Process Flow Diagram"
+          />
         </div>
       </div>
     </div>
@@ -3037,9 +4447,11 @@
       });
 
       // Toggle stages section for Opportunity
-      function toggleStages() {
-        const stagesSection = document.getElementById('opportunityStages');
-        stagesSection.classList.toggle('collapsed');
+      function toggleStages(sectionId) {
+        const stagesSection = document.getElementById(sectionId);
+        if (stagesSection) {
+          stagesSection.classList.toggle('collapsed');
+        }
       }
 
       // Toggle tree node expand/collapse
@@ -3269,7 +4681,7 @@
       }
 
       // Close modal on ESC key
-      document.addEventListener('keydown', function(event) {
+      document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
           closeModal();
         }
