@@ -965,7 +965,8 @@
         max-height: 80vh;
         border-radius: 0.5rem;
         background: rgba(255, 255, 255, 0.1);
-        cursor: move;
+        cursor: default;
+        position: relative;
       }
 
       .modal-image {
@@ -1566,7 +1567,6 @@
                         <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
                         <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                           • Email to assigned PD team: "CSR approved - begin sample development"<br />
-                          • Email to Customer: "Your sample development has started - estimated completion: [date]"<br />
                           • Email to Sales Rep: "Sample development in progress - keep customer updated"
                         </div>
                       </div>
@@ -1695,7 +1695,6 @@
                       >
                         <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
                         <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
-                          • After 10 days: Auto-email to customer: "Following up on proposal sent [date]"<br />
                           • After 14 days: Alert to Sales Manager: "Proposal aging without response"<br />
                           • After 25 days: Alert: "Proposal expiring soon (5 days remaining)"<br />
                           • After 30 days: Auto-mark as "Expired" + task to Sales Rep
@@ -2000,7 +1999,6 @@
                             <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
                             <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                               • Email to PD Team: "CSR approved - begin sample development"<br />
-                              • Email to Sales Rep: "Sample development started - target completion: [date]"<br />
                               • Update parent Opportunity stage to "Sample in Progress"
                             </div>
                           </div>
@@ -2023,10 +2021,10 @@
                           </div>
                         </div>
 
-                        <!-- Stage 3: Final Customer Decision -->
+                        <!-- Stage 3: Awaiting Customer Decision -->
                         <div class="stage-card pd">
                           <div class="stage-header">
-                            <span class="stage-name">Final Customer Decision</span>
+                            <span class="stage-name">Awaiting Customer Decision</span>
                             <span class="stage-owner pd">PD</span>
                           </div>
                           <div class="stage-details">
@@ -2050,7 +2048,6 @@
                           >
                             <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
                             <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
-                              • Email to Customer: "Final samples submitted for your review and approval"<br />
                               • Email to Sales Rep: "Customer evaluation in progress"<br />
                               • Email to PD Manager: "Awaiting customer decision on CSR"
                             </div>
@@ -2515,7 +2512,6 @@
                                     <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                                       • Email to R&D Lead: "R&D work assigned - [Sample Iteration]"<br />
                                       • Email to PD team: "Sample in R&D phase - monitoring progress"<br />
-                                      • Auto-create R&D Request record if needed
                                     </div>
                                   </div>
 
@@ -2687,7 +2683,6 @@
                                     <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                                       • Email to PD Manager: "Sample failed internal testing - [Reason]"<br />
                                       • Task created for PD Lead: "Document failure learnings" (Due: 1 day)<br />
-                                      • Consider creating new revision
                                     </div>
                                   </div>
                                 </div>
@@ -3058,7 +3053,6 @@
                                       >
                                         <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
                                         <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
-                                          • Email to Customer: "R&D proposal attached for your review"<br />
                                           • Email to Sales Rep: "R&D proposal shared with customer"<br />
                                           • Task created for Sales Rep: "Follow up on R&D approval" (Due: 7 days)
                                         </div>
@@ -3075,7 +3069,6 @@
                                       >
                                         <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
                                         <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
-                                          • After 7 days: Auto-email to customer: "Following up on R&D proposal"<br />
                                           • After 14 days: Alert to Sales Manager: "R&D approval pending"
                                         </div>
                                       </div>
@@ -3833,7 +3826,7 @@
                                 <div style="font-weight: 600; color: #d97706; margin-bottom: 0.5rem; font-size: 0.85rem">⏰ Time-Based Escalations</div>
                                 <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                                   • After 7 days: Alert to Logistics: "Delivery pending confirmation"<br />
-                                  • After 10 days: Escalate to PD Manager + contact courier
+                                  • After 10 days: Escalate to PD Manager
                                 </div>
                               </div>
                             </div>
@@ -3970,7 +3963,6 @@
                                 <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
                                 <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                                   • Email to PD team: "SAR closed - feedback documented"<br />
-                                  • Archive all related documentation
                                 </div>
                               </div>
                             </div>
@@ -4166,7 +4158,6 @@
                             <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
                               • Email to Commercial team: "New proposal draft - [Customer]"<br />
                               • Task created for Sales Rep: "Complete proposal draft" (Due: 2 days)<br />
-                              • Pull approved sample costs from CSR
                             </div>
                           </div>
 
@@ -4265,7 +4256,6 @@
                           >
                             <div style="font-weight: 600; color: #059669; margin-bottom: 0.5rem; font-size: 0.85rem">📧 Automated Actions</div>
                             <div style="font-size: 0.8rem; line-height: 1.6; color: #1f2937">
-                              • Email to Customer: "Commercial proposal attached - valid for 30 days"<br />
                               • Email to Sales Manager: "Proposal sent to customer - [Value]"<br />
                               • Update parent Opportunity stage to "Commercial Proposal"
                             </div>
@@ -4389,7 +4379,6 @@
                         />
                       </div>
                     </div>
-
 
                     <!-- Core Fields Section -->
                     <div
@@ -4852,11 +4841,10 @@
         // Add mouse wheel zoom support
         imageContainer.addEventListener('wheel', handleWheel, { passive: false });
 
-        // Add pan support
+        // Add pan support - mousedown on container, but mousemove/mouseup on document
         imageContainer.addEventListener('mousedown', startPan);
-        imageContainer.addEventListener('mousemove', doPan);
-        imageContainer.addEventListener('mouseup', endPan);
-        imageContainer.addEventListener('mouseleave', endPan);
+        document.addEventListener('mousemove', doPan);
+        document.addEventListener('mouseup', endPan);
       }
 
       function closeModal() {
@@ -4869,9 +4857,11 @@
         // Remove event listeners
         imageContainer.removeEventListener('wheel', handleWheel);
         imageContainer.removeEventListener('mousedown', startPan);
-        imageContainer.removeEventListener('mousemove', doPan);
-        imageContainer.removeEventListener('mouseup', endPan);
-        imageContainer.removeEventListener('mouseleave', endPan);
+        document.removeEventListener('mousemove', doPan);
+        document.removeEventListener('mouseup', endPan);
+
+        // Reset panning state
+        isPanning = false;
       }
 
       function zoomIn() {
@@ -4880,7 +4870,7 @@
       }
 
       function zoomOut() {
-        currentZoom = Math.max(currentZoom - 0.25, 0.5);
+        currentZoom = Math.max(currentZoom - 0.25, 0.1);
         updateZoom();
       }
 
@@ -4897,9 +4887,17 @@
       function updateZoom() {
         const modalImage = document.getElementById('modalImage');
         const zoomLevel = document.getElementById('zoomLevel');
+        const imageContainer = document.getElementById('imageContainer');
 
         modalImage.style.transform = `scale(${currentZoom})`;
         zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
+
+        // Update cursor style based on zoom level
+        if (currentZoom !== 1) {
+          imageContainer.style.cursor = 'grab';
+        } else {
+          imageContainer.style.cursor = 'default';
+        }
       }
 
       function handleWheel(e) {
@@ -4910,22 +4908,30 @@
           currentZoom = Math.min(currentZoom + 0.1, 5);
         } else {
           // Scroll down - zoom out
-          currentZoom = Math.max(currentZoom - 0.1, 0.5);
+          currentZoom = Math.max(currentZoom - 0.1, 0.1);
         }
 
         updateZoom();
       }
 
       function startPan(e) {
-        const imageContainer = document.getElementById('imageContainer');
+        // Only respond to left mouse button (button 0)
+        if (e.button !== 0) return;
 
-        if (currentZoom > 1) {
+        // Only enable panning when image is zoomed (not at default size)
+        if (currentZoom !== 1) {
           isPanning = true;
+          const imageContainer = document.getElementById('imageContainer');
           imageContainer.style.cursor = 'grabbing';
-          startX = e.pageX - imageContainer.offsetLeft;
-          startY = e.pageY - imageContainer.offsetTop;
+          imageContainer.style.userSelect = 'none';
+          document.body.style.userSelect = 'none'; // Prevent text selection on entire page
+
+          startX = e.clientX;
+          startY = e.clientY;
           scrollLeft = imageContainer.scrollLeft;
           scrollTop = imageContainer.scrollTop;
+
+          e.preventDefault(); // Prevent default drag behavior
         }
       }
 
@@ -4934,21 +4940,23 @@
         e.preventDefault();
 
         const imageContainer = document.getElementById('imageContainer');
-        const x = e.pageX - imageContainer.offsetLeft;
-        const y = e.pageY - imageContainer.offsetTop;
-        const walkX = (x - startX) * 2;
-        const walkY = (y - startY) * 2;
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
 
-        imageContainer.scrollLeft = scrollLeft - walkX;
-        imageContainer.scrollTop = scrollTop - walkY;
+        imageContainer.scrollLeft = scrollLeft - deltaX;
+        imageContainer.scrollTop = scrollTop - deltaY;
       }
 
       function endPan() {
+        if (!isPanning) return;
+
         isPanning = false;
         const imageContainer = document.getElementById('imageContainer');
+        imageContainer.style.userSelect = 'auto';
+        document.body.style.userSelect = 'auto';
 
-        if (currentZoom > 1) {
-          imageContainer.style.cursor = 'move';
+        if (currentZoom !== 1) {
+          imageContainer.style.cursor = 'grab';
         } else {
           imageContainer.style.cursor = 'default';
         }
